@@ -1,0 +1,72 @@
+\section{Case study design}
+\label{sec:CaseStudyDesign}
+
+\cite{chakraborti_emerging_2020} identifies the need for understanding the 'personae' of stakeholders
+
+\subsection{Selection of AI solutions}
+
+Ki-67 app(s) selected based on xyz, 
+Possible criteria:
+
+\begin{itemize}
+    \item CE-IVD approved for clinical use
+    \item black-box algorithm (i.e. DL)
+    \item results not easily verifiable by clinician with cursory visual inspection
+\end{itemize}
+
+% Candidates:
+% - Visiopharm Ki-67 app (https://visiopharm.com/app-center/app/ki-67-app-breast-cancer/, demo: https://www.labroots.com/ms/webinar/standardization-clinical-digital-pathology-ki-67)
+% - Roche VENTANA Companion Algorithm Ki-67 (30-9) (https://diagnostics.roche.com/no/en/products/instruments/ventana-companion-algorithm-image-analysis-software.html), also has FDA 510(k) clearance
+% - MindPeak BreastIHC (https://www.mindpeak.ai/products/mindpeak-breastihc) CE-IVD clearance pending
+
+\subsection{Selection of stakeholders}
+
+User personae 1-3 based on xyz. \cite{poceviciute_survey_2020} Ongoing work by Graz? @Andreas
+Stakeholders selected from EMPAIA Gremien members
+
+\subsection{Research questions}
+
+Research questions based on:
+\begin{itemize}
+\item requirement gathering workshop
+\item current SOA on medical XAI
+\item open questions in the technical literature
+\item decision-making processes in EMPAIA infrastructure design?
+\end{itemize}
+
+Could be descriptions/demonstrations of classes of XAI given in \cite{poceviciute_survey_2020}, plus additional options from the EMPAIA brainstorming session, with an ordinal scale indicating the degree to which this additional information:
+
+\begin{itemize}
+ \item is intelligible to the user
+ \item increases trust in the result
+ \item is generalizable to other solutions?
+\end{itemize}
+
+Could reference/directly use questions from the SCS in \cite{HolzingerEtAl:2020:QualityOfExplanations} in the survey design
+Potential pitfall: implementation of classes of XAI on a model too time-consuming to manage before submission > mock up with description instead?
+
+\subsection{Survey}
+
+We construct a survey to assess the acceptance of different xAI explanations on a quantitative basis. Based on the TU Graz questionnaire, profiling of the participants takes age, occupation and familiarity with AI and ML approaches within digital pathology into account. For the main body of the survey, users compare a regular base image treated with the Ki-67 approach and an additional explanation method. We use four main statements that are ranked by the users on a seven stage Likert scale (with zero being "Strongly disagree" and seven "Strongly agree"). 
+
+Shuffled questions and different techniques
+
+\begin{itemize}
+    \item I find the explanation intuitively understandable
+    \item The explanations helps me to understand factors relevant to the algorithm
+\end{itemize}
+
+
+
+\subsection{Expert Interviews}
+
+\subsection{Data collection protocol}
+Technical SOA: literature review protocol
+
+Case study:
+\begin{enumerate}
+    \item Initial brainstorming session with a simple app
+\item  Wide-reaching survey to stakeholder groups (EMPAIA Gremien) according to self-identification to user personae
+\item  Focused interviews with volunteering stakeholders
+\item  Collection and analysis of data
+\end{enumerate}
