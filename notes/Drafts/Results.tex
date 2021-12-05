@@ -1,0 +1,527 @@
+\section{Results}
+\label{sec:results}
+
+% Structure of Results:
+% 1. Survey Participants
+% 2. Explanation Classes
+% 2.1 Survey Results
+% 2.2 Interview Results
+% 3. Comments
+
+\subsection{Participants}
+
+%TODO modify if this changes
+A total of 29 respondents submitted their results to the online questionnaire. Five results were discarded due to extreme values and/or inappropriate comments, or for falling outside of the target user group. The remaining 24 consisted of individuals holding professional roles in pathology or neuropathology, either as a consultant (11), researcher (6), pathologist in training (4) or laboratory technician (3).
+
+Six certified pathologists participated in face-to-face interviews, of whom three were currently involved in routine clinical practice. All were involved with research in pathology in some capacity.
+
+% Years of experience as a certified consultant ranged from one to 45, with one a current director of pathology, another a retired director, at major German research hospitals
+
+P6 - director of pathology at a major German hospital, 
+
+% P3 and 4 had not seen/completed the questionnaire beforehand, the others had.
+
+\subsection{Individual explanation classes}
+
+\subsubsection{Counterfactuals}
+
+This helps me 
+
++threshold shows why its missing cells, tresholds help build trust,  (P1,2)
++shows where it has difficulties, informs where you should double check (Ri, I, H)
+-2Axis not intuitively understandable, unclear that data is generated (I, G, Ra)
+-hard to distinguish between importance of individual features (P2, P3)
+-some problems with understanding what counterfactuals are in survey, dont understand question
+-2Axis is not necessary/addon (G, Ra)
+
+% P1
+% * Simpler case:
+%     * Immediately I know why it missing half of the (negative) cells are missing 
+        % * "this helps me understand what what what the algorithm is looking for"
+%     * It helps me know whether I can trust the result
+%     * At least in this area, might not apply to outside
+%     * Very nice image
+%     * It would be lacking if there were not the two labels (+ve and -ve) [because -ve cells are important for ki-67)
+% * More complex case:
+%     * "This gives me more information"
+%     * "This helps me understand more the +ve labels"
+%     * Inflammatory cells can stain, explanation shows the model also counts stained inflamm. cells
+%     * tells me that positivity is influenced by inflammation, also something that we have difficulty with
+%     * Knowing where the algorithm has difficulties, and especially, that it has difficulties with the same things, improves trust > as it informs where you should ‘double check’
+%     * “This one is the one that provides me all of the information that I need, based on my own way of accessing this and the pitfalls that I know are there”. “B/c it is all the information that I use on my own, and the pitfalls that I have and that the algorithm will also have”
+
+% P2
+% * Simpler case: 
+%     * understandable, tells me what kinds of cell it is using to assign +ve/-ve label
+%     * Helps to understand that the staining intensity is important, nucleolus seems to disappear, hard to distinguish between factors that are changing
+%         * Meta: ensemble of CF 
+% * More complex case:
+%     * Not so intuitively understandable
+%     * Perhaps cluster is too small to be tumour cells
+%     * Confusing
+% * Not clear that this is generated data!
+% * Presenting additional examples and asking for interaction from user, do you [user] agree with the intermediate results?
+% * Helps to build trust that the solution is thresholding in the right place
+% * For every slide when an analysis is done on a whole slide, to do a mini-QA, does the pathologist agree/not agree, before releasing result, and to improve the algorithm for the future.
+
+% P3
+% * Simpler case:
+%     * I think it is the color of brown [that is important]
+%     * "I know [artefacts] aren’t being included in the decision because they aren’t shown in explanation"
+%     * "This is enough [to understand the result]"
+% * More complex case:
+%     * “I think the algorithm is looking for shape and for darkness”
+%     * The most important thing between positive and unclassified is the shape
+%     * "This is an add-on [to the simple case]"
+
+% P4
+% * Good and bad on both sides
+% * Good that it includes the prototypes, plus the cutoff, understandable, and builds trust
+% * Danger of being distracting, scrutinising the positivity/negativity of borderline samples
+% * "the difference between positive and negative is completely clear"
+% complex case:
+%     * Unclassified result is important, as it is important to have a check on what kinds of objects were not detected/classified.
+%     * But I think this is too much information, simpler example is better
+
+P5
+* I found this very nice (both)
+* Very straightforward, in a fraction of a second I can say whether I agree with this or not
+* Can see if over- or under-recognise
+* Simpler case easier, but both good, also very nice to see unclassified, as these are also the sort of cells we have trouble classifying
+* Important to see unclassified, as it shows us where need to check more carefully and adjust results
+* Why might people have answered negatively to this example? “Some people are against any machine learning in pathology”
+* Does not tell us about characteristics of tumor cells, but that is fine, as this would have been an upstream process, to look at slide with H&E. “Once I’m at IHC, I’m just looking at positive or negative”
+
+P6
+* Now we are coming to the point
+* Two of these variables in a grid that you can manipulate
+* Strong emphasis on this being an interactive tool
+* You would use the on-slide control as a comparison
+* Even more valuable/also applicable in therapeutic antibodies (eg HER2) with multiple grades 0, 1+, 2+, 3+. Helpful to adjust the AI application.
+* Negative results could be due to disagreement with the actual result shown. Should be considered as a tool with which to interact with the AI, not as a ‘truth’
+
+% Comments
+% * Like previous, initial reaction is that interpolation is useful but doesn't give the full picture of possible negatives. Perhaps clicking around each cell and seeing the interpolation for each would feel more useful
+% * What is a counterfactual? 
+% * It seems there may be many counterfactual examples that are more closely related to the positive example which could be useful for understanding the nuances and building trust
+% * Do not understand this question
+
+\subsubsection{Concept attribution}
+
+% Comments
+% * This is excellent but I think there could be quite a lot of additional factors, so this would need some supervision
+
+% P1
+% * or this particular problem, this does not give me much information … but it might be in other (cell type)
+% * Would inform trust as sanity check, ie if a factor is missing
+% * Cf training a resident/talking to a pathologist
+% * More useful: more descriptive, but maybe at the cost of intuitiveness?
+% * What is it about the straining intensity, eg? What is the threshold, what would have to change?
+% * Pathologists used to being descriptive, always comparing, how detailed would a pathologist be? > generated report, useful, insofar as a report is.
+
+% P2
+% * Meta: seems to be some misunderstanding what is shown here
+% * Should be combinations
+% * Informs about factors that were important
+% * Helps to build trust
+% * It could be very valuable with finer granularity with quantitative information about the boundaries ( > tending toward counterfactuals)
+
+% P3
+% * A little bit more explanations, “you have it in the prototype”. 
+% * “One image is more than a thousand words”
+% * Don’t know what intensity is meant here, not precise enough
+% * The concept for [explaining] is good here
+% * Not necessary for synthetic reports yet, could be valuable for structured reporting, but we are the ‘very beginning’
+
+% P4
+% * Helps me understand the factors why it is positive or negative,  but it's no information that I need
+% * Fine as a check, to make sure it's working ok, but would expect an AI solution to be already if I am using it
+% * could be useful for classification task, eg. tumor vs normal tissue. Not so useful for staining
+
+P5
+* Ok, understandable, but maybe too much. Don’t want to spend time reading.
+* Better applicable to classification (tumor / non-tumour tissue)
+* Taking up the role of cytoscreeners, giving morphology labels, justification for classifying regions as tumor/non-tumor
+
+P6
+* Clearly understandable
+* Makes me feel that I’m looking at something that I, as a pathologist, would apply within seconds (sometime ‘milliseconds’)   to this image. Meta: speed of pathologist diagnostic process was many times stressed, pointing out that AI solutions have to be incredibly fast in order to provide a benefit.
+* Seeing the same factors that I find important makes me more confident in using the information that is provided, if I know that the application uses the same information that I would, as a human being. And applying the procedures that you are applying.
+* Would be better if the limits were shown. And if you are able to manipulate these factors, if you move these from left to right, how does the proportion of tumour cells eg.. change. 
+* Meta: how can you show these limits? Difficult to apply a numerical value to this. The solution should be able to point out examples of different features (very round nucleus, very irregular, ones in-between)
+* In a more complex case, lymph node. High proportion of Ki-67 stained lymphocytes, alongside cancer cells/metastases. How to differentiate between stained lymphocytes and cancer cells is important, can’t just be on the basis of staining intensity, e.g. size of nuclei, comparison with staining in areas that are definitely non-tumour.
+
+Per-Category Notes:
++helps to build trust (P2, Ra, H)
+-not relevant for this case (P1, Ri, I) since relevant factors are known
+-doesnt quantify how factors work (P3, Ri, Ra, L, H, G)
+-not really intuitive (P1, L)
+
+\subsubsection{Trust scores}
+
+% Comments
+% * High confidence should provide examples of both classes (pos. and neg.), no? 
+% * Confidence for what? positive or negative or both?
+% * I felt I needed the pos or neg labels in addition to the confidence
+
+% P1
+% * Great to have the possibility to interact, resolve uncertain cases to help algorithm improve.
+% * Good to understand decision boundary, and is it similar to mine?
+% * Very useful to know the limits, to know where to look
+% * Also informative about important factors behind model output, i.e. uncertain cases linked to e.g. nuclear irregularity. “I can see where the limitations are and also where I would have difficulties in choosing”
+% * More general, knowing how a model was trained is important, ground truth annotations: human, more than one, from same institute, or more than one? 
+% * Without even seeing the output, I would trust the results of a model using various annotation sources as [training] input rather than just one. Would like to see that more than one pathologist, from as many different institutions as possible. Consistency within institutions.
+
+% P2
+% * Immediate comparison between ambiguous cases for model vs pathologist self, highlights importance and difficulty of staining intensity.
+% * Draws understanding of decision factors from the ambiguous cases 
+% * Meta: anthropomorphises model
+% * Gains trust in model because it struggles in the same places, therefore it’s “doing the same things that I do”
+% * What would you do with low confidence nuclei: no good solution for deciding what to with results in ‘gray zone’, no consistent strategy. From AI solution, would throw out results > coming back in line with the results themselves.
+% * How could it be better?  Separate out into different classes +ve/-ve. 
+%     * Meta: question was misunderstood: use H&E stain image to help cross-reference stage of lifecycle to better constrain proliferation index. Using more information
+
+% P3
+% * Important to see low-confidence negative annotations
+% * “This is nice and understandable” (color coded highlighting of annotations)
+% * “I see what is the basis for decision”
+% * “I would decide whether these weakly stained should be counted or [not]”
+
+% P4
+% * meta: confused with ai output - looking at non-distinguished cells
+% * very helpful to see low confidence
+% * Good add-on to prototype
+% * good/important to be able to change the result of low-confidence annotations, or to change the threshold.
+
+P5
+* This is also good, it can show us where the software had trouble.
+* Almost too easy/basic, nice because it’s straightforward
+* Take a glance and say ‘this fits with my interpretation’
+
+P6
+* For the end, it’s a very good idea (after manipulation of thresholds). Then make a diagnosis (also depending on task, sometimes anything above 1% is a positive, sometimes more nuanced).
+* This would give me confidence in using the result.
+* Can see from this that the staining intensity was important, but the size was not (small cells that are highly stained, were considered positive, “I would challenge that”)
+* The way it is presented, I would know at a glance whether I accept this evaluation (in this case I would question it)
+
+Per-Category Notes:
++useful to know limits (P1, Ri)
++increase trust if it struggles with same cases as Path (P2)
+-would be great with interaction to help improve algo (P1, P3, Ri, Ra, I, G)
+-show me ground truth data (P1, Ri)
+
+
+\subsubsection{Saliency maps}
+
+% Comments
+% Per-cell saliency is probably too much detail. 
+% There is one cell slightly to the right of the center that is labeled as positive and is quite darkly stained by IHC, but does not show up on the saliency map, which is a bit surprising. It looks like an endothelial cell.
+
+% P1
+% * Not telling me much for this task
+% * “what is output and what is explanation”
+% * Could be useful for a classification task, rather than segmentation. ie. what type of tumor is this? which cells is he (AI) using to make this assumption (classification)
+% * More trustworthy if taking into account more of the tumor? < belies a potential for mismatch between how does pathologist understanding of ‘what the most important parts are’ correspond to the models’ understanding
+% * What would be more useful? Looking at different classes, more useful for QA than for pathologist.
+% * High risk of positive confirmation bias
+
+% P2:
+% * Strongly marked nucleolus, wonder what it was about that region that was used? The structure, or the dark staining of the nucleolus, the color, size, position? Saliency map is ambiguous between all of these different features
+% * Cf. town square: nephrology: could not tell any different between the segmentation output and the explanation
+% * Telling me that the nucleolus is important
+% * Does not help me to trust this result
+% * Could help in other cases, e.g. classification of cell types (infiltrating lymphocytes)
+
+% P3
+% * I see [the] combinations of features in this special image [used] for making decisions
+% * I can see if these decisions were made on the right objects
+% * If the majority of the salient objects are not satisfying, I am not trusting
+% * Valuable tool as part of a suite
+
+% P4
+% * Very interesting, but doesn't help me in any way (in routine)
+% * Maybe it's interesting in research
+% * In routine, need an answer very quickly
+% * "Helps me understand (how?) but it's too much" 
+% * meta: interprets as a grading of 'how positive', compares with AI output, not explanation. suggests may be useful in grading tasks (my e.g. HER2)
+% * Does not align well with task. No spatial features are important for Ki-67 classification, just that there is a stain
+% * Could be relevant where spatial features are important, or where and how much staining occurs e.g. in cytoplasm, not just whether.
+
+P5
+Local:
+* Don’t find very easy to understand, distracting
+* I see what is really behind the software algorithm
+* Seems like it highlights the nucleolus, which I don’t think is very important. This explains why it missed some of the other cells.
+Global:
+* A little less confusing, I’m thinking why are the other brown cells that are not annotated marked > therefore I’m not satisfied
+* Meta: seems to actually be quite confusing.
+* Why are there many cells that are annotated, but don’t show up on heat map
+
+P6
+* The explanation that this is a nuclear stain does not tell me anything
+* How do you decide whether it is a tumour nucleus or not? Size, shape, staining pattern, etc?
+* Seems to point out that there’s a visible nucleolus and a patchy staining pattern, does not help me.
+* Aside: during the process of going from low to high magnification, I have already decided on the percentage (ie. by the time you are at this magnification, this information is redundant) and this process is faster than any software application
+* What do you mean by most relevant pixels…. ?
+
+
+% Per-Category Notes:
+% +see if salient objects are not right (for other task such as segmentation, classification of cell types)(P1, G, I, Ra, Ri)
+% -high risk of positive confirmation bias (P1, Ri) - as seen in P3 - see decisions are made on right objects and combination of features
+% -ambiguous about which features are used (P2, G, H, I, L, Ra, Ri)
+
+% Presentation of explanation was not clear- what does color scale mean, what does 'relevance' mean. 
+
+\subsubsection{Prototypes}
++demonstrate key features, looks at same things I do (P1, P3)
++intuitively understandable (P2, P3, G, Ra, Ri)
+-strong reinforcement bias (P2)
+-shows me easiest job, I want to know about hard cases (L, Ri)
+
+% P1
+% * Like counterfactuals, but with less information (see impact of order here)
+% * Gives me the same type of info, with less confidence. Do not know how I would interpret this without having seen counterfactuals
+% * Understand the ‘perfect’ +ve and -ve result
+% * Hard to imagine useful contexts, pathology is about diversity.
+% * CF: I can see the grades, nothing is black and white, prototypical example do not reflect the true result
+% * Useful in context: seeing prototypical results demonstrating key features (presence of nucleolus, cytoplasm), between very similar results > ie. prototypes of edge cases, boundary cases (tending toward CFs)
+% * Example: diff. Lymphocytes from plasmocytes, subtle difference, hard to distinguish at low power, even at high power non-trivial. Having prototypes helps lend confidence that the LC and PC (‘football’ pattern staining in latter) are being resolved from one another.
+
+% P2
+% * Meta: suspect that there is strong positive reinforcement bias
+% * Intuitively understandable, agree with positive and negative prototypes
+% * Underlines the importance of staining intensity, rather than other features
+% * Helps build trust in model output
+% * Would be a useful feature to have, quality control method, with an ensemble of prototypical examples shown > selecting the ones you don’t agree with. 
+%     * Would need to be examples with high score > after some discussion, agreed that the lower confidence examples would be important to explore decision boundary > also tending toward CF
+% * Potential correspondence with prototypical mental model of cell type (with proviso that people function in different ways).
+
+% P3
+% * It’s fully understandable
+% * Classical prototypes
+% * “I see that the algorithm has really concentrated on the point, what is [prototypical]”
+% * Size, shape, structure and color - these are also the features you would focus on as a pathologist
+% * Reinforces the idea that the algorithm is taking into account the same factors as a pathologist
+% * In line with the pathologist’s idea of prototypical examples
+% * Valuable to help trust
+% * Prototypes > it’s looking at cells, counterfactuals > where it is making the distinction between negative and positive
+% * More examples would be valuable
+% * “Precise, short and understandable, and reflecting the thinking of pathologists”
+
+% P4
+% * It's more important that I can trust the numbers than that I understand why it has got to the result
+% * If the positive and negative prototypes differ from the prototypical examples that I expect, it can tell me that there is a problem
+% * Explanation as a means to check whether the staining is ok, slide preparation steps, not just to inspect AI
+% * Does not explain why many cells are unclassified
+% * "If the [prototype] is not fitting to my understanding [of what it should look like], I know that the result can't be right."
+
+P5
+* I don’t get any useful information, anyone can say what the prototypical positive result is, more important to see the intermediate cases
+* Could be applicable where only the most strong staining (eg.) should be regarded as positive. If you show me the prototypical positive result, I would expect anything less to be negative — meta: after discussion realised that this did not show this, therefore misleading (“maybe the worst” explanation!)
+
+P6
+* “Here you are only looking at the staining intensity, not the size and shape”
+* This explanation is quite straightforward, understandable. Meta: seems to indicate that this shows you where the boundary is, and that the difference between positive and negative indicate what factors are being taken into account. 
+* “There is a certain limit”
+* “Heaven and hell”
+* “Simply understandable for a human being” “you feel better if you understand that computer evaluates something that you also do evaluate.”
+* If this (staining) is the only factor used to evaluate Ki-67, you would [do it manually]
+* You would need an array of ‘prototypes’… varying according to many different factors, then manipulating the limit, getting feedback on nuclear positivity as a function of this limit (with counterfactuals as an interface)
+
+\subsection{Other suggestions}
+% P1: Machine equivalent to showing reference examples, showing images from training data that most strongly informed a result, relatability to process a pathologist would go through
+% P2: Cross-referencing with other tissue features, an assay of KI approaches, taking into account other IHC stains, or from morphology in H&E. Detection of mutually exclusive features, detecting collisions.
+% P3: Accumulate observations in standardised language and look at frequency across the whole image
+% P4: Anomaly detection with AI solution, pointing out out of distribution features
+% P5: Described a combination of results similar to those shown, applied to mesothelioma prognostic solution -- trying to understand output, not just check it.
+P5: Characterising features across a whole slide image
+P5: Detect everything that is not a “normal” cell and flag this up for inspection by a pathologist
+P6: combining synoptic reporting, clinical information, quality information, to add information to the image from the databank (e.g. quality information, “don’t look at this slide”, defect detection). Requiring cooperation between pathologists and IT experts. Building up a body of machine-readable data.
+
+\subsection{General comments / observations}
+
+\subsubsection{Use of AI in pathology}
+On the topic of AI assistance in pathology, interview participants observed that the term 'AI' is vague,  particularly in light of the new definition of EU terminology \cite{ISO_IEC_22989}. It was noted that, according to this definition, AI has been applied to pathology for decades in the form of numerical modelling, regression, etc. Similarly, computer-assisted diagnosis has existed in some form or another for many decades, with image processing methods, counters, microscope-mounted cameras, etc., and the modern trend of deep learning applications to digitised slides is the logical next step in an ongoing process of innovation.
+
+% * AI as extension of manual tools, counters, camera on microscope etc. - P1
+% * EU publication of AI , much broader than ML - P3
+% * Under new EU term definition, this has been going for the last 40 years - P3
+% * Pathologists must be trained in machine learning, AI should be included in the training programs of pathologists “You can’t just buy it at the App Store” P3
+% Pathologists want easy, visual explanations (P2,3)
+% Expectation for the process to be interactive, that pathologist will always be able to tweak results until it matches their judgement 
+% AI as an extra set of eyes. Maybe not so important for the clearly positive or negative cases, but valuable for flagging up where there is something that might have been missed, contentious cases P4
+% Impartiality of AI solutions is a strength, does not care about seniority/experience of pathologist P4
+% Currently, using AI solutions takes much longer than manual handling, as digitisation process is slow P4
+% TODO: work on P4 00:45 onwards
+% No suitable/usable solutions available currently P5
+% Lack of understanding between computer scientists and pathologists P5
+% Mesothelioma detection solution, good prognosis prediction, but not clear what features are being used. “Not sure who is learning here, we or machine” P5
+It has to always save time. If it takes more time, I would just do it myself on my microscope P4-6 Or even that this is the only benefit of AI solutions P6
+Many AI solutions cloud-based, due to continuous improvement, a problem for German hospitals due to breach of data privacy. Need to run solutions on local network. P6
+Acceptance of digital pathology - benefit will be there if you avoid stacks of slides, but this requires >90% digital. The hospital pathologist would still rather work with a microscope, so it needs to reach a critical point of adoption. P6
+
+\subsubsection{Challenges and role of AI in Ki-67 quantification}
+% * “Ki-67 is a really bad example for AI” P3
+% * Awareness of the limitations of computer-unassisted tasks, i.e. Ki-67. (06:31) Q: how did you know your results were not good? Ground truth? P1
+
+
+\subsubsection{Trust in AI}
+% * Trust machines when they perform better, empirical basis. P1
+% * Computer scientists and pathologists looking for different things P1
+% * Pathologists are always looking for visual things, matches thinking. Anything outside this modality is foreign. (e.g. mockup report - how is it learning to make this description, outside scope of the task) P1
+% "If it has the same trouble differentiating [as I do], then it’s probably doing the task right" P1
+% "I think you will always come down to what I'm used to do what I'm looking for. And that I will ... mirror this into the algorithm to it's like, I'm, it's like when we are training a resident or or, or showing a case to a colleague, you are also doing this to see if you can trust the other person? Does they evaluate things that you do? Are they looking for other things that you are not so that you can learn from this one? So I think this is a little bit how we will also interact with the algorithm. We are we are testing it like we would another pathology." P1
+% * What would it take for you to put the machine in control?: additional methods of validations, aside from Ki-67 .. other antibodies, molecular methods addressing the same question — although these are not methods that a pathologist would use routinely to validate. P2
+% * "No problem" to trust an AI to e.g. choose the threshold for Ki-67 positivity. I am just liable for the outcome. Just as much of a risk to change the threshold manually, as to trust the AI to do it. A good AI should choose the threshold - P4
+% Trust comes with extensive testing, spotting issues, e.g. macrophage identified as tumor cell, tumor cell identified where there aren’t any, 1 tumor cell identified where there are 2 close together, etc… and comparing machine output with routine work of multiple pathologists — once I am comfortable, and if the software is fixed (not open for learning) then I can use these explanations to be happy at a glance P5
+% Would need to have all the information used by a solution to come to a conclusion PLUS validation. It’s not enough to just have one pathologist, one pathologist can be wrong. Need at least 3 pathologists, and compare the middle(e.g.) value with the solution. And who was the person (or people) who provided the input data. Size of cohort. A big different between molecular data coming from trusted institute, third party, commercial sources, etc. Some accessible explanations for how the solution works. All e.g.. in the form of a small brochure. And I would still validate it in-house, with these explanations as internal checks! P5 (also backed up by early brainstorming session)
+As long as you are knowledgable as a pathologist, you need to anyway look and make a decision and check the result. “If you are relying on an AI solution to make a diagnosis that you cannot, you should give up on diagnosis and ask someone more qualified” P6
+The pathologist will always have to sign off on the result, even a bad result from an AI solution P6
+High importance of experience level of the pathologists who trained the solutions P6
+% * Human in the loop: if you can adjust threshold yourself, you are back to the same problem of variability/subjectiveness. Necessary for now, but eventually we should be tending towards ‘letting the machine’ choose the threshold, but right now too many confounding factors P2
+Pathologist would tweak these parameters, threshold for various factors, to train the model. The most experienced pathologists would train the model, in order that less experienced pathologists can benefit from it P6
+I would never trust the threshold, I would always want to be able to manipulate it P6
+
+Trust if we see immediately correct results (ie. classifications) (L, I, G)
+Trust if diverse ground truth data (L, H) - risk since good ground truth data != correct model
+
+\subsubsection{Ability of pathologists to explain their decision}
+% Can't always just explain your decisions as a pathologist, a lot of intuition. But you always try, you can always pass some information onto pathologists, or there would not be any pathologists. P1
+% "I think any experienced, experienced pathologist is able to explain his decision to another pathologist in a satisfying way that the other one will then agree or disagree with with, with this decision." P1
+% * Challenging to use language in explanations, in describing cases, before there is a standardised vocabulary (see structured reporting, DICOM 222) P3
+% * Not only a problem of explanations, but also a problem of observation P3
+% To explain decisions: highlight regions and making (simple) text annotation, with inset (P3,6)
+% To present a case, adding paired elements, you can describe a case completely. Also adding information about genomics, IHomics. P6
+
+\subsubsection{New approaches and how AI should be used}
+-show real prototypes (Ri)
+-AI as flag/second pair of eyes (P3) this is the idea behind synoptic reporting grid overlay P6 (referred to TNM staging.)
+-
+
+% to move into discussion section
+\subsubsection{Limitations}
+* user experience is very different from diagnostic workflow / a very artificial scenario - just one region, can't see original IHC image (w/o annotations), can't see H\&E layers, can't move around to look at more of the slide, change magnification, etc.. (almost all participants)
+* Lack of annotations on many nuclei has unclear meaning, are these only cancer cells marked? Is the task here just judging positivity for cancer cells only? Actually a two-step process: identify cancer cells, count Ki-67 +vitiy
+
+Story:
+
+Core Questions - Does it really help you?
+
+\begin{enumerate}
+    \item Short description of respondents
+    \item Overall comparison of explanation classes as big picture
+    \item Evaluating individual explanation classes wrt questions, comments and interviews. what did we expect as responses?
+    \item Correlation with user profiling
+    \item Analysis. e.g. understandability is highly correlated with familiarity with AI?
+\end{enumerate}
+
+% First public answer on db: id: 1623391402856, two preceding results from Charite (probably, can check and include)
+
+\subsection{Respondents}
+We collected XY responses within a timeframe of XY days. 
+
+\subsection{Overall comparison}
+
+%Overall comparison of all approaches with ranking if applicable. Produce a table for overall metric comparison. Compare:
+%average score of questions (+sdt dev), which one ranked highest in which category? -> show with barchart
+%Joint evaluation by interview and comments
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{Graphics/4ResultsandAnalysis/ComparisonofAverageRatingResponse.png}
+    \caption{A boxplot showing the average ratings for each annotation technique. Saliency Maps have the lowest average ratings, while Protoypes have the highest rating.}
+    \label{fig:comparison}
+\end{figure}
+
+
+\subsection{Annotation techniques}
+\subsubsection{Saliency Maps}
+
+Saliency Maps are receive an average rating of 4.34, with a high proportion of reluctant responses. For further details, see Figure \ref{fig:saliency_maps}. The value they add is rated highest (4.48), while the trustworthiness is rated lower (4.14). Participants criticize that a per-cell saliency as provided by the Global Saliency Map adds to much detail to the image (user 1/2), while the local saliency map is endorsed (user 19).
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.45\textwidth]{Graphics/4ResultsandAnalysis/SaliencyMapsGlobal.png}
+    \caption{The average ratings for Saliency Maps. Saliency Maps are rated overall rather negative, especially for their trustworthiness.}
+    \label{fig:saliencymaps_global}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.45\textwidth]{Graphics/4ResultsandAnalysis/SaliencyMapsLocal.png}
+    \caption{The average ratings for Saliency Maps. Saliency Maps are rated overall rather negative, especially for their trustworthiness.}
+    \label{fig:saliencymaps_local}
+\end{figure*}
+
+\subsubsection{Prototypes}
+Prototypes are rated with the highest average score (5.03). Especially their intuitive understandability is rated strongly (mean = 5.9). For further details, see Figure \ref{fig:prototypes}.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.45\textwidth]{Graphics/4ResultsandAnalysis/PrototypesHighestconfidence.png}
+    \caption{The average ratings for Prototypes. Prototypes are the overall best rated annotation technique, especially for their intuitivity.}
+    \label{fig:prototypes}
+\end{figure*}
+
+\subsubsection{Counterfactuals}
+
+Counterfactuals are rated with an average score of 4.59. For further details, see Figure \ref{fig:counterfactuals}. Their intuitive understandability and value they add are rated highly. However, users remarked that they did not understand what counterfactuals are (user 15). Another user suggested that counterfactuals should also provide negative examples in order to give a full picture (user 13).
+
+\subsubsection{Concept Attribution}
+
+Concept attribution techniques are rated with the second-highest average score of 4.69. For further details, see Figure \ref{fig:conceptattribution}. They are rated especially low for showing relevant factors, but still add value to the image. Users comment that this technique would need additional factors to improve its usefulness (user 1).
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.45\textwidth]{Graphics/4ResultsandAnalysis/ConceptAttributionText.png}
+    \caption{The average ratings for Concept Attribution. They are especially rated highly for value, but do not help with understanding relevant factors.}
+    \label{fig:conceptattribution_text}
+\end{figure*}
+
+\subsubsection{Trust Scores}
+
+Trust scores received a low rating with a mean of 4.49, especially with the regard to the value they add to the image. For further details, see Figure \ref{fig:trustscores}. However, their intuitive understandability and trustworthiness are ranked highly. Users find that high confidence examples should provide examples for both classes (user 1). Other users were confused if trust scores were computed with regard to positive or negative confidence.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{Graphics/4ResultsandAnalysis/TrustScoresBorderlineCases.png}
+    \caption{The average ratings for Trust Scores. They are rated highly for intuitiveness and trustworthiness, but do not help with understanding relevant factors and value.}
+    \label{fig:trust_scores}
+\end{figure}
+
+\subsection{correlations with user profile}
+
+Correlate individual experience and intuitive understandability. did a certain attribute correlate with higher overall ranking? Calculate p values here
+
+\subsection{analysis}
+
+analysis: lead back to ui , vcompare with ui principles
+
+Our expectations:
+
+Trust Scores:
+- TE: could be understandable and/or valuable, potentially also informative on trust, but lower scoring on q.2 - however, more likely that users will score it fairly average across the board, with little granularity between Qs. Some users may have issues with the actual implementation used, even if fundamentally the information presented is useful.  
+-CA: good intuition for all, no factors relevant but high trust and valuable info
+-CG: low understandable, does not help to understand the algorithm, but helps to decide trusting the algorithms. Helpfullness high, because it is so easy: high trust score -> can use the result. Low trust score: need to look more carefully by myself.
+
+CounterFactuals:
+- TE: expecting a large variance here. For those who  find it highly understandable, will score highly on other questions. Others will find it unintuitive and score it very low on all Qs.
+-could be unintuitive
+-CG: Very understandable (because it is visual and in the domain "language" of the user). Helps not to understand the algorithm itself (Because it is not a guaranteed representative of all decision boarders), but helps to judge about trustworthiness, which in turn is helpfull. WARNING: users might not understand/see the difference between the CounterFactuals and the actual WSI objects. Just because the CounterFactual shows something meaningfull does not mean that this is always the case for all the objects in the slide -> can be misleading.
+
+
+SaliencyMaps:
+-TE: expecting a relatively high variance on this one too, correlated with ml/ai familiarity. Not expecting trustworth positive responses on this question - those who are familiar with the method may score it very highly without really evaluating its usefulness to them
+-CA: high trust and factors relevant, low-middle valuable information
+-CG: The understandability depends a lot on the ai background. I would expect people that get an explanation beforehand or that have background in ai will rate them as understandable and also that it helps to understand the algorithm. The decision to trust the algorithm can only be given from people with ai background and the helpfullness is probably low because it directly does not tell if the result is correct.
+
+
+Prototypes:
+-TE: This is likely to score highly on understandability, potentially also on Q2/3, q4 is uncertain. It could be one of the higher scoring classes
+-CA:in conjunction with other highlighting useful, shows relevant factors and valuable info, no trust in annotations. More intuitive than CF, no factors relevant but trust and valuable info
+-CG: probably very understandable (because in the domain language) but does not help to understand the algorithm. Probably high on deciding to trust the algorithm (because understanding the decision boundary) but also might have the danger to generate overconfidence.
+
+ConceptAttribution:
+- TE: My top bet, I think this will score highly across the board
+- CG: is probably very understandable (because it uses explicit domain language) and helps (in a simplified non ml way) to understand the algorithm on a global scale. It is probably not so easy to judge trustworthiness based on this, but might be helpfull because some of the properties might also be needed for the report (where the path. describes first, what he sees).
+

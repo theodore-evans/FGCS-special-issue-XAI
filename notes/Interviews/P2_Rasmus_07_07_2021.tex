@@ -1,0 +1,136 @@
+Participants: T,R,C
+13:24 Preamble, Purpose of Interview, Treatment of Interview
+13:27 Timeline of Interview
+
+13:28 R: mostly research, pathology aspects, selecting cases for studies, antibody optimization wrt to dilutions and so on. Annotated datasets for regions of interest. Also, EMPAIA academy, communication with stakeholders. T: Role of AI in path, familiarity with ML R: fam with basic techniques, required i/o. Know about basic classes of AI, but no details.
+
+13:31 Example Ki67 output. 
+Is this familiar to you, what do you think about this output. R: very familiar with it, aware of problems starting at lab -> many faintly stained nuclei since they only begin to express Ki67 -> how should they be scored. wrt to image, blue and red dots seem correct, many nuclei are not stained, not sure if not detected since they should be included. Ideally, separate between tumor cells and non tumor cells. 
+T: are they ki67 positive cells not tumor? R: top right cell could be macrophage that is positive that ate tumor cell, but positivity is still in there and should be taken into account. But that is really future work, we are not in the diagnostic yet.
+T: often you have interaction with thresholds. To what extent would you trust AI to choose that? R: If I have that control, different pathologists will adjust it differently and therefore have different results. There could be ways were I could trust a machine to choose it, it should be able to account for understaining/overstaining. T: What would it take for you to trust it without interactivity? R: If I had additional methods of validation, not just antibody but other methods assessing same question (at molecular level).
+T: are these techniques youd use routinely as pathologist? R: not really.
+
+13:39 Saliency Map - local
+Shows most important regions for given classification. Give your first impression and interpretation
+R: Nucleolus is labeled strongly, does it take position, size, color of it into account?
+
+13:41 Saliency Map - global
+Opinion about this in particular and SM in general. R: Algo told Pathologists that this region is important, but Pathologists could not tell difference - difference between "where" and explainability. Here as well, difference between position and such, here it only tells me nucleolus is very important.
+T: What does it tell you about reliability? R: Doesnt help me particularly wrt that.
+T: Where could it be more useful? R: For many different methods, such as cell types - detecting different cell types such as lymphocytes.
+T: Is there something that would make it more useful? R: No. it is already quite detailed.
+
+13:46 Concept Attribution
+In general sense to identify concepts that were important for model classification. Here, identified in text format. Give you general thoughts
+R: Those should be a combination. Intensity and size in tumor cells in tumor cells play together. Regularity - some tumor types have very round and regular cells, others dont.
+T: Does this help you to identify important factors? R: Yes, absolutely.
+T: And does it help you trust it? R: Yes.
+T: Would this help you with your workflow R: Yes, it is valubale. Difference in staining intensity is not yet used, but could be important. Often we just use percentage, but these fainter nuclei ... T: How the difference in staining affects result would be interesting? R: Yes, right now we count pos/neg, but dont quantify faint stainings.
+
+13:50 Prototypes
+R: This is intuitive. Top cells give nice results. T: What does that tell you about relevant factors for result? R: It underlines importance of staining intensity, not so much nuclear size/shape because that is quite similar between those two. T: Does that help you build trust? R: Yes.
+T: Is this a useful tool for AI system? R: Could be a quality control measure - do you agree with that prot pos/neg result, and then you could readjust. 
+T: What would you look for, what qualities would each group have? R: Should be examples with high score and certainty. T: Would it be useful to have lower confidence scores? R: Yes!
+
+13:50 Trust Scores
+Shows high/low confidence scores.
+R: Parallels staining intensity, low confidence is low stained, this is where we have trouble as well.
+T: Does this help you understand relevant factors? R: Underlines staining intensity.
+T: Does it help you trust, why? R: Yes. It is doing same thing I do, has trouble with same cells I have trouble with. 
+T: How do you break  tie of low confidence? R: There is large gray zone, in some tumor cell division is long, all very faintly stained and big problem for us. We are coming up with different scores.
+T: If you were given this as overlay, how would you use this result? R: In analogue we would just ignore low conf annot and count high confidence annots. This is where variance comes from.
+T: AIs have better report of confidence than humans. What could improve this confidence? R: Report by cell types, Run on XY only - difficult to do but could work. Dealing with different confidence levels - perhaps you could get more info out of cells, texture of nuclei - changes by cell cycle. If cell looks like its in a phase where it is not dividing, that could reduce number of low confidence cells, by excluding non-relevant cells? In general, there is a lot more possibilities than Ki67. We could use more info from cell cycle in future for low confidence classification.
+
+14:02 Counterfactuals One Axis
+R: Gives me pos/neg extremes, I agree with them. For the cutoff there is no good answer, this is where variability comes from.
+T: What info does it give you? R: What kinds of cells is it using.
+
+14:05 Counterfactuals Two Axis
+R: Not really important info. Four different nuclei, maybe they are too small for tumor cells. Less brown staining
+T: Is it clear that intermediate pictures are autogenerated? R: Not really. Presenting examples would be useful.
+T: Does this help you trust where AI chooses threshold? R: Absolutely T: What would make it better? What could it be used for?
+R: Not for every slide, but for whole slide quality control where pathologist has to agree or disagree to release result. Could help with training algorithm in the future.
+
+14:12 Looking at examples
+R: CF 1 Axis better than CF 2 Axis. Prototypes are intuitive, I agree with that. Different people function in different ways, but from my point of view for tissue I have a prototypical image in my head.
+T: What are other datamodes and stains we should now about, what would be valuable to you?
+
+14:20 - 14:24 Technical Difficulties
+
+R: Recognizing different cell types, where are they, where are t and t-helper cells. Other than that, one could do a lot with morphology, but that would reuqire a lot of concepts, different information sources, tissue types. Also the aspect of different analyses detecting different things, highlight overlapping areas of mutually exclusive features.
+
+Discussion afterwards:
+Rasmus: Tries to really interprete results, Rita was going from xAI researcher perspective. Rasmus into binary positive negative examples, Rita about thresholds. Rasmus for AI to do baseline job (quality assurance), difficult cases will be reviewed by me anyways. Difference between AI now and the one we try to prepare for, Rasmus doesnt give too much control to AI. Rita was thinking about future AI solution, Rasmus about current in-reach AI solutions as they could be applied to digital pathology. Rita was much more critical, many Pathologists probably wont be. Rita was criticizing that the AI missed many negative examples, and since ration is important this is bad, Rasmus was content with the AI since it classified the same cells as positive as he did.
+Divide into xAI approaches into those that help overall Q&A relevance (Survey of xAI for digital Pathology, Lundgren)
+
+Good Questions we could use again:
+-How does this technique fit into your workflow?
+-Which is your preferred method 
+
+Profile
+* Neuropathologist
+* Currently working only in research, dataset annotation
+* Familiar with Ki-67,
+
+General
+* Human in the loop: if you can adjust threshold yourself, you are back to the same problem of variability/subjectiveness. Necessary for now, but eventually we should be tending towards ‘letting the machine’ choose the threshold, but right now too many confounding factors
+* What would it take for you to put the machine in control?: additional methods of validations, aside from Ki-67 .. other antibodies, molecular methods addressing the same question — although these are not methods that a pathologist would use routinely to validate. (Double standard)
+
+Sample AI output
+* Familiar with Ki-67, including issues with faint staining, inconsistency between labs, subjectivity of positivity threshold
+* Lots of borderline cases
+* Many (negative) that are not labelled, not sure what to make of them
+* Would also want to have a separation between tumour/non-tumour cells, but this is hard e.g. upper right darkly stained cell, could be a macrophage that just engulfed a tumour cell. :Lots of biological processes to take into account.
+
+Saliency maps
+* Strongly marked nucleolus, wonder what it was about that region that was used? The structure, or the dark staining of the nucleolus, the color, size, position? Saliency map is ambiguous between all of these different features
+* Cf. town square: nephrology: could not tell any different between the segmentation output and the explanation
+* Telling me that the nucleolus is important
+* Does not help me to trust this result
+* Could help in other cases, e.g. classification of cell types (infiltrating lymphocytes)
+
+Concept attribution
+* Meta: seems to be some misunderstanding what is shown here
+* Should be combinations
+* Informs about factors that were important
+* Helps to build trust
+* It could be very valuable with finer granularity with quantitative information about the boundaries ( > tending toward counterfactuals)
+
+Prototypes
+* Meta: suspect that there is strong positive reinforcement bias
+* Intuitively understandable, agree with positive and negative prototypes
+* Underlines the importance of staining intensity, rather than other features
+* Helps build trust in model output
+* Would be a useful feature to have, quality control method, with an ensemble of prototypical examples shown > selecting the ones you don’t agree with. 
+    * Would need to be examples with high score > after some discussion, agreed that the lower confidence examples would be important to explore decision boundary > also tending toward CF
+* Potential correspondence with prototypical mental model of cell type (with proviso that people function in different ways).
+
+Trust Scores
+* Immediate comparison between ambiguous cases for model vs pathologist self, highlights importance and difficulty of staining intensity.
+* Draws understanding of decision factors from the ambiguous cases 
+* Meta: anthropomorphises model
+* Gains trust in model because it struggles in the same places, therefore it’s “doing the same things that I do”
+* What would you do with low confidence nuclei: no good solution for deciding what to with results in ‘gray zone’, no consistent strategy. From AI solution, would throw out results > coming back in line with the results themselves.
+* How could it be better?  Separate out into different classes +ve/-ve. 
+    * Meta: question was misunderstood: use H&E stain image to help cross-reference stage of lifecycle to better constrain proliferation index. Using more information
+
+Counterfactuals
+* Simpler case: 
+    * understandable, what kinds of cell it is using to assign +ve/-ve label
+    * Helps to understand that the staining intensity is important, nucleolus seems to disappear, hard to distinguish between factors that are changing
+        * Meta: ensemble of CF 
+* More complex case:
+    * Not so intuitively understandable
+    * Perhaps cluster is too small to be tumour cells
+    * Confusing
+* Not clear that this is generated data!
+* Presenting additional examples and asking for interaction from user, do you [user] agree with the intermediate results?
+* Helps to build trust that the solution is thresholding in the right place
+* For every slide when an analysis is done on a whole slide, to do a mini-QA, does the pathologist agree/not agree, before releasing result, and to improve the algorithm for the future.
+
+Reaction to results
+* Agreement with CF 2-axis vs 1-axis, former not so digestible
+* Agreed with PR as a strong positive outlier, wrt being very intuitively understandable
+
+Other ideas:
+* Cross-referencing with other tissue features, an assay of KI approaches, taking into account other IHC stains, or from morphology in H&E. Detection of mutually exclusive features, detecting collisions.

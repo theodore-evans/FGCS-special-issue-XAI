@@ -1,0 +1,121 @@
+\section{Usability study design}
+\label{sec:CaseStudyDesign}
+
+The design of this exploratory usability study followed the guidelines set out in \cite{runeson_guidelines_2008}.
+
+The target audience for the study were\dots
+
+The study was designed around two data collection modalities: a) an online questionnaire, collecting quantitative results from a large number of participants out of the target audience, and b) expert interviews, providing qualitative insights to triangulate, contextualise and elaborate on these results. The interviews were conducted in parallel to the deployment of the survey, with initial questionnaire response data informing interview design.
+
+\subsection{Questionnaire design}
+ In the main body of the questionnaire, respondents were presented with the sample output of a hypothetical AI solution for diagnostic assistance. On each page was provided an alternative explanation of the solution's results, with each explanation falling into one of the four explanation classes to be evaluated. For each explanation, the respondent was asked to express their degree of agreement or disagreement with each of four statements relating to the understandability, utility and value of the explanation for them in their professional role. In addition to these examples, the questionnaire also comprised an introduction page, providing context and instructions for the task, and a set of user profiling questions, aimed at gauging the respondents familiarity with AI-solutions in pathology and with machine learning in general.
+ 
+ \subsubsection{User profiling questions}
+In order to evaluate the effect of a user's familiarity with AI and/or machine learning on the usability of explanations, the following information was collected from respondents:
+
+\begin{itemize}
+    \item Age
+    \item Professional position
+    \item Use of digital/tele-pathology in routine diagnostics and/or research
+    \item Use of AI solutions in routine diagnostics and/or research
+    \item Familiarity with technical details of machine learning
+    \item Familiarity with AI applications in pathology
+\end{itemize}
+
+
+\subsubsection{Explanation examples}
+
+\begin{table*}
+    \begin{tabular}%
+        {%
+        >{\raggedright\arraybackslash}p{0.20\linewidth}%
+        p{0.75\linewidth}%
+        }
+        Global Saliency Map & Show the most relevant pixels for the positive classifications within this region of interest \\
+        Local Saliency Map & Show the most relevant pixels for the classification of a selected annotation \\
+        Text Attributes & Show the most important features attributed to positive classifications in a bar chart \\
+        Borderline cases & Display low-confidence annotations for review, highlighted by boxes around given areas \\
+        Counterfactual examples in two axes & Show generated examples changing in two principal factors of variation, displaying model classifications for each \\
+        Counterfactual examples in one axis & Show generated examples interpolating between positive and negative examples, showing model classifications for each \\
+        Prototypical examples & Show prototypical positively and negatively classified annotations within this region
+    \end{tabular}
+    \caption{Explanation examples}
+    \label{table:explanations}
+    \end{table*}
+    
+
+\subsubsection{Design of Likert items}
+
+\begin{itemize}
+    \item I find the explanation intuitively understandable
+    \item The explanations helps me to understand factors relevant to the algorithm
+    \item The explanation helps me to decide whether I can trust the generated annotations
+    \item The explanation provides me with valuable information for my work
+\end{itemize}
+
+\subsection{Questionnaire dissemination strategy}
+
+\subsection{Survey}
+
+We construct a survey to assess the acceptance of different xAI explanations on a quantitative basis. Based on the TU Graz questionnaire, profiling of the participants takes age, occupation and familiarity with AI and ML approaches within digital pathology into account. For the main body of the survey, users compare a regular base image treated with the Ki-67 approach and an additional explanation method. We use four main statements that are ranked by the users on a seven stage Likert scale (with zero being "Strongly disagree" and seven "Strongly agree"). The questions are based on the research questions as detailed above and consist of:
+
+
+The five classes are rated individually based on these questions, presented in random ordering to prevent influence of primacy and recency effects on the rating. For each class, one of two different example images is shown to mitigate a dependency of the rating on the base image ?
+The survey was conducted from the 11.06.2021 until the XY and accumulated XY answers in total, of which XY were determined flukes (too extreme ratings and or inappropriate comments) and removed.
+
+% % Candidates:
+% % - Visiopharm Ki-67 app (https://visiopharm.com/app-center/app/ki-67-app-breast-cancer/, demo: https://www.labroots.com/ms/webinar/standardization-clinical-digital-pathology-ki-67)
+% % - Roche VENTANA Companion Algorithm Ki-67 (30-9) (https://diagnostics.roche.com/no/en/products/instruments/ventana-companion-algorithm-image-analysis-software.html), also has FDA 510(k) clearance
+% % - MindPeak BreastIHC (https://www.mindpeak.ai/products/mindpeak-breastihc) CE-IVD clearance pending
+
+% \subsection{Selection of stakeholders}
+
+% User personae 1-3 based on xyz. \cite{poceviciute_survey_2020} Ongoing work by Graz? @Andreas
+% Stakeholders selected from EMPAIA committee members
+
+% \subsection{Research questions}
+
+% Research questions based on:
+% \begin{itemize}
+% \item requirement gathering workshop
+% \item current SOA on medical XAI
+% \item open questions in the technical literature
+% \item decision-making processes in EMPAIA infrastructure design?
+% \end{itemize}
+
+% Could be descriptions/demonstrations of classes of XAI given in \cite{poceviciute_survey_2020}, plus additional options from the EMPAIA brainstorming session, with an ordinal scale indicating the degree to which this additional information:
+
+% \begin{itemize}
+%  \item is intelligible to the user
+%  \item increases trust in the result
+%  \item is generalizable to other solutions?
+% \end{itemize}
+
+% Could reference/directly use questions from the SCS in \cite{HolzingerEtAl:2020:QualityOfExplanations} in the survey design
+% Potential pitfall: implementation of classes of XAI on a model too time-consuming to manage before submission > mock up with description instead?
+
+% \subsection{Survey}
+
+% We construct a survey to assess the acceptance of different xAI explanations on a quantitative basis. Based on the TU Graz questionnaire, profiling of the participants takes age, occupation and familiarity with AI and ML approaches within digital pathology into account. For the main body of the survey, users compare a regular base image treated with the Ki-67 approach and an additional explanation method. We use four main statements that are ranked by the users on a seven stage Likert scale (with zero being "Strongly disagree" and seven "Strongly agree"). 
+
+% Shuffled questions and different techniques
+
+% \begin{itemize}
+%     \item I find the explanation intuitively understandable
+%     \item The explanations helps me to understand factors relevant to the algorithm
+% \end{itemize}
+
+
+
+% \subsection{Expert Interviews}
+
+% \subsection{Data collection protocol}
+% Technical SOA: literature review protocol
+
+% Case study:
+% \begin{enumerate}
+%     \item Initial brainstorming session with a simple app
+% \item  Wide-reaching survey to stakeholder groups (EMPAIA Gremien) according to self-identification to user personae
+% \item  Focused interviews with volunteering stakeholders
+% \item  Collection and analysis of data
+% \end{enumerate}

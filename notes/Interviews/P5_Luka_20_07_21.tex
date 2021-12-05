@@ -1,0 +1,37 @@
+ 15:04 Introduction
+ 15:04 About Interviewee
+ Works in Lung Pathology for +10years. AI familiar, but no practical application. Only one experimental solution that does not work. 
+ Other paper with ML for Melanimoa? to find histological chars. AI application to evaluate images on smartphone. Want to get feedback what are chars - intensity of color, morpohology, patterns of nuclei.
+ 
+ 15:16 Initial Image
+ after quick look, I can say I agree with machine. Are all unmarked cells really lymphocytes? Probably not, have to check that. 
+ 
+ 15:22 Saliency Map
+ Not easy to understand, different colors what do they mean? (not really relevant since it is UI problem). T: What does it tell you about factors? L: Red high intensity nuclei, nucleoulus is also important, this is probably why it
+ misses other cells where nucleolus is not as pronounced.
+ For global: now I ask myself why are other brown cells not marked? Since I dont see this, I am not satisfied with explanation. 
+ T: Is there a better way? L: Not right now, but first image was easiest to understand
+ 
+ 15:29 Concept Attribution
+ Okay, but now almost too much info, have to read this. My expectation for AI is that is have to save me time. You cant just go after N size, regularity, color, but there are macrophages which dont differ in this way.
+ Better applicable not for counting AI, but for tasks such as highlighting tumor tissue.
+ 
+ 15:34 CounterFactuals
+ I like them since they are straightforward. Interprete this as what degree of staining intensity is taken into account. Only look at positivity/negativity since I remember tumor cells from previous steps, where I already looked for
+ other chars 
+ 
+ 15:45 TrustScores
+ Good, basic, shows us where problem areas were. Almost too easy. Add 3rd color for negative. T: Is there a danger in a solution that provides stuff just at a glance? L: Wont trust software until I have seen it work
+ in real life on my own images. Then, I have no problem with simple explanations
+ 
+ 15:49 Prototypes
+ Still prefer CF, dont get any useful information since I know he can do easiest job. Can he also do weak positive staining? Threshold is more important. T: Where could it be useful L: Only where there are two possible solutions.
+ There is a case where only strong result is positive, everything else should be disregarded. The worst xAI so far? Dont get info about density, intensity,... 
+ 
+ 15:53 Closing Discussion
+ T: What would it take for you to trust it? L: All the data that was used to come to this result? (he means chars/features) plus validation.  C: How would that be structured?
+ L: Tested on 
+ 
+ Notes:
+ -has completed survey
+ -general low scores in some results since animosity for AI

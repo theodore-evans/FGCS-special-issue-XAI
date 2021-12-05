@@ -1,0 +1,146 @@
+11:03 - Introduction of Theo, Carlo, Purpose of Interview, Recording, Focus of Research
+
+11:05 - Profiling Questions:
+-Residency in Portugal, working on EMPAIA, interest in digital Pathology but no opportunities in Portugal
+-main interest in computational pathology, lung pathology
+-has been using KI-67 in work, being able to take a photo, have a digital counter is very helpful
+-T: how far would you trust a machine? R: Does it perform good or better than me? Like Ki67, some results do it better than we do. Counting cells for 20 examples is tedious, you just estimate it - a tool does this better, our birds eye view (what we estimate) is not very accurate. If it produces better results than what I could do in the same time, then I am using it
+
+11:10 Showing image
+-R: it misses a lot of negative cells. Usually, we can change threshold - this helps with confidence since we can adjust result to what I am seeing. I wouldnt be too confident since it is pointing out positive cells, but not negative ones so its not accurate.
+-T: Could an AI system select that threshold? R: we as pathologists trust what we see. Possibility to adjust and immediately adjust it improves trust since I can now see that all cells are counted. If it immediately correctly counts all cells, I'd have more trust
+-T: How much are you familiar with ML underpinning? R: I have been reading about it, but I did not use it practically so I can't say I am really professional. T: The more complex, the better. Adjusting stuff is valuable.
+
+11:15 Introduce xAI methodologies, showing different explanation classes. Bear in mind that we should talk about them in broader way
+
+11:16 Counterfactuals 1Axis
+-R: Now I immediately know why it is missing negative cells (nuclear positivity). This helps me understand what the algorithm is looking for, and what it is missing. It helps me to know when I can trust it.
+-T: missed question. R: I wouldnt know if It only counted right in what I see here. Only positive wouldnt work, since for Ki67 I need the ratio.
+
+11:19 Counterfactuals 2Axis
+-T: How do you interprete modality? R: It helps me understand positive labels. Looks like cluster of inflammatory cells. Inflammatory cells can be stained, this tells me that positives are influenced by inflammation in tumor. This doesnt diminish trust in algo, this is sth we have to take into account to make sure that Ki67 works. It shows me a drawback of Ki67 which we should consider. This one gives me all the info I need since this is all info that I use on my own, it shows me the pitfalls that are there.
+
+-> CF + Interactivity as solution
+
+11:22 Concept Attribution
+-T: Different types of CA, could be visual or textual as here.
+-R: For this problem, this doesnt give me much info/isnt useful. I know that staining intensity and nucleus size are factors, not shure if nucleus regularity isnt impactful. This might be helpful for different tissue types, what does it take into account for each class.
+-T: Whould XY help you? R: This is the major characteristic for me. If its not there, I cant build trust
+-R: It will always come down to what I am used to do, what I am looking for. When I am training a resident/showing a colleague, we also check if the other one is also finding the same things as we do - the system is checked as we would do with other pathologoists
+-T: Could you justify all your assessments to another pathologist? R: I cant justify all decisions. Some are a bit based on a gut feeling based on the input. Sometimes it hard to pass this info on, but you always try. Some small things come with experience and training. Some part of the explanation is not clear to someone without experience, but with experience pathologists will be able to communicate most
+-T: What could make it more useful? R: It could be more descriptive, but then it wouldnt be so intuitive. what about the staining intensity, what is it doing? Is there a threshold for nucleus size? WHat does regularity mean to the algorithm?
+
+11:31: Saliency Maps - local
+-R: FOr this task, this doesnt tell me much. This task is a ratio, but this one only tells me about positives. Nothing I didnt expect, but doesnt help me decide anything
+-T: For which task would this be informative? R: For segmentation into tumor cells, connective tissues, what is more important for that segmentation.
+-T: A challenge for this xAI solution is that segmentation is already present R: Yeah, what is the difference between AI and xAI
+-T: Is there a sw solution... R: Imagine I have something that tells me this type of tumor. Then, which cells is he using to make that assumption is important, how much of the tumor is being used? If the whole slide is lighted up it is probably right, if only a small part of tumor is classified as invasive the overall classification could be wrong.
+-T: What could make it more valuable? R: In this task, what is the negative ones - but this would rather help the AI developer to adjust his model
+
+11:37 Saliency Map - global
+-R: Similiar to local SM, but gives me less information (with the same type of info). Less confidence.
+-T: What do you understand from this? R: I understand that the perfect classification is 
+-T: Where could it be useful? R: That is hard, since with the other explanation I can see the other grades I am expecting. If positive and negative would be very similar (both brown but negative without nuclei), then it could be intersting to see prototypical result to check if it is looking for the same thing as I am. T: So you would rather have prototypes of edge cases? R: Lets we are trying do differentiate lycites from plasmacytes-both are blue, one has some irregularity to nucleus, hard to diff with low power, even with high power (of staining?). Difference between spectrum is hard, with prototypes it helps me to see that is identifiying LC and PC right. A SM could help me then to see what the algo is missing
+
+11:43 Trust Scores
+-R: This is for sure imteresting to me. I would like to give my input to this uncertainity, I could help perform algo more like I would. It is helpful to understand thresholds and see if it is doing this right. Would this also tell if ...? T: We are expressing confidence or lack of that
+(connection issue)
+-R: I can see what limits are, I would also have difficulty in choosing, but I can also see that it is doing a good job
+-T: Beyond showing low conf annot, is there additional info about confidence you would like to have beyond local? R: Know how it was trained, what annot did it use as ground truth? Was it a human, more than one human, was it unsupervised learning? T: WHat would be important info from this "Leaflet" R: Without seeing output, I would trust it more if various pathologists contributed. It is also good if methods are combined. Something trained on generalized data is better than sth without much variation. T: How would you quantify it? R: 2,3+ pathologists from different institutions
+
+11:50 Conclusion
+-R: Area is difficult to handle, pathologists vs Computer Scientists are looking for different things. Pathologists are looking for visual things
+
+11:57 Showing Preliminary Results
+-R: It jumps out that the prototypes are clearly preferred. You made me think about this specific problem in the survey- the text doesnt allow to think about it. Protoypes are most intuitive and. 
+-T: Rank them? R: CF 2 Axis are most intuitive. Prototypes dont give me much information in this case. Without whole exercise, Prototypes are the simplest explanation. Keep in minding that respondents are responding in a quick way and not thoroughly absorbing what the explanation means.
+
+12:02 Feedback
+-R: I dont know how it would be for someone who doesnt have any idea about xAI. SM needs to be made clear that it is different than the output itself, pathologists gravitate towards it since it is visual - make SM clear! Others are easy to understand. T: SM is potentially misleading R: Gives me false trust
+-R: Perfect saliency maps for prostate cancer shows red where cancer is - get feeling that it is highlighting what you recognize as cancer. What I wasnt understanding is how you could manipulate this, that this suggests that this is what the algo takes into account.
+-T: What kind of solutions do you see to bridge that gap? R: Very clear things on this is positive, this is negative. SM (and prototypes?) hides a lot of information, gives you a lot of false confidence. SM should only be used when we have seen other explanations or have given more info about SM. Simple range of unclassified, positive, negative examples is interpreted by everyone into same way.
+-R: When you apply AI solution to slide, how about you show what it is using from training data/image and you can check whether they are really similar. T: Since it doesnt have deep understanding of this xAI approach, this could be a good idea R: This is also what I do when you dont know where a slide comes frome - I start flipping through a book and look for a similar image. This isnt a 100perc confidence annotation, but it could give me a good idea
+
+12:26 Notes afterwards
+-maybe just give them a blank slate, no interpretation -> the interviewee should articulate his thought process
+
+Profile:
+* Qualified pathologist
+* Neuro/lung
+* interested+familiar with ai
+* Limited knowledge of ml
+
+General
+* AI as extension of manual tools, counters, camera on microscope etc.
+* Trust machines when they perform better, empirical basis.
+* Awareness of the limitations of computer-unassisted tasks, i.e. Ki-67. (06:31) Q: how did you know your results were not good? Ground truth?
+* Computer scientists and pathologists looking for different things
+* Pathologists are always looking for visual things, matches thinking. Anything outside this modality is foreign. (e.g. mockup report - how is it learning to make this description, outside scope of the task)
+* If it has the same trouble differentiating, then it’s probably doing the task right
+
+Sample AI output
+* Clearly misses a lot of negative cells
+* > would like to adjust threshold manually, interactivity. This is normal for AI solutions (Immunoscore)
+* Might not use, since the score is based on negatives as well, and negatives are missing
+* “Pathologists trust what they see”
+* “Not an AI tool, image analysis tool” < ref to immunoscore
+* Responsiveness (to input) improves trust
+
+Counterfactual #1
+* Immediately I know why it missing half of the (negative) cells are missing 
+* It helps me know whether I can trust the result
+* At least in this area, might not apply to outside
+* Very nice image
+* It would be lacking if there were not the two labels (+ve and -ve) [because -ve cells are important for ki-67)
+
+Counterfactual #2
+* This gives me more information
+* This helps me understand more the +ve labels
+* Inflammatory cells can stain, explanation shows the model also counts stained inflamm. cells
+* tells me that positivity is influenced by inflammation, also something that we have difficulty with
+* Knowing where the algorithm has difficulties, and especially, that it has difficulties with the same things, improves trust > as it informs where you should ‘double check’
+* “This one is the one that provides me all of the information that I need, based on my own way of accessing this and the pitfalls that I know are there”. “B/c it is all the information that I use on my own, and the pitfalls that I have and that the algorithm will also have”
+
+Concept attribution
+* or this particular problem, this does not give me much information … but it might be in other (cell type)
+* Would inform trust as sanity check, ie if a factor is missing
+* Cf training a resident/talking to a pathologist
+* More useful: more descriptive, but maybe at the cost of intuitiveness?
+* What is it about the straining intensity, eg? What is the threshold, what would have to change?
+* Pathologists used to being descriptive, always comparing, how detailed would a pathologist be? > generated report, useful, insofar as a report is.
+
+Aside: epistemic opacity of pathologists 
+(22:34) Q: how do you break a tie, what information do you need when you don’t Agree with model
+rita: 23:09, 24:07
+
+Saliency maps
+* Not telling me much for this task
+* “what is output and what is explanation”
+* Could be useful for a classification task, rather than segmentation. ie. what type of tumor is this? which cells is he (AI) using to make this assumption (classification)
+* More trustworthy if taking into account more of the tumor? < belies a potential for mismatch between how does pathologist understanding of ‘what the most important parts are’ correspond to the models’ understanding
+* What would be more useful? Looking at different classes, more useful for QA than for pathologist.
+* High risk of positive confirmation bias
+
+Prototypes
+* Like counterfactuals, but with less information (see impact of order here)
+* Gives me the same type of info, with less confidence. Do not know how I would interpret this without having seen counterfactuals
+* Understand the ‘perfect’ +ve and -ve result
+* Hard to imagine useful contexts, pathology is about diversity.
+* CF: I can see the grades, nothing is black and white, prototypical example do not reflect the true result
+* Useful in context: seeing prototypical results demonstrating key features (presence of nucleolus, cytoplasm), between very similar results > ie. prototypes of edge cases, boundary cases (tending toward CFs)
+* Example: diff. Lymphocytes from plasmocytes, subtle difference, hard to distinguish at low power, even at high power non-trivial. Having prototypes helps lend confidence that the LC and PC (‘football’ pattern staining in latter) are being resolved from one another.
+
+Trust scores
+* Great to have the possibility to interact, resolve uncertain cases to help algorithm improve.
+* Good to understand decision boundary, and is it similar to mine?
+* Very useful to know the limits, to know where to look
+* Also informative about important factors behind model output, i.e. uncertain cases linked to e.g. nuclear irregularity. “I can see where the limitations are and also where I would have difficulties in choosing”
+* More general, knowing how a model was trained is important, ground truth annotations: human, more than one, from same institute, or more than one? 
+* Without even seeing the output, I would trust the results of a model using various annotation sources as [training] input rather than just one. Would like to see that more than one pathologist, from as many different institutions as possible. Consistency within institutions.
+
+Reaction to results
+* Without having really thought about the problem (e.g. in the interview) the simplest / most intuitively understandable explanation is likely to be most highly rated.
+* People are responding in a quick way, not absorbing what the explanation means.
+
+Other ideas:
+* Machine equivalent to showing reference examples, showing images from training data that most strongly informed a result, relatability to process a pathologist would go through

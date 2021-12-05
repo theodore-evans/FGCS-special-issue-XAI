@@ -1,0 +1,236 @@
+\section{Discussion}
+\label{sec:Discussion}
+
+\subsection{Summary}
+This paper set out to answer the following research questions:
+
+\researchquestions
+
+% \begin{enumerate}
+%     \item How are examples of prominent xAI approaches interpreted and evaluated by pathologists in the context of a a common AI-assisted diagnostic task.
+%     \item What can these interpretations tell us about the strengths, limitations and risks associated with different classes of explanation, and with explanations in general.
+% \end{enumerate}    
+
+To address these questions, we invited pathologists from research and clinical practice to take part in an online questionnaire, along with six semi-structured video interviews. These pathologists were presented with examples from five prominent categories of xAI approach, each having the goal of explaining the result of a sample AI solution, and asked to rate and/or discuss their interpretations and the usability of each. 
+
+\subsection{Interpretation of findings}
+
+The study context was chosen to be narrow enough to allow for a meaningful application-grounded study, whilst provide insights as broadly applicable. It is these overarching findings, relating to guiding principles for xAI development, upon which we focus the discussion.
+
+The participants in the study placed a high value on the simplicity of explanation methods. While this could be understood in terms of a general user preferences, it is important to view this in the context of the pathologists' fast-paced routine workflow. In this setting, saving time was considered to be the most valuable benefit of AI assistance. Explanations involving complex interface elements, and therefore requiring additional scrutiny, may serve to undermine this purpose. The preference for visual explanations can also be seen in this light, with the introduction of different modalities into the primarily visual workflow imposing unwanted additional cognitive load.
+
+% >> implications: in conjunction with other points > conflict
+
+With respect to the usability of explanation methods, a broad range of modalities were identified as useful \textit{sanity checks} -- i.e. those flagging instances of the AI doing something `clearly wrong'. Many situations were identified where it would be straightforward for an explanation to discredit the AI system, for example: 
+
+\begin{itemize}
+    \item A saliency map highlighting an irrelevant part of the image
+    \item Concept attribution omitting critical diagnostic features
+    \item Prototypes significantly deviating from ``textbook examples''
+\end{itemize}
+
+% >> integration: exploration of decision space, must be something there. target group of explanations, arrieta has some work here, many more xAI approaches applicable to developers vs users zB
+% >> implications: research landscape already caters strongly for developers, to develop xAI for users is far more nuanced, challenging and cross-disciplinary
+
+In comparison, explanations providing users with a more nuanced understanding of the decision-making factors of the AI system occupied a smaller subset of potential implementations. Above all else, the acceptability and perceived value of such explanations was determined by the degree to which they allowed the user to infer causality in the AI system's reasoning. In particular, there was a greater readiness to place trust in AI systems whose explanations seemed to imply causal decision-making processes that were similar to the users' own.
+
+% >> integration: all of the research on explanations displaying causality, the HCI papers
+% >> implications: valuable types of explanation approaches implied/proposed by participants based upon the examples presented, including: Counterfactual explanations showing model classification changing as a function of identifiable, diagnostically meaningful visual features, prototypes representing decision space, prototypes representing finely split clusters (therefore also close to decision boundary, BUT also conflict with simplicity, etc.
+
+Moreover, participants showed a clear propensity to ascribe relatable (both human- and pathologist-like) causal reasoning to the AI system in order to try and understand the explanations presented. This was particularly noteworthy in examples that were not intended to convey such information. For example, the inference of causal factors determining high and low trust scores was readily used as a basis for perceived trustworthiness of results -- in the vein of ``the AI seemed to have the same difficulties that I would''.
+
+This tendency was recognised as introducing significant risk of bias, particularly as a function of the omission or ambiguity of information presented by explanations. %This effect was emphasised in cases where participants made questionable inferences about the reasoning capabilities of the AI system based on the ambiguous explanation presented. Only during discussion of these results (and in some cases, not at all) were the errors in reasoning identified -- errors that that may have passed unnoticed in a real-world situation. 
+
+For example
+
+\begin{itemize}
+    \item Saliency maps that highlight diagnostically relevant regions, whilst leaving unclear which features caused those regions to be relevant
+    \item Counterfactuals in which multiple features simultaneously change, leaving it ambiguous as to which were truly relevant
+\end{itemize}
+
+The tendency for positive confirmation bias was particularly notable when explanations presented information that closely matched pathologist expectations. An example of such thinking: that a prototype representing features correctly associated with a Ki-67 positive nucleus implied that the AI system was using the correct features to make this class assessment. In reality, the prototypical case gives no information about how varied or inclusive this class may be within the decision space of the AI system, or where and based on what features the AI system draws this class boundary.
+
+% >> integration: something from the HCI/social/cognitive research on xAI
+% >> implications: conflict, risk postive confirmation bias
+
+Another trust-building element in interaction between pathologist and xAI system was the ability to `get to know' an AI system: To explore its limitations and quirks, with explanation=generating mechanisms providing an interface surface for this interaction. This \textit{trial period} was identified as an essential component in the building of pathologists' trust in AI systems. 
+
+The flavour of this interaction varied with attitude toward the role of AI in diagnostic decision-making. Pathologists who were open to the potential of AI systems to play a collaborative role with their users expected explanations to enable them to probe their capabilities like they would a trainee or colleague. On the other hand, those considering AI assistance more as in the way of a `dumb machine' tended to treat explainability elements as an interface for manual adjustment of AI results.
+
+% >> integration: ? attitudes to AI
+% >> implications: interactivity
+
+This split also reflected attitudes toward human versus machine fallibility. The AI-skeptical considered deviations between human and AI assessments to be cause for rejecting the system. On the other side, conflicting AI results, even one turning out to be incorrect, were considered by some to be valuable for keeping the pathologist `on their toes'. In these cases, the AI's indifference toward experience or seniority was deemed an attractive attribute, one often missing from second opinions provided by human colleagues.
+
+% >> integration: Jussupow paper
+% >>implications, very different needs depending on attitudes toward AI, experience of AI effectiveness, personality. and attitudes toward AI very diverse due to patchy, limited exposure, often to flawed research implementations. likely to remain so until it reaches a certain level of standardisation and adoption (which in turn limited by digital adoption. Difficult problem for building xAI systems.
+
+Alongside explainability, the traceability and credibility of data and quality assurance methods used for training and validation was identified as a critical factor for building pathologist trust in AI systems.
+
+\subsection{Implications for xAI research}
+
+% The difficulty of conducting this type of grounded study on xAI systems themselves, as we have done, are the multiple layers of novelty involved. As well as being exposed for the first time to many of the explanation generation techniques presented, participants experience with AI systems in general was also limited. >> limitations
+
+% >> integration: exploration of decision space, must be something there. target group of explanations, Arrieta has some work here, many more xAI approaches applicable to developers vs users zB
+
+Our findings support the assessment of \citet{miller2019explanation} that the effect of cognitive and social biases strongly affects human interactions with xAI systems. In particular, the hypothesis that humans will tend to ascribe human-like traits to explainable AI systems (cited from prior work by \citet{de2017people}) clearly manifests in our study. This emphasises the importance of designing xAI systems that identify, mitigate, or even take advantage of, such biases and predispositions.
+
+The sources and effects of bias identified in our study support many of the observations and strategies for user-centric xAI systems proposed by \citet{wang_designing_2019}. It should be noted that, while these guidelines were theory driven, we have reached many of the same conclusions based on purely empirical findings, lending valuable credibility to this prior work.
+
+% These include
+% - static explanations beg their own questions of transparency
+% - interactivity both gives the user the feeling of being in control
+% - allows them to dig as deep as they need to for an explanation | support HD reasoning | correct for the context and audience sensitive nature of explanations
+% - contrastive explanations show what might have been, visual counterfactuals, semantic concepts, and in particular, combinations of the two
+% - prototypes that sample over the configuration of a class, indicating common features uniting a cluster
+% - prototypes that show centroids of nearby clusters (and therefore lay close to the decision boundary between the two)
+
+In addition to the role of explainability in building pathologist trust in AI systems, the need to complement such implementations with clear and accessible data transparency was reinforced. The manifestation of this identified as desirable by users is strongly reminiscent of the ``model facts" label proposed by\cite{sendak2020presenting}: A summary of the model, validation and performance metrics, as well as uses and warnings, presented in standardised and accessible language. Beyond these desiderata, pathologists in our study emphasised the importance of understanding sources of model training data: in particular with regards to the credibility and variety of expert annotators.
+
+Our study was motivated in large part by the predominance of algorithmic (rather than user-centric) approaches to xAI in the state of the art~\cite{tjoa_survey_2020, poceviciute_survey_2020, antoniadi2021current}. We agree with the observation of \citet{miller2019explanation} that most of this work ``uses only the researchers' intuition of what constitutes a ‘good’ explanation''. While studies to identify user requirements for explainability represents a marked improvement on this, our findings underline the importance of the extra step we have taken: evaluating user interactions with potential xAI approaches directly.
+
+Specifically, our study implies some difficult-to-avoid conflicts that may arise between explainability requirements perceived by user and the potential biases that these may be liable to introduce.
+
+\subsubsection{Cognitive load vs. Positive confirmation bias}
+
+An inherent conflict between reducing cognitive load and introducing misleading bias
+SUCH THAT
+making explanations simple means that every detail left out of an explanation is subject to speculation | a gap to liable to be 'filled in' by the user, inevitably according to their own expectations and understanding
+- and this is even observable with explanations not designed to reveal causality (e.g. TS)
+
+\subsubsection{Relatability vs. Anthropomorphism}
+
+making explanations relatable -- i.e. "speak the language of the user" -- risks implying human-like reasoning of AI systems that work very differently AND make explanations too reliant on user intuition, therefore easy to digest but with implicit, potentially ambiguous / misleading informational content
+
+\subsubsection{The Ian Malcolm principle}
+
+% ``preoccupied with whether or not they could that they didn't stop to think if they should.''
+
+there may be many more algorithmic approaches for xAI. These may all be useful for raising red flags, with this principle already justifying much of the research landscape but in light of the potential for unintended consequences (see 2 and 3), it is important to weigh their inclusion into AI systems carefully -- particularly wrt the fact that these red flags should already have been raised?
+
+THEREFORE (-> conclusion)
+
+by making explanations simple and/or intuitively relatable, we leave degrees of freedom open to interpretation, we risk reinforcing the idea that the user's understanding can be projected onto the AI system and/or introducing positive confirmation bias 
+BUT
+if we make explanations less simple and more expressive, we reduce their usefulness to and acceptance by pathologists
+
+WITH THE PROVISO: that the lack of of 'sweet spot' in this balance could be a function of the use case chosen, demonstrating that explanations really are redundant for this task (interesting as a result, and as a methodology?)
+
+THEREFORE
+it is better to be explicit than implicit
+if a sufficiently explicit explanation is too detailed to be useful, it could be an indicator that a) explanation is not required or b) more fundamental measures are needed to mitigate misleading users (e.g. training, revising ai output, etc.)
+AND
+it is extremely important for xAI to be designed with a strong emphasis on HCI and user feedback
+
+% We believe that the preference demonstrated by pathologists in our findings for some explanation classes over others can, to a certain extent, be taken at face value. However, our findings also imply various second-order and unintended effects associated with particular examples that should be considered when interpreting their order of preference. 
+
+% \subsubsection{Trust Scores} 
+
+% The least controversial of all of the examples presented, with a general consensus that some measure of confidence is expected from an AI solution, in order to help the pathologist understand the limitations of the output presented and direct their attention to results that may need reviewing. The general acceptance of this type of explanation may also be attributed to its perceived utility as an interface for actively reviewing and refining the performance of an AI solution.
+
+% Although no causal factors were intended to be conveyed by the reported annotation confidences presented, there was a tendency for these to nonetheless be interpreted by the user. We interpret this as a second-order effect, whereby the AI solution is rendered more relatable through its fallibility or simply by merit of the fact that it seems to share the same challenges as the pathologist in reaching its conclusion. While presenting an opportunity for positive trust-building, this approach should be treated with due care, as the implied comparability of decision-making processes can not be consistently relied upon.
+
+% While there exists the possibility that participants were guided toward such an interpretation based on our presentation of these confidences \textit{as} explanations, we suggest that this result highlights a general proclivity to anthropomorphize the AI solution. 
+
+% \subsubsection{Counterfactuals} 
+
+% These were generally well-received, particularly in the interview setting. The example presenting a single-axis of gradually changing annotations, with a clear decision boundary delineating one class from another, was identified as being particularly apt for the task at hand. The positive response to this example can be viewed in this light, as well as indicating a general suitability of this type of explanation to the visual decision-making processes common in pathology.
+
+% The divisive response to the two-axis implementation of counterfactuals highlights challenges in their effective usage. On the one hand, the more complex implementation was variously considered more confusing and/or distracting than its simpler counterpart. On the other, it was identified that even in this more complex presentation it did not allow the user to disentangle the different factors changing between classifications, in order to determine which were more critical to the solution's outcome. For the xAI designer, the decision of whether to err on the side of presenting more or less information is a non-trivial one.
+
+% \subsubsection{Concept Attribution} 
+
+% The examples presented were met with a mixed reception. While performing well in the online questionnaire, likely due to its explicit presentation of causal factors, it received criticism for its textual format and lack of precision.
+
+% In general, we suggest that text-based explanations levy an additional cognitive load on the pathologist, due to the imprecise abstraction of the rich visual information in their perceptive field during diagnostic work. This appears to place any text-based implementation of this explanation, in an untenable position. Adding detail to address the shortcomings in precision further reduce its viability, while re-interpreting the explanation in visual form tends to bring it outside the realm of what might reasonably be described as `concept attribution.' Instead, pathologists' re-interpretations of such explanations in visual format tended more toward descriptions of counterfactual-type implementations than any visual variants of concept attribution (e.g.,\ feature visualisation, as applied to a digital pathology context by \citet{stacke_measuring_2021}).
+
+% We cannot rule out the possibility of these suggestions as being guided by our presentation of counterfactuals, and acknowledge the possibility of promising approaches involving visual representations of decision-relevant concept. However, based on current research, we speculate that the explanations produced by such methods will prove too abstract to be valuable to pathologists in a clinical setting.
+
+% Despite the limitations identified, the research suggests promising elements to this class of explanation. For one, the straightforwardness with which important factors are presented effectively meets the pathologist's need for a simple explanation, maybe accounting for the positive response to these examples despite the limitations mentioned above. Moreover, several promising applications for the automated generation of structured annotations of whole slide image data were implied, particularly with respect to ongoing standardisation efforts~\cite{daicom:supplement:222}. We suggested that with respect to such applications, textual concept attribution may be an important xAI capability.
+
+% \subsubsection{Prototypes}
+
+% Identified as both the most intuitively understandable, yet at the same time least informative, explanation presented. By their nature, prototypes tend to represent the least controversial examples of a given class or type. This may be valuable in some contexts -- for instance, to identify issues with slide quality or to determine that an AI solution is correctly identifying features to resolve between very similar classes.
+
+% However, the attractive simplicity of this type of explanation, coupled with its low information content, was identified as a potentially misleading combination. By presenting non-controversial examples as justification of an overall result, the pathologist risks being lulled into over-confidence in the AI solution, particularly when these examples fit into their own mental schema of archetypal examples.
+    
+% Improvements suggested by pathologists that aim to address these issues. For example, presentation of a large variety of examples, including or even weighted toward those that fall close to the decision boundary of the solution -- tended to describe explanations falling outside the scope of those reasonably considered as employing prototypical examples, and more toward other classes such as Trust Scores and Counterfactuals. While it can not be ruled out that these re-imaginings of this type of explanations were primed by the other examples presented, it was indicated that by their very nature, prototype-based explanations fail to capture the diversity inherent to the subject matter of diagnostic pathology.
+
+% \subsubsection{Saliency Maps}
+
+% These were the least well-accepted form of explanation, criticized for their ambiguity, lack of clarity and potential to mislead. The fundamental concept of a saliency map is to explain an output based on the identification of important regions of an image. As indicated by pathologists in our findings, only limited information about diagnostically relevant factors can be communicated simply by showing the spatial distribution of important features. 
+
+% This can be understood in1.2.  There is one limitation I think should be more pronounced. Since the end result of a Ki-67 review is an region-of-interest aggregate percentage relating to a cut-off, the scrutiny of individual cell nuclei (which the XAI approaches focus on) would often be overkill in a clinical setting. While I still agree that for this study Ki-67 is a good application choice for many reasons, this limitation is important to understand - for instance when interpreting the responses to question 4 in the survey. terms of the large number of variational factors that can change for any given region of the slide. In highlighting a given region as particularly salient to some output, there exist a wide variety of interpretations about which of these factors were important or would need to change for the outcome to be different. Moreover, this degeneracy leaves open the possibility for highlighting salient regions to simply confirm a users' expectations regarding relevant features, even though these may significantly deviate from those taken into account by the AI solution. In this way, saliency maps carry the risk of uninformative misleading.
+
+% It should be noted that the information provided by saliency maps appears poorly suited to the chosen grading task -- i.e.\ where the AI output already constitutes one or more segmentation masks, each indicating the important regions of an image concerning one or more target class. In such cases, the information conveyed by saliency maps is liable to be redundant and therefore uninformative and/or confusing. A suggested context to which saliency maps may be suitable is in explaining classification tasks, where the spatial distribution of relevant features may be more informative \cite{LapuschkinEtAl:2016:LRP}. 
+
+% While we encourage the poor reception of these examples in our findings to be interpreted in this light, we suggest that the pitfalls described here may apply more generally.
+
+% \subsection{Integration}
+
+% To date, the vast majority of research regarding xAI approaches for pathology has focused heavily on the development of algorithmic approaches, rather than on the requirements and experiences of pathologists \cite{tjoa_survey_2020, poceviciute_survey_2020, antoniadi2021current}. 
+
+% While xAI research is widely hailed as addressing the inherent risks of black-box processes inherent to AI solutions for pathology, little work has focused on the potential risks introduced by inappropriate or inadequately tested explanations for AI solutions. This research is novel in highlighting the potential risks associated with xAI implementations, which we propose to be a critical 
+
+% While the need for user studies in xAI has been highlighted in the recent literature \cite{tjoa_survey_2020, antoniadi2021current}, only a small number of such studies have actually been carried out. So far, these have relied solely on the speculation of pathologists on desirable forms of explanation, based on some sample AI output \cite{liao2020questioning, cai2019hello}. While we have no doubts about the value of such work, we firmly believe that an accurate representation of the usability and, in particular, unintended consequences of xAI approaches, can only be observed through the interaction of pathologists with real or simulated xAI interfaces.
+
+% Many of the pitfalls of explainable interfaces observed in our findings can be attributed to the tendency to anthropomorphize the AI solution. Recent work showing the vulnerability of even the most advanced deep-learning-based image analysis techniques to adversarial attacks provides a striking demonstration that neural networks do not understand images the same way humans do~\cite{geirhos2020shortcut}. \cite{foote2021now} show further evidence for the susceptibility of deep-learning based methods in Pathology by showing that a model classification can be flipped with imperceptible perturbations and by generating a single perturbation matrix which consistently fools a network on unseen test images. They also highlight that explanatory techniques like saliency maps themselves are not enough to ensure robust model features, and recommend the inclusion of adversarial attacks for performance evaluation of those models.
+% The expectation of AI system to employ a human-like reasoning process, or moreover, to produce a human-like explanation creates a dangerous disconnect between expectations and reality of AI capabilities -- with implications for the importance and content of future AI/ML training curricula for pathologists.
+
+% Some of the findings are reflective of well-established principles of UI/UX design. For instance, the lower cognitive load imposed by interface elements analogous to familiar processes \cite{cao2009modality}. As well as underlining the importance of this principle in the context of AI for pathology, this research begins to identify those processes and mental schema familiar to the pathologist, informing effective and convincing implementations for xAI in this domain.
+
+% \subsection{Implications}%. what does it mean for the (new) state of the art?
+
+% The diagnostic process in pathology relies heavily on the visual processing of cell morphology. Pathologists undergo years of training and practical experience, often with extensive sub-specialization, to build up expertise in the interpretation of histologic findings. This visual reasoning can, and often must, be expressed in natural language (written reports), for the purpose of communicating the findings to colleagues and patients. However, this translation can be challenging and imprecise - by necessity, it is a reduction of information that does not capture the rich biological complexity of the specimen. Where an explanation is required, integrative explanations are preferred; collecting and highlighting important visual features, contextualising these where necessary with simple descriptions in clear, concise language. We suggest that the perceived usability and value of AI explanations to pathologists is strongly tied to how closely they map to this conceptual space of familiar explanatory processes.
+
+% However, given the inherent challenge of explaining complex decision-making processes in a suitably concise format, it is fundamentally unavoidable that much of this complexity not be represented. This burdens any potential explanation modality with the risk of inspiring over-confidence through an \textit{appeal to ignorance} -- the implication that that, because some factor is not represented in the explanation, it did not play a role in the decision-making process. This has the dangerous potential for obscuring inappropriate or confounding factors in the AI solution's decision-making logic while bolstering trust in this potentially flawed result.
+
+% Moreover, the openness to interpretations for many xAI approaches brings the danger of building unsubstantiated trust in AI solutions through positive confirmation bias. Particularly under time pressure, the tendency to find confirmations of existing expectations in ambiguous data is well known. While some types of explanation appear particularly susceptible to such fallacious interpretations (saliency maps and prototypes being the stand-out examples from our findings), we understand it to be an inherent risk associated with any form of explanation presented to the user.
+
+% Far from being a criticism of pathologists for their susceptibility to such logical pitfalls, we interpret these as expressions of the quintessentially human tendency to anthropomorphize AI solutions in order to make sense of their actions. This places upon developers and designers of xAI for pathology a responsibility to preempt and mitigate such misinterpretations. As such, our findings strongly advocate for a cautious approach to this process, with proposed explanations subject to continual validation and feedback from a live target audience. 
+
+% This strongly underlines the need for close collaboration between AI/ML experts, UI/UX designers and pathologists in developing xAI solutions for this domain. We believe that this entails both a transdisciplinary strategy for xAI design and an active approach to exchanging domain expertise between these stakeholders. It is the opinion of the authors that many of the risks identified in this research can be mitigated by a holistic understanding of the diagnostic workflow by xAI designers, coupled with a well-informed expectation of AI capabilities by its users. 
+
+% Also implied is the existence of promising and as-yet unexplored approaches to xAI for pathology, in which the needs and proclivities of their users are integrated into the design process from the outset, made possible by closer cross-disciplinary collaboration. Some suggestions for future work arising from our research are proposed in section~\ref{sec:FutureWork}.
+    
+\subsection{Limitations}
+
+Due to the limited availability of qualified pathologists to take part in research, particularly those involved in routine diagnostic work, only a relatively small sample size of 25 questionnaire respondents and six interview participants was reached. While this sample size does not enable strong statistical conclusions to be drawn, we believe that it allows a representative overview of the target audience, particularly given the qualitative nature of the findings presented.
+
+Given the limited availability of pathologists, the research apparatus was designed with brevity in mind. The resulting xAI examples were therefore simplified and mostly static. This deviates significantly from the expected user experience of a pathologist in a diagnostic workflow. A similar study framed within a more representative and immersive user experience would provide valuable insights, whilst significantly increasing the technical cost of study implementation.
+
+% Specific points included the inability to view the non-annotated IHC image, adjacent H\&E layers, and generally pan and zoom through the slide data. 
+
+% The lack of clarity on the output of the AI solution (insufficient context, unclear interpretation for unclassified nuclei) was a potentially confounding factor in the pathologists' interpretation of these results. While these results in and of themselves were not the subject of this research, it cannot be ruled out that this had a indirect effect of the interpretation of the explanations of which they were the subject. Given that this limitation was consistent across all explanations examples presented, we suggest that this limitation does not strongly impact the validity of comparative statements between different classes of explanation. It is also suggested that this shortfall is somewhat representative of issues with real AI solutions and provides a valuable discussion point regarding the value and usability of explanations.
+
+Potentially, a more significant limitation of this study lies with the choice, number and design of explanations examples. To compare these examples within a common context, it was necessary to create most by hand, with only the saliency map implementations created with a true algorithmic approach. This was necessitated by the fact that many of these explanations were based on speculative techniques, either currently unsupported by any technical implementation or with implementations that are not feasible for application to the diagnostic context without incurring prohibitive technical overhead. Although the creation of these examples was supported with the help of the expertise of a broad group of stakeholders, both from domains of ML and pathology, there is the chance that some aspects may not be representative of realistic explanations. Most importantly, the saliency map examples are subject to the limitations of a real xAI implementation, which may put them at an inherent disadvantage  compared with the other, idealised examples.
+
+Another approach that was not tested is potential over-complexity and distraction capacity of the tested xAI approaches. It is clear that unhelpful explanations can produce more harm than good by distracting or overwhelming the user with unnecessary information. We therefore recommend further research which should explicitly measure the impact of explanations and compare them with a baseline to ensure that actual explanatory value is derived for the end user while keeping the required mental load to a minimum and thereby reducing distractions.
+
+In recognition of these limitations and in light of the preliminary nature of this research, emphasis has been placed on those findings and interpretations that seem most able to be generalised beyond the limited scope of the scenario presented. Moreover, it was apparent throughout this research that the participating pathologists were readily able to abstract away from the simplified `snap-shot' presented to deliver valuable insights more generally applicable to the design and implementation of effective xAI.
+
+\section{Conclusion}
+\label{sec:Conclusion}
+
+% In this work, a representative set of xAI implementations for pathology were prepared and presented, for the first time, to a cohort of clinical pathologists for their expert evaluation. These findings are represented in the aggregated responses of 25 pathologists to an online questionnaire combined with the analysis of six hours of expert video interviews. This research identifies good practices and novel opportunities for xAI solutions for pathology that inspire well-placed trust from their users while highlighting substantial risks to which developers and UI/UX designers must be attentive.
+% To this date, there have been no xAI studies in the domain of Digital Pathology which put a focus on the end-user. Most studies come from a technical standpoint,
+% and evaluate the usability of singular AI approaches - mostly as pure literature review such as \cite{yang2021unbox} and \cite{poceviciute_survey_2020}, with first steps also being made in the direction of exploring the needs of medical practitioners and resulting design patterns~\cite{liao2020questioning,cai2019hello,wang_designing_2019}. The novelty of our approach is in the qualitative evaluation of different approaches from different experts, crafting a comprehensive and more representative overview of the reception of different xAI approaches. Basing those insights on the discussion with domain experts in invaluable for a faithful evaluation.
+
+% Our findings demonstrate the preference of pathologists for simple visual explanations that mirror their way of thinking and integrate cleanly with their diagnostic workflow. They also suggest dangers associated with explanations that are overly appealing in their simplicity, or allow for too much ambiguity in their interpretation.
+
+% The quality of an explanation is also tied to its suitability for a specific diagnostic task, as a function of its alignment with the decision-making processes considered important and familiar. Therefore, any assessment of relative usability should take this into account. Nevertheless, it is possible to make some general statements about the various forms of explanation proposed in the literature on explainability for pathology.
+
+% Regarding these individual methods, we find \textbf{counterfactual}-based approaches the most suitable for this type of diagnostic task, with a strong indication for their general applicability for xAI solutions in pathology. \textbf{Trust scores} were indicated to be an acceptable, and often expected, accompaniment to AI output. They should, however, be subject to the same scrutiny as any other explanation with regard to their capacity to mislead or instill over-confidence.
+
+% We suggest that in many diagnostic contexts, \textbf{saliency maps} may be at best redundant, and at worst confusing and/or misleading explanation modalities. While some more appropriate applications are put forward, it is strongly recommended that this modality be applied with caution. Likewise, \textbf{prototype}-based explanations, where overall results are supported by the prime (and therefore likely least controversial) examples of classes or types, carry the dangerous risk of instilling unsubstantiated trust in results, particularly in light of their apparent simplicity. While interesting potential applications for \textbf{concept attribution} are suggested, text-based implementations are indicated to be largely unsuitable for routine diagnostic work.
+
+% Above all else, this paper highlights the importance of close collaboration between ML experts, AI developers, UI/UX designers and end-users for the safe and effective development of trustworthy xAI applications for digital pathology.
+
+\section{Future work}
+\label{sec:FutureWork}
+
+% We suggest that the safest and most effective forms of explanation for AI solutions in pathology are those that are both analogous to familiar processes for the pathologist while honestly representing the decision-making processes and capabilities of the AI system. An example that stands out is the suggestion of an explanation-generating approach that points out those instances from the training dataset that were most relevant to a given result. This is both familiar to the pathologist, an analogue to the process of referring to past cases and reference material in justifying a decision, and remains true to the statistical methods underpinning the operation of neural networks.
+
+% A separate but related approach is in helping the pathologist make the best-informed diagnostic decisions, particularly for the outputs of specific AI solutions, by supporting them with rich, multi-modal data intuitively integrated into the digital workspace. This could include the automatic generation and smart display of structured annotations on slide data, automatic application of supportive AI solutions for feature detection, cross-referencing and highlighting conflicts in diagnostically relevant AI results.
+
+% It is above all the author's hope that this research serves as a good template for holistic, user-centric xAI research in pathology and further afield. There are many opportunities to validate and build upon these results, accounting for the limitations of this study. We recommend future studies to evaluate the responses of pathologists to real implementations of some of the explainability examples presented and/or suggested here in a realistic, interactive interface.

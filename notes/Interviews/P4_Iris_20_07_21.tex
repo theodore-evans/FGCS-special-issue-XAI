@@ -1,0 +1,52 @@
+09:05 Introduction
+I: Works in Pathology at Charite for 11 years, Facharzt. Not using AI in daily routine, put up in the future (AI collaboration, hear and read something)
+ 
+09:08 First Image
+I: Already using Ki67, but takes more time than I do. Some cells are not detected, but I like that I am given exact number
+
+09:12 Prototypes
+I: Helps me to decide whether I can trust generated annotations. More important to trust than to understand. Can see if my stain is not intense enough, but does not explain why so
+many cells are not marked. Positive results allows to proof quality of staining (align my staining with expected AI result). Compare my staining expectation to AI output, if that differs check - > what if my exp are wrong?
+
+09:20 Saliency Map - local
+I: Doesnt help me in any way. Have to get a quick answer. Helps me understand. Normally I need number, range, intensity, I only want to know if the nuclei is positive or negative, 
+not where it looks at. T: Where is it more suitable? I: When looking at cytoplasma, nuclei is not important fact, have to check if AI is getting right region and if intensity of positivity is right.
+
+09:25 Trust Scores
+I: I like that I can see what part of cell is counted. High confidence dont care, low confidence is good. Could I change threshold or correct result - staining is not the same every day.
+T: What would it take for AI solution to choose this threshold? I: No problem in general, but I am responsible for that result. I could always count manually.
+
+09:32 Concept Attribution
+I: Helps me understand factors, but I dont need that information - if AI is not looking at red channel intensity, it is bad - if I am working with it, I'd expect it to work that way.
+
+09:35 Counterfactuals
+I: I like that I can see most positive and negative result and threshold. Colleagues would lose time ...? For checking, I'd compare regular image with Ki67 and check for negative positives
+
+09:40 CF 2Axis
+I: It is good since too many unclassified cells falsify result. With that, I can check these unclassified results if stain and tissue are okay. 
+I: I prefer 1Axis since I dont have to think about unclassified results, provides a shortcut of image comparison.
+
+09:43 Conclusion
+T: Rate them wrt to usability I: CF1 and/or Prototypes. CF2Axis is also good. Then, trust score and local SM, CA least.
+I: Often, takes a day to digitize AI solutions. We are not allowed to overlook stuff
+T: What information would the AI solution have to communicate? I: AI is objective, I want it to communicate if there is something different.
+
+Notes:
+-likes exact number -> round number down to decrease confidence (according to our own confidence?)
+-More important to trust than to understand
+-show just the slides without annotations
+-Normally I need number, range, intensity
+-want to quickly get results of AI solution (as number) and check this with my expectation - dont want to understand what it looks at.
+-combine low confidence with prototypes
+-staining varies, adjustability is paramount, always compare against same sample?
+-Path expect AI to work, always show confidence metrics with score
+-show most unfamiliar image to prototypical example with high confidence?
+-show unclassified/low confidence proportion
+-generally, it is easy to check the work of the AI solution
+-use AI as extra set of eyes, if it agrees with me and it can flag me if I did something wrong. This would never reverse? since we can not not look at a slide - it is our job.
+-we have to look at all slides since tumor cells can appear in different slides, have to check all of them - sometimes it is a 1 in a million case which AI cant be trained for.
+
+Afterwards:
+-more complex annots are too complex for this task
+-Ki67 is a bad example for xAI since we understand how Ki67 works (red channel intensity)
+-AI as extra set of eyes

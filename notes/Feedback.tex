@@ -1,0 +1,113 @@
+When revising your manuscript, please consider all issues mentioned in the reviewers' comments carefully: please outline every change made in response to their comments and provide suitable rebuttals for any comments not addressed. Please note that your revised submission may need to be re-reviewed. 
+
+To submit your revised manuscript, please log in as an author at https://www.editorialmanager.com/fgcs/, and navigate to the "Submissions Needing Revision" folder.  
+
+Future Generation Computer Systems values your contribution and I look forward to receiving your revised manuscript.
+
+Kind regards,     
+Michela Taufer, Ph.D.   
+Editor-in-Chief  
+
+Future Generation Computer Systems
+
+Editor and Reviewer comments:
+
+
+
+MANAGING EDITOR:
+
+As stated by the reviewers this paper has merit and well fits the Special Issue
+I recommend the authors to carefully follow reviewers comments to improve the manuscript.
+Kind Regards
+
+
+
+Reviewer #1: The authors present a study evaluating a number of XAI approaches for digital pathology in healthcare. Overall, I am very positive to the paper. It targets an underserved but crucial research area, and does so with a well-crafted study with a solid discussion of the results leading to important insights for future efforts.
+
+There are a few things that I think need to addressed in a minor revision, but I think this can be achieved with little effort.
+
+1.1.  The highlights should be given a bit more nuance. While the full story is given in the main text, it is likely that the formulation of the highlights will be what is spread most from this work, so they need to be precise.
+- The first bullet appears a bit bold. I don't know of a dedicated XAI study with similar form to this one, but since there are XAI aspects in other work in digital pathology evaluations with pathologists, the statement of being "the first study" should be given more nuance.
+- The negative statement of salicency maps and prototypes is too far-reaching in my view. I agree that the results show that for this application and for the design choces made, those options are not good. But the results (as is discussed) does not rule them out for other situations. Besides, I consider trust scores also to have a high risk of leading to false trust (more about that below). The statement needs to be made more nuanced.
+- In the highlights, I miss having something from the generic discussion, not being tied to a specific XAI approach. I think one or two main conclusions are relevant to promote to this list.
+
+1.2.  There is one limitation I think should be more pronounced. Since the end result of a Ki-67 review is an region-of-interest aggregate percentage relating to a cut-off, the scrutiny of individual cell nuclei (which the XAI approaches focus on) would often be overkill in a clinical setting. While I still agree that for this study Ki-67 is a good application choice for many reasons, this limitation is important to understand - for instance when interpreting the responses to question 4 in the survey.
+
+1.3. I think the positive results for trust scores should be challenged a bit more in the discussion. The pathologists' underlying assumption when praising it is that the trust score itself can be trusted. Such a distinct concept as a seemingly exact number also gives the impression of being trustworthy. However, the trust score for a case that is out of distribution wrt to the training set is not trustworthy, i.e. potentially misleading. There is a risk here that is enhanced by the fact that the score is seemingly easy to grasp.
+
+1.4. Another discussion item that could be given more weight is the tendency to give high scores for approaches "doing the same that I do". This is natural, but you could argue that a more effective angle would be that XAI approaches should be "orthogonal" to what the human experts do/are good at. This mindset could potentially also address the antropomorphism challenge.
+
+Other minor change suggestions/errors:
+1.5 The paragraph with mathematical description of saliency maps reads as too high level of detail for this paper, especially compared to how other methods are described. Most of it could probably be removed. (And I was confused by the 'c' variable, is it used for two different things?)
+
+1.6. Section 2, "The goal of all these efforts..." - I would say that trust is one goal, but not the only goal. For instance, increasing diagnostic performance would be an overarching one. Also, "trust is the only mechanism..." seems too categorical, "...a key mechanism..." is perhaps better.
+
+1.7. The description of how the concept attribution used in the study was generated should be expanded.
+
+1.8. In 3.3 and 4.1, clarify the removal criteria for "extreme value" responses/participants.
+
+1.9. Figure 4: I would like to switch the likert scale to have "strongly agree" to the right. I may be wrong, but this orientation seems non-standard, and it would be good to be consistent with fig 3 as well.
+
+1.10. In 4.4.10, the "brochure" proposal seems to be identical to what was proposed in this paper, perhaps cite it: Sendak, Mark P., et al. "Presenting machine learning model information to clinical end users with model facts labels." NPJ digital medicine 3.1 (2020): 1-4.
+
+1.11. In 5.3, an unfinished sentence at the end of the seocnd paragraph.
+
+
+
+Reviewer #2: In this article authors demonstrated the need of explainable models in pathology domain, specifically in digital pathology applications. Digital pathology is gaining a lot of attraction recently and pathologists are beginning to get used to the digital tools that are provided. However, as the authors mentioned the acceptance from the pathologists is questioned most of the time. This resistance to new technology was handled in prior articles such as :
+
+- Tosun, Akif B., et al. "Explainable AI (xAI) for Anatomic Pathology." Adv Anat Pathol 27.4 (2020): 241-250.
+(this was not cited in the article, highly recommend authors to consider citing, already addresses some concerns mentioned in this manuscript (S4.4.10))
+
+The main reason of this resistance is the complexity of the deep learning algorithms (for a pathologist to digest) and unclear, not-practical outcomes of the software (created trust issues). Moreover, deep learning methods are mostly vulnerable to adversarial attacks, and this creates further doubt among pathologists, which was handled in this article:
+
+Foote, A. et al. "Now You See It, Now You Dont: Adversarial Vulnerabilities in Computational Pathology." ArXiv abs/2106.08153 (2021): n. pag.
+(this was also not cited in the article, highly recommend authors to consider citing, already addresses some concerns mentioned in this manuscript (S5.3))
+
+Overall, authors captured the problems in applying machine learning tools to digitized pathology images and provided possible solutions to overcome these problems. Article is well written and has merit (although lacks novelty as most of the issues are already been discussed in the literature)
+
+There are some other issues that authors should address below:
+
+2.1. Related work section is extensive but looses focus of the paper by hopping between subtopic. I recommend authors to shorten the related work, only keeping the direct relative work with their proposed approach. On the other hand, it looks incomplete when giving definitions of Saliency Maps (SM)  and Concept attribution (CA), but not even defining Counterfactuals (CF), Prototypes (PR),  and Trust scores (TS). Authors have to find the balance. Another example is the last paragraph of related work, which carries a topic out of nowhere related to the rest of the section.
+
+2.2. The experiment was conducted on a very odd scenario. the task of detecting positive cells should not need an explanation, however diagnosing an entire tissue section with a label should need an explanation.
+I would recommend authors to repeat the experiment with a more complex task, such as grading a prostate tissue sample, or staging a colon tissue sample, or diagnosing a breast duct.
+
+2.3. The negative side of showing explanations is not tested thoroughly in the study. In the questionnaire, authors should consider asking the participants, if the given explanations were too much (e.g., overwhelmingly too much information to parse) and it was time consuming to go through, etc.
+ 
+
+ 
+
+*****
+Data in Brief (optional):
+We invite you to convert your supplementary data (or a part of it) into an additional journal publication in Data in Brief, a multi-disciplinary open access journal. Data in Brief articles are a fantastic way to describe supplementary data and associated metadata, or full raw datasets deposited in an external repository, which are otherwise unnoticed. A Data in Brief article (which will be reviewed, formatted, indexed, and given a DOI) will make your data easier to find, reproduce, and cite.
+ 
+You can submit to Data in Brief when you upload your revised manuscript. To do so, complete the template and follow the co-submission instructions found here: www.elsevier.com/dib-template. If your manuscript is accepted, your Data in Brief submission will automatically be transferred to Data in Brief for editorial review and publication.
+ 
+Please note: an open access Article Publication Charge (APC) is payable by the author or research funder to cover the costs associated with publication in Data in Brief and ensure your data article is immediately and permanently free to access by all. For the current APC see: www.elsevier.com/journals/data-in-brief/2352-3409/open-access-journal
+ 
+Please contact the Data in Brief editorial office at dib-me@elsevier.com or visit the Data in Brief homepage (www.journals.elsevier.com/data-in-brief/) if you have questions or need further information.
+
+
+*****
+We invite you to submit a method article alongside your research article. This is an opportunity to get full credit for the time and money spent on developing research methods, and to increase the visibility and impact of your work. If your research article is accepted, we will contact you with instructions on the submission process for your method article to MethodsX. On receipt at MethodsX it will be editorially reviewed and, upon acceptance, published as a separate method article. Your articles will be linked on ScienceDirect.
+
+Please prepare your paper using the MethodsX Guide for Authors: https://www.elsevier.com/journals/methodsx/2215-0161/guide-for-authors  (and template available here: https://www.elsevier.com/MethodsX-template) Open access fees apply.
+
+
+
+More information and support 
+
+FAQ: How do I revise my submission in Editorial Manager? 
+https://service.elsevier.com/app/answers/detail/a_id/28463/supporthub/publishing/ 
+
+You will find information relevant for you as an author on Elsevier’s Author Hub: https://www.elsevier.com/authors 
+
+FAQ: How can I reset a forgotten password?
+        https://service.elsevier.com/app/answers/detail/a_id/28452/supporthub/publishing/kw/editorial+manager/
+
+For further assistance, please visit our customer service site: https://service.elsevier.com/app/home/supporthub/publishing/. Here you can search for solutions on a range of topics, find answers to frequently asked questions, and learn more about Editorial Manager via interactive tutorials. You can also talk 24/7 to our customer support team by phone and 24/7 by live chat and email. 
+
+#AU_FGCS#
+
+To ensure this email reaches the intended recipient, please do not delete the above code

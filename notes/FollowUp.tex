@@ -1,0 +1,61 @@
+Mentions in Interviews:
+-show what AI is using from training data, allow you to check whether they are really similar -> does it have all the characteristics?
+-statistical inferences on images based on the training set?
+
+Advantages:
+-give visualization for how solution is reaching output
+
+Do this by:
+-select example image by similarity to annotated region -> depends on similarity of images = good score?
+-we want: similar image from training that that contains same characteristics
+->find features within representation that model builds of image, find images with similar features from training set
+-> how do we determine their similarity?
+
+Requirements:
+-find image with similar features from training data for given image
+
+Have:
+-set of labelled training data
+-annotation for cells
+-Ki67 Pathonet CNN (https://www.nature.com/articles/s41598-021-86912-w)
+
+Overall Requirements:
+-have to have access for feature vectors (for determining similarity)
+-access for training images (to show Pathologist compared image) -> huge dataset
+
+Determining Similarity Ideas:
+1.high score for both images -> not conclusive, if we have 2 important features presence of either one could lead to high score
+
+2. Can we move up the layers (from first to last) to see where we have sufficient similarity? similar to what Theo proposed: find features within models and then find imageds from training data with similar featureset
+-update: comparing feature activation in second output layer?
++would be based on same features
+-requires access to layers
+
+3. or just image-based similarity? (statistical properties of pixel data)
++easy(ish), doesnt require access to the model
+-performance overhead of doing image comparison (though this might have become faster and could be alleviated with indexing?)
+-doesnt assure it is based on same features?
+
+4. Combine high score with image-similarity (hybrid approach)
++still easyish
++combines 2 aspect for less chance of chance similiarity
+-but there is still a chance
+
+Next steps:
+-how are features represented? -> Feature Maps (internally)
+
+Second approach would require:
+-indexing feature maps of training data samples
+-search across those for given input
+-feature vector similarity -> such as by euclidean distance, cosine similarity
+https://datascience.stackexchange.com/questions/78233/similarity-measure-between-two-feature-vectors
+-kinda like: https://towardsdatascience.com/visualizing-image-similarities-54d4aa3d27c3
+
+Third approach:
+-train CNN with TripletLoss for learning feature space for clustering/classification, then use SVM to actually classify and return (https://github.com/wesleylp/CPE775)
+
+
+CNN Background Paper Notes:
+-extract features by removing top output layer and use those features for other tasks
+-SSIM produces effective feature similarity measurement
+-> Field of Similarity Learning 

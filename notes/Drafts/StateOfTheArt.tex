@@ -1,0 +1,82 @@
+\section{State of the art/related work}
+\label{sec:related}
+
+% As concrete requirements for xAI applications, \cite{gunning2019darpa} formulates a framework for evaluating explanation effectiveness based on four criteria, namely user satisfaction (judged by clarity and utility), mental model of the xAI system (understanding and predicting decisions and assessing strengths and weaknesses), performance of user with xAI system at a given task (is the system actually helping the user performance) and trust assessment (can the user build trust in the system and evaluate future use). Correctability (the user can identify and correct model errors) can also be included as a bonus within the framework.
+
+
+% @Andreas and @Heimo, this would be a very valuable section to which to contribute. I have collected a number of references here, but there could be more. You have a good overview of related work in this field. The systematic review from Antoniadi et Al. 2021 (antoniadi2021current) is a particularly good resource...
+% TODO: State of the art regarding (user-centric) explainability (in general, medicine, pathology) \cite{antoniadi2021current}
+% TODO: Related work in assessing the quality of explanations \cite{HolzingerEtAl:2020:QualityOfExplanations; bodria_benchmarking_2021}
+% TODO: Related work in gathering user requirements for explainability \cite{wang_designing_2019; cai2019hello; liao2020questioning}
+
+% TODO: Regulatory landscape of AI in medicine and pathology @Tomasz
+% I am done for now, feel free to shorten or modify according to needs and requirements of the journal editors
+% I am back in August after the deadline.
+% Have fun!
+
+\subsection{The current regulatory landscape wrt. XAI in medical imaging for pathology }
+
+A plethora of regulations and norms accompanies the entrepreneurs, developers and supporting bodies and experts in paving a way towards implementation and translating their applications onto the marketable products \cite{DIN_DKE_Roadmap}. These circumstances are especially respected in medicine and the fields of development supporting it, like the producers of medical devices, diagnostic tests and procedures or laboratory equipment of any sort \cite{DIN_SPEC_13266} \cite{DIN_SPEC_13288}. Regarding the most complicated legal aspects, which combine high-level of responsibility related to intentional usage of AI solution, for instance in a medical diagnosis, it may lead to penalization, if the outcome will injury or cause a harmful consequences, inclusive a death, of a patient. This is also a complex landscape, where every day practice of a pathologist takes place and this is the reason why the AI solution a pathologists need, use and wish to have need to fulfill the strengthiest legal rules, respectful and implementable ethical principles and usable\cite{ISO_IEC_25010}, explainable \cite{arrieta2020explainable} \cite{HudecEtAl-2021-Interpretable} \cite{tjoa_survey_2020} and causable \cite{HolzingerEtAl:2020:QualityOfExplanations} implementation of AI algorithms, methods and tools.
+The norms and standards currently being developed \cite{EU_White} \cite{ISO_IEC_TR_29119-11} \cite{ISO_IEC_TR_24028} \cite{ISO_IEC_TR_24029-1} meet these requirements to a broad extent, however still do not cover current progress of technology and its implementation or application areas \cite{DIN_SPEC_92001-1} \cite{DIN_SPEC_92001-2}. The discrepancy between regulations in USA, Europe, UK where the respect of personal rights and data is seen the most and other countries or world market, where there is much less, little or simply no visible effort to secure the most basic rights of the citizens only complicate worldwide transfer of products and services to the patients. On the other hand contradicting rules and regulations set the costly services on the producers and result in often claimed over-regulation, slowing the progress down and cutting the profit off. 
+In this article we focus mostly on EU and D-A-CH (Germany, Austria and Switzerland) countries and we intend to provide a brief and quick overview of the up-to-date regulatory and legal work securing actions of pathologists in their every day efforts based on technological and computational support. Through this section we introduce the regulations for AI development, implementation, transfer to marketable products as diagnostic or theranostic devices and data protection.
+
+\subsubsection{Explainability and validation }
+
+% Adapted from text of the norm
+
+The norm DIN DKE German Standardization Roadmap on Artificial Intelligence \citet{DIN_DKE_Roadmap} is strongly focused on the the ability to validate the behavior of AI systems as prerequisite for their integration into safety-relevant products and as so, has enormous significance for application of AI in digital pathology. 
+Validation must be carried out in accordance with the state of the art of the pathology and methods of AI \cite{DIN_SPEC_13288}. While conventional knowledge of pathologist provide an intuition and experience, the AI field relies on numerical complex data and depends on its parameter space. In regard to digital pathology, both fields are still developing dynamically, so corresponding standards are always to be develop or updated. Thus, the state of the art is only implicitly defined and it is difficult to decide when validation is sufficient. On the other hand a new and timely tools for the continuous validation in a target-oriented way are required. In particular, continuous validation after market launch and through every day practice by the expert users should help to detect deviations from target behavior and identify potential for optimization.
+
+\subsubsection{Explainability supports validation.} 
+
+In order to be able to understand decisions of AI systems in terms of transparency and traceability, both aspects of the development (e.g. data and training methods used) and the execution (e.g. crucial characteristics) of the AI system must be considered. Benchmarks and metrics for the traceability and transparency of AI systems are of special importance and have to be carefully chosen or develop \cite{ISO_IEC_TR_24028} \cite{ISO_IEC_TR_29119-11}. They need to take into account the subjective validation or expert knowledge of the expert user, a pathologist. So far, there are no clear, sufficient and practice-oriented definitions for necessary usable interfaces of an AI system to the pathologist and co-workers team and to (another) AI system(s), especially if the environment of a digital pathology laboratory is considered and all aspects of usability, explainability and causability were to be covered.
+The increasing complexity and breadth of automated functions makes and a distant field of own expertise makes it difficult for a pathologist to distinguish early on between proper functioning on the one hand, and deviations that require intervention (training, tuning, extended or external validation) on the other. Since the decision of an automated system can be based on heterogeneous sensor data (scanner, microscope), external knowledge-based data (molecular pathology; NGS, liquid biopsy, multimodal sources, etc.), internal model calculations and networked data exchange, just to name a few sources, it is not immediately traceable to humans per se. Furthermore, a pathologist’s relationship to the system influences their ability to judge and their considered possibilities of intervention what brings an extra condition to be considered and modeled outside of the pure expert-knowledge used to train a tool.
+When an AI system gives the decision to a pathologist, the pathologist must know how, when and from which decisions the transfer is being made \cite{ISO_IEC_TR_24028}.
+
+\subsubsection{A need to promote research in digital pathology}
+
+When testing AI systems in the area of digital pathology, clear definitions of the test criteria, the test process, the test identity and the exact test contents forming the basis from which the test is developed are required. For the preparation of corresponding standardization, the following research tasks and their promotion are recommended in this respect: 
+\begin{itemize} 
+\item Research into the risk that systems to be tested are specifically optimized for tests, e.g. that AI systems are trained for singular situations and over-adapt to test contents (“learning by heart”, “over-fitting”) 
+\item Development of tests including dynamic test procedures which counteract the above-mentioned risk of optimization 
+\item Characterization of AI systems that are self-changing through learning in use and/or are used on changing data and multimodal sources; corresponding impact on continuous testing
+\end{itemize}
+
+During the concept phase it has to be defined whether the application to be created is created as a rule-based, static or dynamic AI module and which requirements result from the context of the application area, as well as the necessary data quality \cite{DIN_SPEC_92001-1} \cite{DIN_SPEC_92001-2}. For rule-based AI systems, the established software life cycle according to ISO/IEC/IEEE 12207, or for safety-critical systems also according to ISO 26262, ISO/IEC 27034 or IEC 61508, can be applied. A risk-based approach is necessary for static and dynamic AI systems \cite{DIN_ISO_31000}.
+
+AI quality metamodel of DIN SPEC 92001-1 \cite{DIN_SPEC_92001-1} - a project on risk management for AI is currently being carried out in ISO/IEC JTC 1/SC 42 under the number ISO/IEC 23894 \cite{ISO_IEC_23894}. In its current version, the document describes extensions of the generic guidelines from ISO 31000 \cite{DIN_ISO_31000} for AI-specific aspects. Risk management must continue to be complemented by impact assessment guidelines for the use of AI systems.
+
+Currently developed norms and standards will soon regulate the discussed aspects in more details, in terms of concept and terminology \cite{ISO_IEC_22989}, terminological framework for machine learning \cite{ISO_IEC_23053}, guidelines for the risk management for the development and use of AI systems \cite{ISO_IEC_23894}, governance implications of the use of artificial intelligence by organizations deals with organizational governance in connection with AI \cite{ISO_IEC_38507}, concepts and terminology relating to big data \cite{ISO_IEC_20546}, quality model for AI-based systems \cite{ISO_IEC_5059}, discussion of a bias in AI systems and AI aided decision making \cite{ISO_IEC_TR_24027} as well as overview of ethical and societal concerns \cite{ISO_IEC_TR_24368}. 
+
+A bunch of legal regulations to secure transfer of AI solution into an explainable marketable product is further provided for Europe (IVDR, MDR, GDPR) \cite{GDPR}, while independent legal regulations and guidelines rules in the UK and in the USA. A solution are provided also by NGOs like Bertelsmann Stiftung, which recently proposed a set of universal rules to deal with the problematics, called Algo rules \cite{Algo.rules}.
+
+% Tomasz end
+
+% SOA in UI/UX design @Carlo to contribute
+
+\subsection{HCI and xAI}
+
+xAI has deep links to Human Computer Interaction research, which has the goal of understanding and improving the communication between Computers and its users. The guidelines and general principles found by HCI research also apply to the design of xAI models, since both aim to facilitate interaction and understanding of technical systems for an end user.
+An approach that highlights this is proposed by \cite{holzinger2013human} as a joint approach of HCI and Knowledge Discovery (KDD) to combine human cognition with computational resources. Visualization is highlighted as central HCI method to gain insight into complex topics, enabling users to finding and understanding previously unseen patterns in large datasets. 
+
+Beyond visualization, usability heuristics such as developed by \cite{nielsen2005ten} give important pointers for xAI designers to orient themselves at. The aspects of speaking the users language pertains to the need for domain-specific language (as highlighted by \cite{arrieta2020explainable}), while consistency, minimizing memory load and feedback work hand in hand as goals that facilitate a successfull overall explanation. 
+
+As concrete requirements for xAI applications, \cite{gunning2019darpa} formulates a framework for evaluating explanation effectiveness based on four criteria, namely user satisfaction (judged by clarity and utility), mental model of the xAI system (understanding and predicting decisions and assessing strengths and weaknesses), performance of user with xAI system at a given task (is the system actually helping the user performance) and trust assessment (can the user build trust in the system and evaluate future use). Correctability (the user can identify and correct model errors) can also be included as a bonus within the framework.
+
+These factors are in line with the HCI approaches named above. Individual xAI approaches have to take these into account, and do it either explicitly or implicitly. CAMEL as presented in \cite{gunning2019darpa} takes HCI principles as well as cognitive systems engineering principles into account, allowing the user interaction with the interface to strengthen trust. 
+
+With regard to medical applications, further considerations have to be made. \cite{holzinger2017we} underscores the importance of understanding causality of xAI approaches in the medical context, requiring human-understandable explanations.
+
+In the direction of medical xAI, \cite{tosun_histomapr_2020} present the HistoMapr plattform, which implicitly incorporates some of the aspects of HCI design stated above. It provides a "Why" Button that gives explanations for different xAI features and presents found results ranked according to their importance (consistency) and uses classification labels in the language of the user group (speak the users language). The "Why" explanation shows key findings and a confidence score of the suggested label with a textual justification for it. 
+
+% TODO: Conclusion and bridge @Theo
+Conclude with 5 classes of xai approaches we compare, and which are the aspects we want to investigate (intuitiveness, factors relevant to algorithm, evaluate whether I can trust annotations, provides valuable information). bridge to Case study design
+
+%LSA Konferenz 16.06.2021 Normalisierung von KI mit Anwendung im medizinischem Bereich
+%LSA 2020 im EMPAIA NextCloud
+
+%The current SOA in UI/UX design for AI, \citet{tosun_histomapr_2020} an example \citet{wang_designing_2019} guidelines
+%Compare old UI principles, link with need to human in control as per regulations. AI is not integrated into old HCI, need a new UI principles for AI.
+%regulatory aspects for UI/UX design? references for UI norms for transparency of AI systems, evaluate specific methods being applied
+%->in which factors are pathologists even interested? Probably not very much into fine points of the AI evaluation, but rather about the medicinal statistics/facts 
+
