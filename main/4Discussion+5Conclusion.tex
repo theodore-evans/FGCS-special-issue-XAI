@@ -73,9 +73,9 @@ Alongside explainability, the traceability and credibility of data and quality a
 
 % >> integration: exploration of decision space, must be something there. target group of explanations, Arrieta has some work here, many more xAI approaches applicable to developers vs users zB
 
-Our findings support the assessment of \citet{miller2019explanation} that the effect of cognitive and social biases strongly affects human interactions with xAI systems. In particular, the hypothesis that humans will tend to ascribe human-like traits to explainable AI systems (cited from prior work by \citet{de2017people}) clearly manifests in our study. This emphasises the importance of designing xAI systems that identify, mitigate, or even take advantage of, such biases and predispositions.
+Our findings strongly support the observation that social and cognitive biases strongly affect human interactions with xAI systems~\cite{miller2019explanation, jussupow2021augmenting}, and that an important aspect of this is the tendency to ascribe human-like traits to explainable AI systems~\citet{de2017people, miller2019explanation}. This emphasises the importance of designing xAI systems that identify, mitigate, and even take advantage of, such biases and predispositions.
 
-The sources and effects of bias identified in our study support many of the observations and strategies for user-centric xAI systems proposed by \citet{wang_designing_2019}. It should be noted that, while these guidelines were theory driven, we have reached many of the same conclusions based on purely empirical findings, lending valuable credibility to this prior work.
+The sources and effects of bias evident in our study support many of the observations and strategies for user-centric xAI systems proposed by \citet{wang_designing_2019}. It should be noted that, while these guidelines are theory-driven, we have reached many of the same conclusions based on purely empirical findings, lending credibility to this prior work.
 
 % These include
 % - static explanations beg their own questions of transparency
@@ -85,7 +85,7 @@ The sources and effects of bias identified in our study support many of the obse
 % - prototypes that sample over the configuration of a class, indicating common features uniting a cluster
 % - prototypes that show centroids of nearby clusters (and therefore lay close to the decision boundary between the two)
 
-In addition to the role of explainability in building pathologist trust in AI systems, the need to complement such implementations with clear and accessible data transparency was reinforced. The manifestation of this identified as desirable by users is strongly reminiscent of the ``model facts" label proposed by\cite{sendak2020presenting}: A summary of the model, validation and performance metrics, as well as uses and warnings, presented in standardised and accessible language. Beyond these desiderata, pathologists in our study emphasised the importance of understanding sources of model training data: in particular with regards to the credibility and variety of expert annotators.
+In addition to the role of explainability in building pathologist trust in AI systems, the need to complement such implementations with model and data transparency was reinforced. The implementation of this suggested by users is reminiscent of the ``model facts" label proposed by\cite{sendak2020presenting}, containing: A summary of the model, training and inference methods, validation and performance metrics, as well as uses and warnings, all presented in standardised and user-accessible language. Beyond these desiderata, pathologists in our study emphasised the importance of understanding sources of model training data: in particular with regards to the credibility and variety of expert annotators.
 
 Our study was motivated in large part by the predominance of algorithmic (rather than user-centric) approaches to xAI in the state of the art~\cite{tjoa_survey_2020, poceviciute_survey_2020, antoniadi2021current}. We agree with the observation of \citet{miller2019explanation} that most of this work ``uses only the researchers' intuition of what constitutes a ‘good’ explanation''. While studies to identify user requirements for explainability represents a marked improvement on this, our findings underline the importance of the extra step we have taken: evaluating user interactions with potential xAI approaches directly.
 
@@ -93,20 +93,39 @@ Specifically, our study implies some difficult-to-avoid conflicts that may arise
 
 \subsubsection{Cognitive load vs. Positive confirmation bias}
 
-One of these, An inherent conflict between reducing cognitive load and introducing misleading bias
-SUCH THAT
-making explanations simple means that every detail left out of an explanation is subject to speculation | a gap to liable to be 'filled in' by the user, inevitably according to their own expectations and understanding
-- and this is even observable with explanations not designed to reveal causality (e.g. TS)
+The time pressure on pathologists during routine examination places a high burden on AI systems and their explainable counterparts to provide UI elements that introduce minimal cognitive load. Preferences expressed by users in this study were for simple, visual elements, with the simplest explanation candidates (prototypes) being considered the most intuitively understandable, and in many cases, the most readily accepted.
+
+% can't get wording for start of paragraph:
+However, it was evident in this study that every detail omitted from an explanation, whether for the sake of simplicity or due to inherent limitation, is an opportunity for speculation. That is to say, that any gaps or ambiguities in the information presented to the user are liable to be ``filled in'' according to their own expectations and understanding. This introduces a strong risk of confirmation bias, whereby a user is lulled into a false sense of security by reassuring explanations that underdetermine the factors important for a model output. 
+
+% One of these, An inherent conflict between reducing cognitive load and introducing misleading bias
+% SUCH THAT
+% making explanations simple means that every detail left out of an explanation is subject to speculation | a gap to liable to be 'filled in' by the user, inevitably according to their own expectations and understanding
+% - and this is even observable with explanations not designed to reveal causality (e.g. TS)
 
 \subsubsection{Relatability vs. Anthropomorphism}
 
-making explanations relatable -- i.e. "speak the language of the user" -- risks implying human-like reasoning of AI systems that work very differently AND make explanations too reliant on user intuition, therefore easy to digest but with implicit, potentially ambiguous / misleading informational content
+The expectation of relatable explanations, or rather, of explanations that represent relatable AI reasoning, presents a similar challenge. 
 
-\subsubsection{The Ian Malcolm principle}
+making explanations relatable -- i.e. "speak the language of the user" -- risks implying human-like reasoning of AI systems that work very differently AND make explanations too reliant on user intuition, therefore easy to digest but with implicit, potentially ambiguous / misleading informational content. 
 
-% ``preoccupied with whether or not they could that they didn't stop to think if they should.''
+The most honest explanations of AI outputs are abstract, reflecting the abstraction from human-like causal reasoning that the current generation of machine learning techniques employ.
 
-there may be many more algorithmic approaches for xAI. These may all be useful for raising red flags, with this principle already justifying much of the research landscape but in light of the potential for unintended consequences (see 2 and 3), it is important to weigh their inclusion into AI systems carefully -- particularly wrt the fact that these red flags should already have been raised?
+Address both from xAI design and from a free exchange of domain knowledge between machine learning experts and the potential users of AI systems. 
+
+\subsubsection{The Malcolm principle}
+
+there may be many more algorithmic approaches for xAI. As demonstrated in our findings, a broad range of these may all be useful for raising red flags. Indeed, this rationale for xAI solutions already serves to much of the research landscape (cite Clever Hans problem). Given the mounting pressure, in the domains of medical decision support and more generally, to `add explainability' to AI systems, there is the risk that such methods are integrated without taking into consideration unforeseen second-order effects
+
+In the development and integration of such techniques, 
+
+but in light of the potential for unintended consequences, it is important to weigh inclusion of explainability elements into AI systems carefully, and to work in close loop with users, whose feedback should be moderated by cognitive and social perspectives. 
+
+with this in mind, we remind AI developers of the criticism of Dr. Ian Malcolm: do not be so preoccupied with whether or not you can that you do not stop to think whether you should.
+
+% If, through this process, no balance can be found between the usability of xAI solutions and the potential sources of bias they may incur, it may be a sign that either explainability is inappropriate for this case, or that a more fundamental redesign of the system is in order. The takeaway message here being, that it is not possible to `add explainability' in as an afterthought to AI development (as is, in the experience of the authors, often the case). Rather, that the informational content and communication modality required for the user of an AI system, in order that they are able to take the best decision possible, are considerations that must be built into the development from step one. >> conclusion
+
+and to continue looking to the users, as well as cross-disciplinary motivations for new approaches to explanation-generation.
 
 THEREFORE (-> conclusion)
 
@@ -118,9 +137,11 @@ WITH THE PROVISO: that the lack of of 'sweet spot' in this balance could be a fu
 
 THEREFORE
 it is better to be explicit than implicit
-if a sufficiently explicit explanation is too detailed to be useful, it could be an indicator that a) explanation is not required or b) more fundamental measures are needed to mitigate misleading users (e.g. training, revising ai output, etc.)
-AND
-it is extremely important for xAI to be designed with a strong emphasis on HCI and user feedback
+just because you can, doesn't mean you should
+decisions about the content and modality of information communicated with the user should be a first class citizen in AI design
+% if a sufficiently explicit explanation is too detailed to be useful, it could be an indicator that a) explanation is not required or b) more fundamental measures are needed to mitigate misleading users (e.g. training, revising ai output, etc.)
+xAI to be designed with a strong emphasis on the social and cognitive aspects of user interaction, with user feedback taken through this lens
+
 
 % We believe that the preference demonstrated by pathologists in our findings for some explanation classes over others can, to a certain extent, be taken at face value. However, our findings also imply various second-order and unintended effects associated with particular examples that should be considered when interpreting their order of preference. 
 
