@@ -96,7 +96,7 @@ Specifically, our study implies some difficult-to-avoid conflicts that may arise
 The time pressure on pathologists during routine examination places a high burden on AI systems and their explainable counterparts to provide UI elements that introduce minimal cognitive load. Preferences expressed by users in this study were for simple, visual elements, with the simplest explanation candidates (prototypes) being considered the most intuitively understandable, and in many cases, the most readily accepted.
 
 % can't get wording for start of paragraph:
-However, it was evident in this study that every detail omitted from an explanation, whether for the sake of simplicity or due to inherent limitation, is an opportunity for speculation. That is to say, that any gaps or ambiguities in the information presented to the user are liable to be ``filled in'' according to their own expectations and understanding. This introduces a strong risk of confirmation bias, whereby a user is lulled into a false sense of security by reassuring explanations that underdetermine the factors important for a model output. 
+However, it was evident in this study that every detail omitted from an explanation, whether for the sake of simplicity or due to inherent limitation, is an opportunity for speculation. That is to say, that any gaps or ambiguities in the information presented to the user are liable to be ``filled in'' according to their own expectations and understanding. This introduces a strong risk of confirmation bias, whereby a user is lulled into a false sense of security by explanations that underdetermine the factors important for a model output. 
 
 % One of these, An inherent conflict between reducing cognitive load and introducing misleading bias
 % SUCH THAT
@@ -113,7 +113,7 @@ The most honest explanations of AI outputs are abstract, reflecting the abstract
 
 Address both from xAI design and from a free exchange of domain knowledge between machine learning experts and the potential users of AI systems. 
 
-\subsubsection{The Malcolm principle}
+\subsubsection{Human-computer interaction as first-class citizen}
 
 there may be many more algorithmic approaches for xAI. As demonstrated in our findings, a broad range of these may all be useful for raising red flags. Indeed, this rationale for xAI solutions already serves to much of the research landscape (cite Clever Hans problem). Given the mounting pressure, in the domains of medical decision support and more generally, to `add explainability' to AI systems, there is the risk that such methods are integrated without taking into consideration unforeseen second-order effects
 
@@ -121,7 +121,7 @@ In the development and integration of such techniques,
 
 but in light of the potential for unintended consequences, it is important to weigh inclusion of explainability elements into AI systems carefully, and to work in close loop with users, whose feedback should be moderated by cognitive and social perspectives. 
 
-with this in mind, we remind AI developers of the criticism of Dr. Ian Malcolm: do not be so preoccupied with whether or not you can that you do not stop to think whether you should.
+With regards to the development and integration of explainability into AI systems, we urge developers to consider the cautionary words of Dr. Ian Malcolm: to not be so preoccupied with whether or not you can, that you do not stop to think whether you should~\cite{crichton1991jurassic}.
 
 % If, through this process, no balance can be found between the usability of xAI solutions and the potential sources of bias they may incur, it may be a sign that either explainability is inappropriate for this case, or that a more fundamental redesign of the system is in order. The takeaway message here being, that it is not possible to `add explainability' in as an afterthought to AI development (as is, in the experience of the authors, often the case). Rather, that the informational content and communication modality required for the user of an AI system, in order that they are able to take the best decision possible, are considerations that must be built into the development from step one. >> conclusion
 
@@ -137,10 +137,10 @@ WITH THE PROVISO: that the lack of of 'sweet spot' in this balance could be a fu
 
 THEREFORE
 it is better to be explicit than implicit
-just because you can, doesn't mean you should
-decisions about the content and modality of information communicated with the user should be a first class citizen in AI design
+just because you can, doesn't mean you should!
+content and modality of information communicated to the user should be a first class citizen in AI system design
 % if a sufficiently explicit explanation is too detailed to be useful, it could be an indicator that a) explanation is not required or b) more fundamental measures are needed to mitigate misleading users (e.g. training, revising ai output, etc.)
-xAI to be designed with a strong emphasis on the social and cognitive aspects of user interaction, with user feedback taken through this lens
+xAI to be designed with a strong emphasis on the social and cognitive aspects of user interaction, with user preferences and feedback also viewed through this lens
 
 
 % We believe that the preference demonstrated by pathologists in our findings for some explanation classes over others can, to a certain extent, be taken at face value. However, our findings also imply various second-order and unintended effects associated with particular examples that should be considered when interpreting their order of preference. 
