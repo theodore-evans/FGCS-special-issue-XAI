@@ -6,11 +6,6 @@ This paper set out to answer the following research questions:
 
 \researchquestions
 
-% \begin{enumerate}
-%     \item How are examples of prominent xAI approaches interpreted and evaluated by pathologists in the context of a a common AI-assisted diagnostic task.
-%     \item What can these interpretations tell us about the strengths, limitations and risks associated with different classes of explanation, and with explanations in general.
-% \end{enumerate}    
-
 To address these questions, we invited pathologists from research and clinical practice to take part in an online questionnaire, along with six semi-structured video interviews. These pathologists were presented with examples from five prominent categories of xAI approach, each having the goal of explaining the result of a sample AI solution, and asked to rate and/or discuss their interpretations and the usability of each. 
 
 \subsection{Interpretation of findings}
@@ -104,7 +99,7 @@ This is particularly challenging with respect to the user preference for \textit
 
 For instance, the simple \texit{high confidence / low confidence} trust scores featured in this study are accessible to users due to the inherent analogy to a pathologist's own confidence in their annotations and assessments. The intuitive understandability of such a trust score, based upon an implicit correspondence between these indicators, has the potential to be dangerously misleading. While more nuanced approaches exist for generating trust scores that are not based solely on the model's own (biased) assessment of confidence, when presented through a simple and intuitive interface, as per user preference, it is difficult to ensure that the factors that it truly represents align with the hidden priors of the user.
 
-This strongly implies the importance of xAI that is explicit in the information conveyed to the user. An example of a trust score adhering to this could be an aggregation of many different factors, available on demand, where each factor has a clear and interpretable meaning: The data is out of distribution for the model, the image quality is too low, conflicting features were detected, etc. 
+This strongly implies the importance of xAI approaches that are explicit in the information they convey to the user. A trust score better following this principle might be a aggregation of many different factors, available on demand, where each factor has a clear and interpretable meaning: E.g. the data is out of distribution for the model, the image quality is too low, conflicting features were detected, etc.
 
 \subsubsection{Relatability vs. Anthropomorphism}
 
@@ -154,7 +149,14 @@ In this work, a representative set of xAI approaches to AI-assistance in digital
 
 To date, there have been no end-user oriented studies of xAI applications in the domain of digital pathology. Aside from extensive reviews of the technical landscape~\cite{yang2021unbox, poceviciute_survey_2020}, first steps have been made in the direction of exploring the explainability needs of medical practitioners~\cite{liao2020questioning,cai2019hello,wang_designing_2019}. The novelty of our approach is in the qualitative evaluation of candidate xAI approaches with real expert end-users. Only through such user- and application-grounded studies can such second-order effects as those demonstrated in our findings be revealed and substantiated with empirical findings.
 
-Namely, the results of this study imply challenging balances to strike between the perceived explainability requirements of AI users and the sources of bias that these may be liable to introduce. On the one hand, our findings demonstrate the preference of pathologists for simple visual explanations that mirror their way of thinking and integrate cleanly with their diagnostic workflow. On the other, they suggest dangers associated with explanations that are overly appealing in their simplicity, or allow for too much ambiguity in their interpretation.
+Namely, the results of this study imply challenging balances to strike between the perceived explainability requirements of AI users and the sources of bias that these may be liable to introduce. On the one hand, our findings demonstrate the preference of pathologists for simple visual explanations that mirror their way of thinking and integrate cleanly with their diagnostic workflow. On the other, they suggest dangers associated with explanations that are overly appealing in their simplicity, or allow for too much ambiguity in their interpretation. 
+
+This is important with regard to the current landscape of xAI research, wherein a large number of algorithmic approaches to `adding explainability' have been developed, based predominantly on researchers' intuition of what users might need. While these technical contributions are valuable, it is important to carefully consider the implications and second-order effects of integrating such approaches into AI systems as afterthoughts. We rather urge developers that the content, modality and purpose of information communicated to the user through xAI elements, as with with any other component of the user interface, be considered in the AI development process from day one.
+
+Where elements of explainability are determined to be a necessary component of AI systems, these should rather be explicit than implicit, even if this conflicts with the preferences of users. Where this conflict cannot be easily resolved, it may be an indicator that a more fundamental review of the AI system, and its interaction with the user, is necessary. Alternatively or in addition, it may be that additional training and support for the user may be required for its safe use. 
+
+% With respect to this trend, we urge developers to consider the cautionary words of Dr. Ian Malcolm: to not be so preoccupied with whether or not you can, that you do not stop to think whether you should~\cite{crichton1991jurassic}. 
+
 % THEREFORE
 
 % by making explanations simple and/or intuitively relatable, we leave degrees of freedom open to interpretation, we risk reinforcing the idea that the user's understanding can be projected onto the AI system and/or introducing positive confirmation bias 
@@ -164,23 +166,16 @@ Namely, the results of this study imply challenging balances to strike between t
 % WITH THE PROVISO: that the lack of of 'sweet spot' in this balance could be a function of the use case chosen, demonstrating that explanations really are redundant for this task (interesting as a result, and as a methodology?)
 
 % THEREFORE
-We therefore it is better to be explicit than implicit
-just because you can, doesn't mean you should!
-content and modality of information communicated to the user should be a first class citizen in AI system design
-
-
-% In our experience, there is a trend to `add explainability' as an afterthought to AI development. With respect to this trend, we urge developers to consider the cautionary words of Dr. Ian Malcolm: to not be so preoccupied with whether or not you can, that you do not stop to think whether you should~\cite{crichton1991jurassic}. It may be the informational content and communication modality required for the user of an AI system, in order that they are able to take the best decision possible, are considerations that must be built into the development from step one.
+% Therefore therefore it is better to be explicit than implicit
+% just because you can, doesn't mean you should!
+% content and modality of information communicated to the user should be a first class citizen in AI system design
 
 % axAI is cross-disciplinary and requires cross-disciplinary research and development
   
 % If, through this process, no balance can be found between the usability of xAI solutions and the potential sources of bias they may incur, it may be a sign that either explainability is inappropriate for this case, or that a more fundamental redesign of the system is in order. The takeaway message here being, that it is not possible to `add explainability' in as an afterthought to AI development (as is, in the experience of the authors, often the case). Rather, that the informational content and communication modality required for the user of an AI system, in order that they are able to take the best decision possible, are considerations that must be built into the development from step one. >> conclusion
 
-xAI to be designed with a strong emphasis on the social and cognitive aspects of user interaction, with user preferences and feedback also viewed through this lens
 
-% We believe that the preference demonstrated by pathologists in our findings for some explanation classes over others can, to a certain extent, be taken at face value. However, our findings also imply various second-order and unintended effects associated with particular examples that should be considered when interpreting their order of preference. 
-
-
-There is fertile ground for further cross-disciplinary studies of this type. In particular, empirical studies of user interaction with explainability elements embedded into more true-to-life workflow would provide valuable insights . Elements of such research apparata for digital pathology might include real AI results, displayed within a fully interactive slide viewer, featuring interactive xAI components. This immersive research environment would also be augmented with gaze tracking and bio-monitoring technology in order to collect rich quantitative data on user attention and response. 
+There is fertile ground for further cross-disciplinary studies of this sort. In particular, empirical studies of user interaction with explainability elements embedded into more true-to-life workflow would provide valuable insights . Elements of such research apparata for digital pathology might include real AI results, displayed within a fully interactive slide viewer, featuring interactive xAI components. This immersive research environment would also be augmented with gaze tracking and bio-monitoring technology in order to collect rich quantitative data on user attention and response. 
 
 Our findings also imply important future work in their application to xAI research and development. Safe and effective forms of xAI will balance usability against the fidelity with which they represent the decision-making processes and capabilities of an AI system. This this end, we suggest two avenues for investigation. 
 
@@ -188,6 +183,4 @@ The parallel approach: Explainability elements based on components of the AI dec
 
 The orthogonal approach: Develop explainability approaches based upon the components of AI decision-making process identified to have as little in common with human reasoning as possible. Deliberate selection of human-\textit{un}relatable aspects of AI inner workings may help to mitigate the effects described by this study, whilst setting up more realistic (and therefore robust) expectations of AI systems by their users. 
 
-This second approach runs the risk of alienating users by emphasising the \textit{otherness} of the AI system, and will likely additional training, support and acclimation for users. However, this be a bitter pill to swallow in an ultimately more sustainable long-term strategy for xAI. After all, it is precisely these aspects of machine intelligence, the ones that diverge most strongly from human reasoning, that underpin the potential for synergy in human-AI cooperation.
-
-% Motorwarnleuchte
+This second approach runs the risk of alienating users by emphasising the \textit{otherness} of the AI system, and will likely additional training, support and acclimation for users. However, this be a bitter pill to swallow for a more sustainable long-term xAI strategy. After all, it is precisely these aspects of machine intelligence, the ones that diverge most strongly from human reasoning, that underpin the potential for synergy in human-AI cooperation.
