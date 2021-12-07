@@ -19,6 +19,8 @@ The study context was chosen to be narrow enough to allow for a meaningful appli
 
 The participants in the study placed a high value on the simplicity of explanation methods. While this could be understood in terms of a general user preferences, it is important to view this in the context of the pathologists' fast-paced routine workflow. In this setting, saving time was considered to be the most valuable benefit of AI assistance. Explanations involving complex interface elements, and therefore requiring additional scrutiny, may serve to undermine this purpose. The preference for visual explanations can also be seen in this light, with the introduction of different modalities into the primarily visual workflow imposing unwanted additional cognitive load.
 
+% For example, the two-factor counterfactual explanation was deemed to provide more valuable information than the simpler, one-factor case, but less desirable due to its added complexity. 
+
 % >> implications: in conjunction with other points > conflict
 
 With respect to the usability of explanation methods, a broad range of modalities were identified as useful \textit{sanity checks} -- i.e. those flagging instances of the AI doing something `clearly wrong'. Many situations were identified where it would be straightforward for an explanation to discredit the AI system, for example: 
@@ -39,9 +41,9 @@ In comparison, explanations providing users with a more nuanced understanding of
 
 Moreover, participants showed a clear propensity to ascribe relatable (both human- and pathologist-like) causal reasoning to the AI system in order to try and understand the explanations presented. This was particularly noteworthy in examples that were not intended to convey such information. For example, the inference of causal factors determining high and low trust scores was readily used as a basis for perceived trustworthiness of results -- in the vein of ``the AI seemed to have the same difficulties that I would''.
 
-This tendency was recognised as introducing significant risk of bias, particularly as a function of the omission or ambiguity of information presented by explanations. %This effect was emphasised in cases where participants made questionable inferences about the reasoning capabilities of the AI system based on the ambiguous explanation presented. Only during discussion of these results (and in some cases, not at all) were the errors in reasoning identified -- errors that that may have passed unnoticed in a real-world situation. 
+This tendency was recognised as introducing significant risk of bias, particularly as a function of the omission or ambiguity of information presented by explanations. This was evident in cases where participants themselves made questionable inferences about the reasoning capabilities of the AI system based on the ambiguous explanation presented. Often it was only during discussion of these results (and in some cases, not at all) that these errors were identified -- errors that that may have passed unnoticed in a real-world situation. 
 
-For example
+For example:
 
 \begin{itemize}
     \item Saliency maps that highlight diagnostically relevant regions, whilst leaving unclear which features caused those regions to be relevant
@@ -53,9 +55,9 @@ The tendency for positive confirmation bias was particularly notable when explan
 % >> integration: something from the HCI/social/cognitive research on xAI
 % >> implications: conflict, risk postive confirmation bias
 
-Another trust-building element in interaction between pathologist and xAI system was the ability to `get to know' an AI system: To explore its limitations and quirks, with explanation=generating mechanisms providing an interface surface for this interaction. This \textit{trial period} was identified as an essential component in the building of pathologists' trust in AI systems. 
+Another trust-building element in interaction between pathologist and xAI system was the ability to `get to know' an AI system: To explore its limitations and quirks, with explanation-generating mechanisms providing an interface surface for this interaction. This \textit{trial period} was identified as an essential component in the building of pathologists' trust in AI systems. 
 
-The flavour of this interaction varied with attitude toward the role of AI in diagnostic decision-making. Pathologists who were open to the potential of AI systems to play a collaborative role with their users expected explanations to enable them to probe their capabilities like they would a trainee or colleague. On the other hand, those considering AI assistance more as in the way of a `dumb machine' tended to treat explainability elements as an interface for manual adjustment of AI results.
+The flavour of this interaction varied with attitude toward the role of AI in diagnostic decision-making. Pathologists who were open to the potential of AI systems to play a collaborative role with their users expected explanations to enable them to probe their capabilities like they would a trainee or colleague. On the other hand, those considering AI assistance more as in the way of a `dumb machine' tended to treat explainability elements as an interface for manual adjustment of AI results -- for example, the counterfactual explanation used as an interface for adjust the AI decision boundary, rather than simply a visualisation of it.
 
 % >> integration: ? attitudes to AI
 % >> implications: interactivity
@@ -96,8 +98,9 @@ Specifically, our study implies some difficult-to-avoid conflicts that may arise
 The time pressure on pathologists during routine examination places a high burden on AI systems and their explainable counterparts to provide UI elements that introduce minimal cognitive load. Preferences expressed by users in this study were for simple, visual elements, with the simplest explanation candidates (prototypes) being considered the most intuitively understandable, and in many cases, the most readily accepted.
 
 % can't get wording for start of paragraph:
-However, it was evident in this study that every detail omitted from an explanation, whether for the sake of simplicity or due to inherent limitation, is an opportunity for speculation. That is to say, that any gaps or ambiguities in the information presented to the user are liable to be ``filled in'' according to their own expectations and understanding. This introduces a strong risk of confirmation bias, whereby a user is lulled into a false sense of security by explanations that underdetermine the factors important for a model output. 
+However, we find that every detail omitted from an explanation, whether for the sake of simplicity or due to inherent limitation, is an opportunity for user speculation. That is to say, that any gaps or ambiguities in the information presented to the user are liable to be ``filled in'' according to their own expectations and understanding. This introduces a risk of confirmation bias in explanations that underdetermine the factors important for a model output, which in turn runs the risk of lulling users into a false sense of confidence in the AI system to which they pertain.
 
+% The same conflict applies to explanations designed to be intuitive to the user. Explanations that rely upon on user intuition. Such explanations may be easy to digest, whilst contain potentially ambiguous, or even misleading, implicit content. >> example??
 % One of these, An inherent conflict between reducing cognitive load and introducing misleading bias
 % SUCH THAT
 % making explanations simple means that every detail left out of an explanation is subject to speculation | a gap to liable to be 'filled in' by the user, inevitably according to their own expectations and understanding
@@ -107,41 +110,47 @@ However, it was evident in this study that every detail omitted from an explanat
 
 The expectation of relatable explanations, or rather, of explanations that represent relatable AI reasoning, presents a similar challenge. 
 
-making explanations relatable -- i.e. "speak the language of the user" -- risks implying human-like reasoning of AI systems that work very differently AND make explanations too reliant on user intuition, therefore easy to digest but with implicit, potentially ambiguous / misleading informational content. 
+By making explanations relatable -- i.e. by ``speaking the language of the user'' -- xAI developers risk implying human-like reasoning of AI systems. There is much research that demonstrates the fundamental differences between the way in which human beings and modern machine learning systems process visual information~\cite{geirhos2020shortcut}. Therefore, this implication may dangerously misrepresent the capabilities of AI systems.
 
-The most honest explanations of AI outputs are abstract, reflecting the abstraction from human-like causal reasoning that the current generation of machine learning techniques employ.
 
-Address both from xAI design and from a free exchange of domain knowledge between machine learning experts and the potential users of AI systems. 
+
+% The most honest explanations of AI outputs are abstract, reflecting the abstraction from human-like causal reasoning that the current generation of machine learning techniques employ.
+
+% Address both from xAI design and from a free exchange of domain knowledge between machine learning experts and the potential users of AI systems. 
 
 \subsubsection{Human-computer interaction as first-class citizen}
+% DRAFT
+there may be many more algorithmic approaches for xAI. 
 
-there may be many more algorithmic approaches for xAI. As demonstrated in our findings, a broad range of these may all be useful for raising red flags. Indeed, this rationale for xAI solutions already serves to much of the research landscape (cite Clever Hans problem). Given the mounting pressure, in the domains of medical decision support and more generally, to `add explainability' to AI systems, there is the risk that such methods are integrated without taking into consideration unforeseen second-order effects
+As demonstrated in our findings, a broad range of these may all be useful for raising red flags. Indeed, this rationale for xAI solutions already serves to much of the research landscape (cite Clever Hans problem). Given the mounting pressure in many domains, digital pathology included, to `add explainability' to AI systems, there is the risk that methods are integrated without taking into consideration unforeseen second-order effects. 
 
 but in light of the potential for unintended consequences, it is important to weigh the inclusion of explainability elements into AI systems carefully, and to work in a close loop with users, whose feedback should be moderated by cognitive and social perspectives. 
 
-With regards to the development and integration of explainability into AI systems, we urge developers to consider the cautionary words of Dr. Ian Malcolm: to not be so preoccupied with whether or not you can, that you do not stop to think whether you should~\cite{crichton1991jurassic}.
+% With regards to the development and integration of explainability into AI systems, we urge developers to consider the cautionary words of Dr. Ian Malcolm: to not be so preoccupied with whether or not you can, that you do not stop to think whether you should~\cite{crichton1991jurassic}.
 
 and to continue looking to the users, as well as cross-disciplinary motivations for new approaches to explanation-generation.
   
 \subsection{Limitations}
 
-% Due to the limited availability of qualified pathologists to take part in research, particularly those involved in routine diagnostic work, only a relatively small sample size of 25 questionnaire respondents and six interview participants was reached. While this sample size does not enable strong statistical conclusions to be drawn, we believe that it allows a representative overview of the target audience, particularly given the qualitative nature of the findings presented. >> due to the small sample size, some aspects may have been overrepresented, while others overlooked
+Due to the limited availability of qualified pathologists to take part in research, particularly those involved in routine diagnostic work, the study was conducted on a small sample of 25 questionnaire respondents and six interview participants, with some overlap between these groups. We suggest that the study's lack of statistical does not undermine the validity of its qualitative findings. The authors nonetheless acknowledge that some effects demonstrated may be either over- or under-represented due to unsampled variability within the target population. 
 
-% Given the limited availability of pathologists, the research apparatus was designed with brevity in mind. The resulting xAI examples were therefore simplified and mostly static. This deviates significantly from the expected user experience of a pathologist in a diagnostic workflow. A similar study framed within a more representative and immersive user experience would provide valuable insights, whilst significantly increasing the technical cost of study implementation.
+This limited availability also necessitated the research apparatus to be designed with brevity in mind. The sample workflow, AI outputs and xAI elements, were therefore simplified and predominantly static. This deviates significantly from the expected user experience~\cite{Kargl-et-al:2020:PathoWorkflows}; specifically, with respect to the inability to view the non-annotated IHC image, adjacent H\&E layers, and to generally pan and zoom through the slide data. It is likely that this limited participants' ability to effectively evaluate the content and usability of the explainability approaches presented. A future study more closely replicating the pathologist user experience would provide valuable insights, although with a significantly increased cost of technical implementation and expert user participation.
 
-% % Specific points included the inability to view the non-annotated IHC image, adjacent H\&E layers, and generally pan and zoom through the slide data. 
+Some sources of bias may be overrepresented due to the context chosen for this study. In reality, there are relatively few diagnostic factors that play an important role in Ki-67 nuclear classification, in particular, if the identification of tumor regions has already taken place. By asking participants to talk the information they can infer from the explanations given, we may have introduced an incentive to read too much into these elements, amplifying the effect of the biases observed. Similarly, if explanations provide the user with an inappropriate level of detail for the task at hand, there will be a tendency for users to over-represent their preference for simplicity in UI elements.
+
+With these limitations in mind, the support of these findings by theoretical work on this topic, and the risk of harm that they might entail if not heeded, make them critical points to consider in xAI development; even if they only represent the worst-case scenario.
+
+% % 
 
 % % The lack of clarity on the output of the AI solution (insufficient context, unclear interpretation for unclassified nuclei) was a potentially confounding factor in the pathologists' interpretation of these results. While these results in and of themselves were not the subject of this research, it cannot be ruled out that this had a indirect effect of the interpretation of the explanations of which they were the subject. Given that this limitation was consistent across all explanations examples presented, we suggest that this limitation does not strongly impact the validity of comparative statements between different classes of explanation. It is also suggested that this shortfall is somewhat representative of issues with real AI solutions and provides a valuable discussion point regarding the value and usability of explanations. 
 
 % Potentially, a more significant limitation of this study lies with the choice, number and design of explanations examples. To compare these examples within a common context, it was necessary to create most by hand, with only the saliency map implementations created with a true algorithmic approach. This was necessitated by the fact that many of these explanations were based on speculative techniques, either currently unsupported by any technical implementation or with implementations that are not feasible for application to the diagnostic context without incurring prohibitive technical overhead. Although the creation of these examples was supported with the help of the expertise of a broad group of stakeholders, both from domains of ML and pathology, there is the chance that some aspects may not be representative of realistic explanations. Most importantly, the saliency map examples are subject to the limitations of a real xAI implementation, which may put them at an inherent disadvantage  compared with the other, idealised examples. 
 % >> i.e. the explanations were created as a well-informed guess. True implementations of xAI may have had different results
 
-% the risk of positive confirmation bias may be over-represented due to the setup of the study. The use case of Ki-67 quantification has relatively few diagnostic factors that play an important role in nuclear classification, in particular, if the identification of the tumor region has already taken place in an earlier part of the examination or AI pipeline. Therefore, by asking participants to talk about the factors they can infer from the explanations given, we may have introduced an incentive to read too much into the elements displayed. 
-
+% 
 % FW>> We suggest that more, xAI elements applied to a more complex task, where xAI elements are more appropriate for weighing up between the many diagnostic factors that may play a role
 
 % Another approach that was not tested is potential over-complexity and distraction capacity of the tested xAI approaches. It is clear that unhelpful explanations can produce more harm than good by distracting or overwhelming the user with unnecessary information. We therefore recommend further research which should explicitly measure the impact of explanations and compare them with a baseline to ensure that actual explanatory value is derived for the end user while keeping the required mental load to a minimum and thereby reducing distractions. >> explicitly addressed in discussion
-
 
 
 \section{Conclusion}
