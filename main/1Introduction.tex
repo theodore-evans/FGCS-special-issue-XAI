@@ -9,10 +9,6 @@ Recognising this need, the body of research on explainable AI (xAI) for medicine
 
 Despite the multifaceted nature of such questions, the current research landscape exhibits a lack of dedicated interdisciplinary work to this effect~\cite{antoniadi2021current}. To date, only a handful of studies have attempted to bridge the gap between technical implementation and user experience of explainability in medical AI~\cite{liao2020questioning,cai2019hello,wang_designing_2019}. While such human-centric studies have been identified as critical to the development of safe and effective xAI systems~\cite{doshi2017towards, regitnig_expectations_2020, antoniadi2021current}, no study has yet been conducted to evaluate the interaction of real pathologists with task-specific explanation generation techniques.
 
-% While there exist valuable efforts to collect and categorise the broad range of algorithmic approaches to xAI -- both generally \cite{arrieta2020explainable} and as specifically applied to medicine \cite{tjoa_survey_2020, deshpande2021brief} and in particular, digital pathology~\cite{poceviciute_survey_2020}, 
-
-% The involvement of the target audience is especially relevant in the field of explainable AI, as the quality of explanations is a function of the needs and propensities of the users within the context of a particular task and data modality -- in this case, a specific diagnostic workflow. That is to say, the evaluation of xAI approaches in other fields does not necessarily transfer to the field of digital pathology.
-
 To address this need, we conducted a mixed-methods study, assessing the interpretation and usability of a set of examples representing the state of the art in explanation-generating methods for image analysis, as applied to a common AI-assisted task in digital pathology. This study aims to answer the following questions:
 
 \researchquestions
@@ -29,20 +25,7 @@ One solution to this problem could be avoidance of black-box approaches in favou
 
 The goal of xAI research is to resolve this dilemma by enabling AI systems to make intelligible, to a human stakeholder, the reasons for which a black-box model produced a particular result. Rapid growth of explainability research for medical AI is driven not only by evolving ethical~\cite{MuellerEtAl:2021:TenCommandments} and regulatory~\cite{Schneeberger:2020:legalAI} concerns, but also as a means to foster trust and acceptance of AI solutions by their target users~\cite{GuidottiPedreschi:2019:Survey, ProsperiEtAl:2020:CausalHealth, Ferrario:trustmedicalai, gaube:trustmedicalai:2021, kastner2021relation}. This particularly relevant in light of skeptical attitudes toward the reliability of AI systems~\cite{quinn:trustmedicalai:2020, tosun_histomapr_2020} as well as their potential vulnerability to attack~\cite{finlayson2019adversarial, foote2021now}.
 
-
 As well as a solution to this growing challenge, xAI is identified as a key component of hybrid intelligence systems, in which human and AI work together collaboratively ~\cite{hemmer2021human}. In the near future, such systems may allow diagnosticians to dynamically interact with an AI system through queries and counterfactuals~\cite{HolzingerEtAl:2021:GraphFusion, tosun_histomapr_2020}, or for AI systems to improve their performance by actively bringing the human into the machine learning loop~\cite{Holzinger:2020:explainable}.
-
-% In 2020, the European Commission published a White Paper on the safety and liability implications of AI, which suggests mandatory re-traceability, interpretability, explainability (in a juridical sense) of AI systems in critical domains \cite{Schneeberger:2020:legalAI}. While medical decision support is not identified from the outset as a ``high-risk" AI application area in the proposed EU Artificial Intelligence Act of 2021, this act would nonetheless set a precedent for legally mandated implementation of transparency and explainability in AI systems~\cite{EU:2021:52021PC0206}.
-
-% -> HCI section
-
-%However, even the best human experts sometimes cannot explain something, but rather construct mental models intuitively of the problem and consult these models to select the best possible solution from a set of options \cite{HudecEtAl-2021-Interpretable}.
-
-% A good example is a very recent work where the findings indicate that the primary value of human-in-the-loop corrections is to address significant weaknesses of a digital image analysis application, rather than fine-tuning the digital image analysis quantification \cite{BodenLundstrom:2021:HumanPatho}.
-
-% If such approaches are to be introduced successfully into the workflow of digital pathology \cite{Kargl-et-al:2020:PathoWorkflows}, such approaches need new kinds of Human-AI interfaces. 
-
-% This is important because in the medical field, it is crucial that domain knowledge be brought in to infer causal effects. In fact, according to the current state of research, this domain knowledge, which is ignored in classical statistical machine learning, is crucial \cite{Pearl:2019:CACM,ProsperiEtAl:2020:CausalHealth}. 
 
 \subsection{Cross-disciplinary views on xAI}
 
@@ -52,21 +35,12 @@ Applications of social and cognitive science to the field of xAI~\cite{de2017peo
 
 While metrics and evaluation strategies for explanation-generating techniques have been proposed~\cite{doshi2017towards, HolzingerEtAl:2019:Wiley-Paper, HolzingerEtAl:2020:QualityOfExplanations}, studies of these in user- and application-grounded contexts are in their infancy. Those studies having been conducted deal primarily with evaluating the explainability requirements of users with respect to a novel AI system~\cite{liao2020questioning, cai2019hello}.
 
-% TODO: Add Kargl paper here
-
-Our study extends this valuable prior work by evaluating the interactions of users with explainability techniques themselves, where these are potentially previously unseen by users. Given the sensitivity of such methods to the effects of bias, as identified in the literature, this represents an important contribution to the xAI research landscape.
-
-% % interactivity
-% \citet{abdul2020cogam} recognise the importance of managing cognitive load in xAI systems, and propose an approach to dynamically adapting the complexity of explanations to the needs of the user.
-% % \cite{wang_designing_2019}
-% % This capacity for an AI system to effectively communicate decision factors is considered of particular importance to the development of future human-AI interfaces. These range from interactive systems that dynamically provide contextual information, responding to questions and counterfactuals from the user~\cite{HolzingerEtAl:2021:GraphFusion}, to hybrid human-machine systems that are capable of outperforming either party in isolation~\cite{Holzinger:2016:iML}.
-
-% Work has been done to define The ability of a human stakeholder to effectively infer the causal factors behind predictions is identified as a critical component of effective medical xAI~\cite{HolzingerEtAl:2019:Wiley-Paper, HolzingerEtAl:2020:QualityOfExplanations}. \citet{} define \textit{causability} as a metric measuring the extent to which an explanation imparts a user with causal understanding of an AI system in a given context.
+Our study extends this valuable prior work by evaluating the interactions of users with explainability techniques themselves. Given the sensitivity of such methods to the effects of bias, as identified in the literature, this represents an important contribution to the xAI research landscape.
 
 \subsection{Classes of Explanation-Generating Methods}
 \label{sec:related:classes}
 
-Given their context-sensitive nature, defining a single, comprehensive taxonomy of xAI methods is -- and will likely remain -- an open question. However, valuable efforts have been made to survey the algorithmic state of the art~\cite{tjoa_survey_2020, deshpande2021}, with various schemata having been been developed to categorise these approaches~\cite{arrieta2020explainable}.
+Given their context-sensitive nature, defining a single, comprehensive taxonomy of xAI methods is -- and will likely remain -- an open question. However, valuable efforts have been made to survey the algorithmic state of the art~\cite{tjoa_survey_2020, deshpande2021brief}, with various schemata having been been developed to categorise these approaches~\cite{arrieta2020explainable}.
 
 Dealing specifically with those approaches directly applicable to the typical tasks and model architectures of digital pathology, \citet{poceviciute_survey_2020} comprehensively collects and categorises the state of the art in xAI methods along three axes: the type of information to be conveyed, the way in which results are represented to the user, and the technical approach employed in their generation. A similar, HCI-oriented taxonomy is presented by \citet{liao2020questioning}. 
 
@@ -85,27 +59,3 @@ While measures that indicate the trustworthiness of model outcomes without direc
 \textbf{Trust Scores} refer to generated measures indicating confidence, certainty or otherwise trustworthiness of a model and its outcomes, in particular, those that supplement or replace a model's own self-assessed, and therefore potentially biased, confidence~\cite{jiang2018trust, wang2021ai}. These may be derived from the trained model itself~\cite{tagasovska2019single}, or from the output of an independent model~\cite{jiang2018trust} or ensemble of models~\cite{pearce2018high}.
 
 It should be noted that these classes are neither comprehensive nor mutually exclusive, with many approaches combining features from different classes~\cite{kim2016examples,liu2019generative}. Recent work surveying the literature challenges the boundaries between some of these categories outright~\cite{zhang2021survey}. While the authors are inclined to agree with this assessment, the above-described classes nevertheless provide a useful basis on which to compare the interpretation and usability of explanation modalities by their target audience.
-
-
-% %Backup-text for EMPAIA by Christian:
-% Within the project EMPAIA \cite{empaia-website} that deals with lowering the hurdles of translating AI application into clinical practice, the question of how exactly xAI can help with making AI applications safe and reliable to use in routine practice plays a crucial role. The following Ki-67 use case was selected from the available solutions as a first step to investigate xAI methods for a specific exemplary use case. The choice was discussed and made in a project-related validation committee, an open panel of medical and AI experts.
-
-% The goal of all of these efforts is a very central one: to promote and to ensure trust in AI\cite{LakkarajuLeskovec:2019:trust}. Any use of AI in digital pathology will not work if there is a lack of trust. And that is the problem, because in a "black box" application, trust would mean blindly relying on a medical AI \cite{Ferrario:trustmedicalai}, \cite{gaube:trustmedicalai:2021} without being able to re-trace, check and understand the results. Consequently, trust is inherently connected to and builds on both legal aspects\cite{Schneeberger:2020:legalAI} and ethical principles\cite{MuellerEtAl:2021:TenCommandments}. 
-
-% In the very tentative developing relationship between humans and AI, trust is the only mechanism that actually influences clinicians' use and adoption of AI \cite{asan:trustmedicalai:2020}. 
-
-% This is because trust is a profoundly human psychological mechanism for dealing with uncertainty between what is known and what is unknown \cite{Corazzini:1977:trust},\cite{Simpson:2007:trust}. Some recent studies show that even consumers are reluctant to use health services provided by AI - and prefer the "humanity" of decisions \cite{Longoni:2019:resistance}. Furthermore, trust is very tightly connected with acceptance \cite{Venkatesh:2003:acceptance}.
-
-% In digital pathology, however, this is precisely the problem because acceptance of unfamiliar technology is very strongly linked to technology affinity in general and to prior technical experience, a factor known as previous exposure to technology (PET) \cite{Holzinger:2011:acceptance}. Generally, the end users in the medical domain are reluctant to utilize healthcare provided by AI in real and hypothetical choices, separate and joint evaluations.
-
-
-% Proposal of a paragraph (Tomasz' older contribution) - to be put here or in \subsection{Relationship to Human-Computer Interaction}, if accepted
-
-%  Tools designed to support human-computer interaction by means of involving the sense of sight, 
-%  especially in a digital environment, allow to morphometry and visualization 
-%  of medical multimodal and dynamical data \cite{soltysinski2007HCI}. The applications of 
-%  medical noisy data segmentation for the purpose of presentation and diagnostics can be 
-%  directly transfered into digital pathology supported by AI. Such methods apply to 
-%  digitized tissue data obtained from label-free optical imaging \cite{Golniketal2008micropolar}.
-%  Moreover, the attention of the investigator can be quantified through multimodal scanning 
-%  of their behavioral and mental activity \cite{Soltysinski2006EEG}. 
