@@ -1,7 +1,0 @@
-% : Given an image $I_0$ (with $m$ rows and $n$ columns) and a class $c$, the class saliency map $ M \in \Rcal ^ {m \times n}$ can be computed as follows.
-% The first step is to compute the derivative $w$~ which is found by back propagation \cite{LeCun:1988:BackProp}.
-% Now a saliency map can be obtained by rearranging the elements of the vector $w$. In the case of a greyscale image, the number of elements in $w$ is equal to the number of pixels in $I_0$, so the map can be computed as
-% $M_{ij} = |w_{h(i,j)}|$, where $h(i,j)$ is the index of the element of $w$,
-% corresponding to the image pixel in the $i$-th row and $j$-th column.
-% In the case of the multi-channel (RGB) image, it is assumed that the colour channel $c$ of the pixel $(i,j)$ of image $I$ corresponds to the element of $w$ with the index $h(i,j,c)$.
-% To derive a single class saliency value for each pixel $(i,j)$, the  maximum magnitude of $w$ across all colour channels can be taken: $M_{ij} = \max_c |w_{h(i,j,c)}|$. The saliency maps are extracted using a classification ConvNet trained on the image labels in order to avoid an otherwise necessary annotation (e.g. object bounding boxes or segmentation masks). 

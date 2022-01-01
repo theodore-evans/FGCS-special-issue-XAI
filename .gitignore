@@ -8,3 +8,7 @@
 *.fdb_latexmk
 *.bbl
 *.blg
+*.png
+bio-images
+supporting
+notes
