@@ -1,5 +1,3 @@
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \documentclass[a4paper,5p, review]{elsarticle}
  \documentclass[final,5p,times,twocolumn,hyphens]{elsarticle}
@@ -52,9 +50,9 @@
 
 \newcommand{\researchquestions}{
     \begin{enumerate}
-        \item How are state-of-the-art approaches in xAI interpreted and evaluated by expert users in a representative diagnostic setting?
+        \item How are state-of-the-art xAI approaches interpreted and evaluated by expert users in a typical diagnostic setting?
         \item How do these interpretations and evaluations inform principles for the development of safe and effective xAI?
-    \end{itemize}
+    \end{enumerate}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -63,7 +61,6 @@
 
 \begin{frontmatter}
 
-%TODO: Write title
 \title{The Explainability Paradox: Challenges for xAI in Digital Pathology}
 
 %% or include affiliations in footnotes:
@@ -79,12 +76,12 @@
 \author[CAR]{Norman Zerbe}
 \author[MUG]{Andreas Holzinger }
 
-\address[TUB]{DAI-Labor, Technical University Berlin, Germany}
+\address[TUB]{DAI-Labor, Technical University of Berlin, Germany}
 \address[MUG]{Medical University Graz, Austria}
 \address[CAR]{Charité – Universit{\"a}tsmedizin Berlin, corporate member of Freie Universit{\"a}t Berlin and Humboldt- Universit{\"a}t zu Berlin, Institute of Pathology, Germany}
 
 \begin{abstract} 
-The increasing prevalence of digitized workflows in diagnostic pathology opens the door to life-saving applications of artificial intelligence (AI). Explainability is identified as a critical component for the safety, approval and acceptance of such systems for clinical use. Despite the cross-disciplinary challenge of building explainable AI (xAI), very few application- and user-centric studies in this domain have been carried out. We conducted the first mixed-methods study of user interaction with samples of state-of-the-art AI explainability techniques for digital pathology. This study reveals challenging dilemmas faced by developers of xAI solutions for medicine, as well as proposing empirically-backed principles for their safer and more effective design.
+The increasing prevalence of digitized workflows in diagnostic pathology opens the door to life-saving applications of artificial intelligence (AI). Explainability is identified as a critical component for the safety, approval and acceptance of AI systems for clinical use. Despite the cross-disciplinary challenge of building explainable AI (xAI), very few application- and user-centric studies in this domain have been carried out. We conducted the first mixed-methods study of user interaction with samples of state-of-the-art AI explainability techniques for digital pathology. This study reveals challenging dilemmas faced by developers of xAI solutions for medicine and proposes empirically-backed principles for their safer and more effective design.
 \end{abstract}
 
 \begin{keyword}
@@ -107,20 +104,17 @@ Explainable AI, Digital Pathology, Usability, Trust, Artificial Intelligence
 \section{Introduction}
 \label{sec:introduction}
 
-Pathology is poised at the brink of an AI renaissance. For almost two centuries, the analysis of tissue has taken place primarily through the lens of a microscope. In the past decade, the proliferation of digitized workflows has intersected with a dramatic rise in machine learning (ML) capabilties~\cite{Pantanowitz:2010:DigitalPathology,PantanowitzEtAl:2021:AIPatho}, promising improved patient outcomes and reduced clinician workloads through automation of repetitive tasks~\cite{das2020computer}. Combined with increasing availability of patient *omics (genomics, proteomics, metabolomics, etc.) and electronic health record (EHR) data, these advances in computational pathology open the door to a new era of AI-assisted personalized medicine~\cite{acs2020artificial,holzinger_artificial_2020}.
+Pathology is poised at the brink of an AI renaissance. For almost two centuries, the analysis of tissue has taken place primarily through the lens of a microscope. In the past decade, the proliferation of digitized workflows has intersected with a dramatic rise in machine learning (ML) capabilities~\cite{Pantanowitz:2010:DigitalPathology,PantanowitzEtAl:2021:AIPatho}, promising improved patient outcomes and reduced clinician workloads through automation of repetitive tasks~\cite{das2020computer}. These advances in computational pathology, combined with increasing availability of patient *omics (genomics, proteomics, metabolomics, etc.) and electronic health record (EHR) data, open the door to a new era of AI-assisted personalized medicine~\cite{acs2020artificial,holzinger_artificial_2020}.
 
-However, the lack of human-interpretability inherent to many machine learning models remains a barrier to acceptance and approval for clinical use~\cite{cui2021artificial}.
-% TODO: revise
-% Without a clear understanding of the important factors, including potential limitations and sources of bias, in the algorithmic decision-making process, it is challenging to use these results as the basis for potentially life-altering clinical decisions. This requirement is not only an ethical accountability issue, but has also been identified as a critical component in the evolving landscape defining regulations, norms, and standards for the safe use of AI/ML-based software as a medical device (SaMD)~\cite{EU_White, ISO_IEC_TR_24028}.
+However, the lack of human-interpretability inherent to many so-called \textit{black-box} ML models remains a barrier to their acceptance and approval for clinical use~\cite{cui2021artificial}. Where the decision-making factors, limitations and sources of bias, of ML-based systems are opaque or unclear, their application in life-and-death diagnosis and treatment contexts is significantly restricted. As much as one of professional accountability, this constraint is a function of the fast-developing landscape of regulations, norms, and standards governing the safe use of AI in medicine~\cite{EU_White, ISO_IEC_TR_24028}.
 
-Recognising this need, the body of research on explainable AI (xAI) for medicine has grown exponentially~\cite{tjoa_survey_2020,poceviciute_survey_2020}. 
-% While the exact definition is a matter of some debate, we refer to explainable AI as that whose internal workings, if not directly interpretable, can be communicated to the user in an adaptive, understandable way. 
-% TODO" rephrase 
-% This topic is (multifaceted); not only requiring communicable insights to be distilled from the inherent complexity of so-called ``black-box'' models, but also in knowing what, and in what modality, information should be presented to a given user or stakeholder~\cite{HolzingerEtAl:2020:QualityOfExplanations,zednik2019solving}.
+Recognising these hurdles, the community of researchers focusing on \textit{explainable} AI (xAI) has grown exponentially over the past five years -- notably so with respect to the medical domain~\cite{tjoa_survey_2020,poceviciute_survey_2020}. An exact definition of explainability is, however, at best a matter of debate and, at worst, fundamentally ambiguous. For the sake of brevity, we loosely refer to xAI as any ML-based software system, aspects of whose internal workings, if not directly interpretable, can be communicated to a user in an adaptive, understandable way. 
 
-Despite the multifaceted nature of such questions, the current research landscape exhibits a lack of dedicated interdisciplinary work to this effect~\cite{antoniadi2021current}. Only a handful of literature bridges the gap between technical implementation and user experience of explainability in medical AI~\cite{liao2020questioning,cai2019hello,wang_designing_2019}. While such human-centric studies have been identified as critical to the development of safe and effective xAI systems~\cite{doshi2017towards, regitnig_expectations_2020, antoniadi2021current}, none has yet been conducted to evaluate the interaction of real pathologists with task-specific explainability techniques. % taking what has come from the ml community
+The challenge of defining and integrating these requirements into software systems cannot be solved by a single discipline in isolation. The task of extracting useful information from a black-box model is only meaningful when informed by an understanding of what information may be useful, and how it might be usefully presented, in a given context and to a given stakeholder. This situates xAI research at the intersection of a range of disciplines including ML/AI, human-computer interface (HCI) research, and various branches of the social sciences~\cite{HolzingerEtAl:2020:QualityOfExplanations,zednik2019solving, miller2019explanation}.
 
-To address this need, we conducted a mixed-methods study, assessing the interpretation and usability of a set of examples representing the state of the art in explanation-generating methods for image analysis, as applied to a common AI-assisted task in digital pathology. This study aims to answer the following questions:
+Despite this, the current research landscape exhibits a paucity of dedicated interdisciplinary work~\cite{antoniadi2021current}. Only a handful of studies attempt to bridge the gap between technical implementation and user experience of explainability in medical AI~\cite{liao2020questioning,cai2019hello,wang_designing_2019}. And while such human-centric studies have been identified as critical to the development of safe and effective xAI systems~\cite{doshi2017towards, regitnig_expectations_2020, antoniadi2021current}, none have yet been conducted to evaluate the interaction of real clinicians with the algorithmic approaches proposed in the state-of-the-art.
+
+To address this need, we have conducted a mixed-methods study assessing the interpretation and usability of a representative sample of explanation-generating methods for image analysis, as applied to a common AI-assisted task in digital pathology. This study aims to answer the following questions:
 
 \researchquestions
 
@@ -128,37 +122,35 @@ This research provides valuable insights for the development of safer and more e
 
 \section{Background and Related Work}
 
-There is a consensus in the scientific community that AI holds great potential to support workflows in practically every sub-domain of medicine~\cite{hamet2017artificial}. %particularly in medical imaging fields such as radiology and pathology~\cite{WulczynEtAl:2021:AImed-example}.
+There is a wide consensus in the scientific community that AI holds great potential to support workflows in practically every branch of medicine~\cite{hamet2017artificial}. Of those, medical imaging domains, including radiology and pathology, have been identified as fertile grounds for novel AI applications, with the former having in recent years undergone a period of transformative change to this effect~\cite{WulczynEtAl:2021:AImed-example}.
 
-This trend has been sparked by the success statistical machine learning, in particular, deep learning. %this is.. driven by the availability of enhanced computing resources and increasing volumes of machine-readable data~\cite{LeCunBengioHinton:2015:DeepLearningNature}.
-% rep.: It promises great positive impact on diagnosticians by improving workflows, reducing errors~\cite{Topol:2019:NatureMedicine} and building a fundamental basis for future precision medicine solutions. 
-% rep.: However, the best performing machine learning methods are often so high-dimensional and complex that results are difficult, if not impossible, for a human expert to understand. Such methods, of which deep neural networks represent the most prominent example, are referred to as ``black-box'' models~\cite{Castelvecchi:2016:OpenBlack}.
+This trend has been sparked by the dramatic success of statistical machine learning -- in particular, deep learning -- over the past decade, driven in turn by increasing availability of computing resources and machine-readable data~\cite{LeCunBengioHinton:2015:DeepLearningNature}. These developments have already begun to deliver auspicious results for diagnosticians and patients: Streamlining workflows, reducing errors~\cite{Topol:2019:NatureMedicine} and laying the foundations for a new paradigm in personalised precision medicine~\cite{acs2020artificial}. 
 
-% a solution, as suggested by \citet{Rudin:2019:interpretable}, ... is the avoidance of black-box approaches in favour of those that are inherently interpretable. While feasible for certain classes of problem, this... for complex tasks and those with high dimensional input, as is the case for many image analysis tasks in pathology, performance of interpretable models is generally far outclassed by black-box approaches~\cite{arrieta2020explainable, Holzinger:2020:explainable}.
+However, many of the best-performing approaches rely upon complex statistical models, delivering results for which the underlying decision-making logic is difficult, if not impossible, for human experts to interpret. Such methods, of which deep neural networks represent the most prominent example, are referred to as \textit{black-box} models~\cite{Castelvecchi:2016:OpenBlack}. The opacity of these models pose a barrier to their application in critical fields such as medicine~\cite{cui2021artificial}.
 
-The goal of xAI research is to resolve this dilemma by enabling AI systems to make intelligible, to a human stakeholder, the reasons for which a black-box model produced a particular result.% and confidence, limitations, bias, 
-Rapid growth of explainability research for medical AI is driven not only by evolving ethical~\cite{MuellerEtAl:2021:TenCommandments} and regulatory~\cite{Schneeberger:2020:legalAI} concerns, but also as a means to foster trust and acceptance of AI solutions by their target users~\cite{GuidottiPedreschi:2019:Survey, ProsperiEtAl:2020:CausalHealth, Ferrario:trustmedicalai, gaube:trustmedicalai:2021, kastner2021relation}. This particularly relevant in light of skeptical attitudes toward the reliability of AI systems~\cite{quinn:trustmedicalai:2020, tosun_histomapr_2020} as well as their potential vulnerability to attack~\cite{finlayson2019adversarial, foote2021now}.
+One solution, advocated by \citet{Rudin:2019:interpretable}, is to avoid black-box models in favour of approaches that are inherently interpretable. While feasible for certain classes of problem, the performance of inherently interpretable models is generally far outclassed by black-box approaches for complex tasks involving high-dimensional data, as is typical for AI applications in pathology~\cite{arrieta2020explainable, Holzinger:2020:explainable}.
 
-As well as a solution to this growing challenge, xAI is identified as a key component of hybrid intelligence systems, in which human and AI work together collaboratively ~\cite{hemmer2021human}. In the near future, such systems may allow diagnosticians to dynamically interact with an AI system through queries and counterfactuals~\cite{HolzingerEtAl:2021:GraphFusion, tosun_histomapr_2020}, or for AI systems to improve their performance by actively bringing the human into the machine learning loop~\cite{Holzinger:2020:explainable}.
+The objective of xAI research is to ease this dilemma by enabling AI systems to make intelligible, to human stakeholders, the reasons for which a black-box model produced a particular result. Additionally, model confidence, limitations and sources of bias, are all identified as potential factors that effective xAI should be able to communicate to its users. The rapid growth of xAI research in the medical domain is driven by both evolving ethical~\cite{MuellerEtAl:2021:TenCommandments} and regulatory~\cite{Schneeberger:2020:legalAI} concerns, and as a means to foster acceptance of AI solutions by their target users~\cite{GuidottiPedreschi:2019:Survey, ProsperiEtAl:2020:CausalHealth, Ferrario:trustmedicalai, gaube:trustmedicalai:2021, kastner2021relation}. This is particularly relevant in light of skeptical attitudes from medical professionals toward the reliability~\cite{quinn:trustmedicalai:2020, tosun_histomapr_2020} and vulnerability to attack~\cite{finlayson2019adversarial, foote2021now} of AI systems.
+
+As well as a solution to these growing challenges, xAI is also identified as a key component of hybrid intelligence: collaborative systems of human and AI agents working together~\cite{hemmer2021human}. In the near future, such systems may allow diagnosticians to dynamically interact with an AI counterpart through natural language queries and counterfactuals~\cite{HolzingerEtAl:2021:GraphFusion, tosun_histomapr_2020}, or for AI systems to improve their performance by identifying limitations and actively bringing the human into the machine learning loop~\cite{Holzinger:2020:explainable}.
 
 \subsection{Cross-disciplinary views on xAI}
 
-\citet{miller2019explanation} places xAI research at the intersection between AI, social science and human-computer interface (HCI) research. Accordingly, there is a body of research from these domains that either deal directly with~\cite{abdul2020cogam, holzinger2013human}, or are directly applicable to~\cite{nielsen2005ten}, topics of xAI development.
-
-Applications of social and cognitive science to the field of xAI~\cite{de2017people, miller2019explanation, lipton2018mythos, jussupow2021augmenting} highlight the non-idealised way in which human beings make decisions, and accordingly, interact with decision-making systems. Notably, \citet{wang_designing_2019} build upon this theoretical work~\cite{hoffman2017explainingpart1,hoffman2017explainingpart2, klein2018explainingpart3, hoffman2018explainingpart4} to propose concrete guidelines for the design of user-centric xAI that mitigates (rather than exacerbates) sources of bias and error in human reasoning.
+\citet{miller2019explanation} places xAI research at the intersection between ML/AI, social science and human-computer interface (HCI) research. %There is a body of research from these domains that either deal directly with~\cite{abdul2020cogam, holzinger2013human}, or are directly applicable to~\cite{nielsen2005ten}, topics of xAI development. 
+Applications of social and cognitive science to the field of xAI~\cite{de2017people, miller2019explanation, lipton2018mythos, jussupow2021augmenting} highlight the non-idealised way in which human beings make decisions, and accordingly, interact with decision-making systems. Notably, \citet{wang_designing_2019} build upon this theoretical work~\cite{hoffman2017explainingpart1,hoffman2017explainingpart2, klein2018explainingpart3, hoffman2018explainingpart4} to propose concrete guidelines for the design of user-centric xAI that aims to mitigate sources of bias and error in human reasoning.
 
 While metrics and evaluation strategies for explanation-generating techniques have been proposed~\cite{doshi2017towards, HolzingerEtAl:2019:Wiley-Paper, HolzingerEtAl:2020:QualityOfExplanations}, studies of these in user- and application-grounded contexts are in their infancy. Those studies having been conducted deal primarily with evaluating the explainability requirements of users with respect to a novel AI system~\cite{liao2020questioning, cai2019hello}.
 
-Our study extends this valuable prior work by evaluating the interactions of users with explainability techniques themselves. Given the sensitivity of such methods to the effects of bias, as identified in the literature, this represents an important contribution to the xAI research landscape.
+Our study extends this prior work by evaluating the interactions of users with explainability techniques themselves. Given the sensitivity of such methods to the effects of bias identified in the literature cited, this represents an important contribution to the xAI research landscape.
 
 \subsection{Classes of Explanation-Generating Methods}
 \label{sec:related:classes}
 
-Given their context-sensitive nature, defining a single, comprehensive taxonomy of xAI methods is -- and will likely remain -- an open question. However, valuable efforts have been made to survey the algorithmic state of the art~\cite{tjoa_survey_2020, deshpande2021brief}, with various schemata having been been developed to categorise these approaches~\cite{arrieta2020explainable}.
+Given their sensitivity to the particular context of their use, defining a universal taxonomy of xAI methods is -- and will likely remain -- an open question. However, valuable efforts have been made to survey the technical state of the art~\cite{tjoa_survey_2020, deshpande2021brief}, with various schemata having been been developed to categorise these approaches according to explanation target audience, scope and modality~\cite{arrieta2020explainable}.
 
-Dealing specifically with those approaches directly applicable to the typical tasks and model architectures of digital pathology, \citet{poceviciute_survey_2020} comprehensively collects and categorises the state of the art in xAI methods along three axes: the type of information to be conveyed, the way in which results are represented to the user, and the technical approach employed in their generation. A similar, HCI-oriented taxonomy is presented by \citet{liao2020questioning}. 
+Focusing on those approaches applicable to the tasks and model architectures typical of computational pathology, \citet{poceviciute_survey_2020} comprehensively collects and categorises the state of the art in xAI methods along three axes: the type of information to be conveyed, the way in which results are represented to the user, and the technical approach employed in their generation. A similar, HCI-oriented taxonomy is presented by \citet{liao2020questioning}. 
 
-The presentation modalities of image-applicable explanation generation methods can be broadly categorised into four classes, ordered by prevalence: Saliency maps, Concept attribution, Prototypes and Counterfactuals~\cite{bodria_benchmarking_2021}.
+The presentation modalities of xAI methods in the image domain can be broadly categorised into four classes, ordered by prevalence in literature: Saliency maps, Concept attribution, Prototypes and Counterfactuals~\cite{bodria_benchmarking_2021}.
 
 \textbf{Saliency maps} aim to explain individual predictions through visualisations on the input \cite{MorchEtAl:1995:Saliency}. This is generally manifested as an overlay on the input image, indicating the \textit{saliency} per pixel or image region to the model in question. Depending on implementation, saliency may represent a measure of intrinsic informational content~\cite{KadirBrady:2001:Saliency}, or the estimated relevance to a particular model outcome or feature~\cite{SimonyanVedaldiZisserman:2013:DeepInside, springenberg2014striving, yosinski2015deepvisualization, LapuschkinEtAl:2016:LRP, selvaraju2017grad, ribeiro2018anchors}.
 
@@ -166,13 +158,13 @@ The presentation modalities of image-applicable explanation generation methods c
 
 \textbf{Prototypes} are explanations of model inner workings through representations of the archetypal instance of a particular class, feature or model outcome. These prototypical examples may be synthetic visualisations~\cite{li2018deep} or real examples~\cite{kim2016examples}.
 
-\textbf{Counterfactuals} aim to explain a model outcome by presenting one or more "what if..." scenarios -- examples of similar inputs that would lead to a different model outcomes~\cite{ginsberg1986counterfactuals}. While these counterfactual examples are mainly generated as synthetic visualisations~\cite{seah2019chest, poceviciute_survey_2020, liu2019generative}, these may be supplemented by examples from real data~\cite{gulshad2021counterfactual}.
+\textbf{Counterfactuals} aim to explain a model outcome by presenting one or more "What if\dots?" scenarios -- examples of similar inputs that would lead to a different model outcomes~\cite{ginsberg1986counterfactuals}. While these counterfactual examples are mainly generated as synthetic visualisations~\cite{seah2019chest, poceviciute_survey_2020, liu2019generative}, these may be supplemented by examples from real data~\cite{gulshad2021counterfactual}.
 
-While measures that indicate the trustworthiness of model outcomes without directly relating the causal factors underlying them may not be considered explanations \textit{per se}, there is a precedent for bringing these under the umbrella of xAI~\cite{poceviciute_survey_2020, lin2019explanations}.
+While measures that indicate the trustworthiness of model outcomes without directly relating the causal factors underlying them may not be considered explanations per se, there is a precedent for bringing these under the umbrella of xAI~\cite{poceviciute_survey_2020, lin2019explanations}.
 
 \textbf{Trust Scores} refer to generated measures indicating confidence, certainty or otherwise trustworthiness of a model and its outcomes, in particular, those that supplement or replace a model's own self-assessed, and therefore potentially biased, confidence~\cite{jiang2018trust, wang2021ai}. These may be derived from the trained model itself~\cite{tagasovska2019single}, or from the output of an independent model~\cite{jiang2018trust} or ensemble of models~\cite{pearce2018high}.
 
-It should be noted that these classes are neither comprehensive nor mutually exclusive, with many approaches combining features from different classes~\cite{kim2016examples,liu2019generative}. Recent work surveying the literature challenges the boundaries between some of these categories outright~\cite{zhang2021survey}. While the authors are inclined to agree with this assessment, the above-described classes nevertheless provide a useful basis on which to compare the interpretation and usability of explanation modalities by their target audience.
+It should be noted that these classes are neither comprehensive nor mutually exclusive, with many promising approaches combining features from multiple classes~\cite{kim2016examples,liu2019generative}. Recent work surveying the literature challenges the boundaries between some of these categories outright~\cite{zhang2021survey}. While the authors are inclined to agree with this assessment, the above-described classes nevertheless provide a useful basis on which to compare the interpretation and usability of explanation modalities by their target audience.
 
 \section{Method}
 \label{sec:method}
@@ -186,7 +178,7 @@ The study design and analysis followed the guidelines set out by \citet{runeson_
 
 \subsection{Questionnaire design}
 
-The questionnaire was built as a web application in React.js with the SurveyJS framework \cite{devsoft-baltic-ou-2021}. The full survey code and can be found in the GitHub repository accompanying this paper~\footnote{https://github.com/theodore-evans/xai-in-digital-pathology}
+The questionnaire was built as a web application in React.js with the SurveyJS framework \cite{devsoft-baltic-ou-2021}. The full survey code and can be found in the GitHub repository accompanying this paper~\cite{Evans_xAI_in_Digital_2022}.
 
 \subsubsection{Choice of sample AI output}
 
@@ -198,7 +190,7 @@ Quantifying Ki-67 positivity in a diagnostic setting exhibits a high degree of v
 
 Moreover, the type of model architecture suited to this task, semantic segmentation with thresholding and quantification, is well represented amongst those AI solutions already seeing market penetration in digital pathology, as evidenced by the awarding of FDA and/or EU CE-IVD approval~\cite{garcia2019new}. Therefore, study findings with respect to this type of model are more likely to be transferable to a wider range of other applications in digital pathology.
 
-The sample output used as a basis for the explanations presented in this research was created using the PathoNet deep learning model, trained for 30 epochs on the SHIDC-BC-Ki-67 dataset using the developer-recommended hyperparameters \cite{negahbani2021pathonet}. The final sample output, shown in Figure~\ref{fig:exampleoutput}, was chosen arbitrarily from a selection generated by the demonstration script included in code repository accompanying this paper. The annotations were re-colored to a colorblindness-friendly red-blue color scheme, and an inset indicating the per-slide and per-region detected positivity was manually added, with figures derived from the model output.
+The sample output used as a basis for the explanations presented in this research was created using the PathoNet deep learning model, trained for 30 epochs on the SHIDC-BC-Ki-67 dataset using the developer-recommended hyperparameters \cite{negahbani2021pathonet}. The final sample output, shown in Figure~\ref{fig:exampleoutput}, was chosen at random from a selection generated by the demonstration script included in the code repository provided by \citet{negahbani2021pathonet}. The annotations were re-colored to a colorblind-friendly red-blue color scheme, and an inset indicating the per-slide and per-region detected positivity was manually added, with figures derived from the model output.
 
 \begin{figure}[!ht]
     \centering
@@ -213,19 +205,19 @@ In the main body of the questionnaire, respondents were presented with the sampl
 
 Given their relative ease of implementation, \textbf{Saliency Map} examples were generated using real techniques from the state of the art, applied on the PathoNet model with Neuroscope~\cite{schorr_neuroscope_2021}, an xAI toolbox for deep learning-based segmentation models. The techniques used were guided backpropagation~\cite{springenberg2014striving} and Grad-CAM~\cite{selvaraju2017grad} with respect to the class output layer of the model. The Grad-CAM implementations were presented as both global (an overlay on the entire input region) and local (an overlay on a single nucleus) explanations. Each participant was shown both a global and local example.
 
-The other explanation classes were mocked up with image processing software, based upon existing or hypothetical explainability approaches from the literature, and guided by feedback from pathologists at the Charité Berlin, as well as ML and medical AI experts at Fraunhofer MEVIS and the Technische Universität Berlin.
+The other explanation classes were mocked up with image processing software, based upon existing or hypothetical explainability approaches from the literature, and guided by feedback from pathologists at the Charité Berlin, as well as ML and medical AI experts at Fraunhofer MEVIS and the Technical University of Berlin.
 
-\textbf{Concept Attribution} examples were created based on the TCAV approach of \citet{kim2018interpretability}, such that the relative importance of a set of human-interpretable concepts to the positive model outcomes were displayed as an explanation for the overall AI output. Two variations were included, featuring alternative wording for the high-level concepts. 
+\textbf{Concept Attribution} examples were constructed based on the TCAV approach of \citet{kim2018interpretability}, such that the relative importance of a set of human-interpretable concepts to the positive model outcomes were displayed as an explanation for the overall AI output. Two variations were included, featuring alternative wording for the high-level concepts. 
 
-\textbf{Prototypes} examples featured an inset image showing two nuclei that were marked in the Grad-CAM saliency map (as above) as most strongly relevant for the Ki-67 positive and negative classes, respectively.
+\textbf{Prototype} examples featured an inset image showing two nuclei that were marked in the Grad-CAM saliency map (as above) as most strongly relevant for the Ki-67 positive and negative classes, respectively.
 
 \textbf{Counterfactual} examples were created based on a generative latent variable traversal approach similar like those of \citet{liu2019generative}. These were supplemented with manually decision boundaries and an additional implementation showing two axes of variation on one figure. The examples themselves were created by morphing between prototypical examples of positive, negative and unclassified nuclei using an open source tool~\cite{diffmorph:github}.
 
-\textbf{Trust Scores} examples were created to represent the concept of per-annotation confidences, grouped into low- and high-confidence classes. These were created by intersecting the class activation Grad-CAM maps with the PathoNet classifications and using the aggregated per-pixel relevance over each nucleus as a proxy for per-annotation model confidence, grouping these in terms of high- and low- confidence.
+\textbf{Trust Scores} examples were created to represent the concept of per-annotation confidences, grouped into low- and high-confidence classes. These were created by intersecting the class activation Grad-CAM maps with the PathoNet classifications and using the aggregated per-pixel relevance over each nucleus as a proxy for per-annotation model confidence, grouping by value into their respective confidence class.
 
-To better represent the diversity of approaches, a number of example from each class was chosen to approximately reflect its prevalence in the literature. To mitigate the impact of potentially uninformative individual implementations, multiple image variants of selected instances were prepared where possible, with one of these displayed at random for each participant. 
+To better represent the diversity of approaches, a number of example from each class was chosen to approximately reflect its prevalence in the literature. To mitigate the impact of potentially uninformative individual implementations, multiple image variants of selected instances were prepared where practical, with one of these displayed at random for each participant. 
 
-A total number of seven examples to be displayed was chosen to limit the estimated questionnaire completion time to around five minutes. This time limit was chosen to minimise the risk of fatigue and participant dropout, particularly in light of the limited availability of the target audience. To reduce the impact of recency and primacy, explanation classes were displayed in random order, whilst keeping examples from the same class consecutive. The examples and their variants are shown in Figure~\ref{fig:classes_overview}.
+A total number of seven examples to be displayed was chosen to limit the estimated questionnaire completion time to around five minutes. This time limit was chosen to minimise the risk of fatigue and participant dropout, particularly in light of the limited availability of the target audience. To mitigate the impact of primacy and recency, explanation classes were displayed in random order, whilst keeping examples from the same class consecutive. The examples and their variants are shown in Figure~\ref{fig:classes_overview}.
 
 \begin{figure*}
 \centering
@@ -259,7 +251,8 @@ These statements were designed to gauge a measure of usability, similar to that 
 
 The following information about each respondent was collected:
 
-\begin{itemize}[noitemsep]
+\begin{itemize}
+    \setlength\itemsep{1pt}
     \item Age
     \item Professional position
     \item Usage of digital pathology or telepathology
@@ -276,11 +269,12 @@ The questionnaire was open to submissions between 11.06.2021 -- 26.07.2021, havi
 
 \subsection{Expert interview design}
 \label{sec:interviewdesign}
-Expert interviews were conducted over video call with a semi-structured format, loosely following the structure of the online questionnaire. Following a short introduction to the outline, goals and purposes of the interview, including the collection of informed consent to begin recording, the interviewee was asked a few questions regarding their professional position, background and experience with AI applications in pathology. The interviewee was then shown the sample AI output in a simplified version of the online questionnaire, followed by the example explanations in a randomized order. Each interview lasted around one hour in total.
+Expert interviews were conducted over video call with a semi-structured format, loosely following the structure of the online questionnaire. Following a short introduction to the outline, goals and purposes of the interview, including the collection of informed consent to begin recording, the interviewee was asked a few questions regarding their professional position, background and experience with AI applications in pathology. The interviewee was then shown the sample AI output, followed by the example explanations in a randomized order, in a simplified version of the online questionnaire. Each interview lasted around one hour in total.
 
 For each example, the interview was structured around a number of open-ended research questions: 
 
 \begin{itemize}
+    \setlength\itemsep{1pt}
     \item How do you interpret the explanation shown here?
     \item What does the explanation tell you about how the model is reaching this outcome?
     \item How does the explanation affect your trust in the model output?
@@ -293,7 +287,7 @@ Not every question was asked to every participant, and room was left for open-en
 
 \subsection{Results analysis}
 
-The questionnaire data was processed using Python. The complete notebook and raw data can be found in the accompanying code repository.
+The questionnaire data was processed using Python. The complete notebook and raw data can be found in the accompanying code repository~\cite{Evans_xAI_in_Digital_2022}.
 
 The interviews were conducted via Zoom call, recorded with the participants' informed consent. These recordings were transcribed with the assistance of AI-based service Otter.ai~\cite{otterai-2021}. The recordings and transcripts were manually reviewed and structurally coded according to the explanation classes and guiding interview questions described above.
 
@@ -302,7 +296,7 @@ The interviews were conducted via Zoom call, recorded with the participants' inf
 
 \subsection{Questionnaire respondents}
 
-A total of 29 respondents submitted their responses to the online questionnaire. Four responses were discarded due to respondents falling outside of the target user group. The remaining 25 consisted of individuals holding professional roles in pathology or neuropathology, either as consultant (12), researcher (6), pathologist in training (4) or laboratory technician (3). 
+A total of 29 respondents submitted their responses to the online questionnaire. Four responses were discarded due to respondents falling outside of the target user group. The remaining 25 consisted of individuals holding professional roles in pathology or neuropathology, either as consultant (12), researcher (6), pathologist in training (4) or technician (3). 
 
 \subsection{Questionnaire responses}
 
@@ -311,37 +305,37 @@ A total of 29 respondents submitted their responses to the online questionnaire.
 \begin{minipage}[c]{0.9\textwidth}
     Trust Scores:
     
-    \includegraphics[width=\linewidth]{main/Graphics/4ResultsandAnalysis/0_TrustScores.png}
+    \includegraphics[width=\linewidth]{0_TrustScores.png}
     
     Counterfactuals (One-axis):
     
-    \includegraphics[width=\linewidth]{main/Graphics/4ResultsandAnalysis/1_CounterfactualsOneaxis.png}
+    \includegraphics[width=\linewidth]{1_CounterfactualsOneaxis.png}
     
     Concept Attribution:
     
-    \includegraphics[width=\linewidth]{main/Graphics/4ResultsandAnalysis/2_ConceptAttribution.png}
+    \includegraphics[width=\linewidth]{2_ConceptAttribution.png}
     
     Counterfactuals (Two-axis):
     
-    \includegraphics[width=\linewidth]{main/Graphics/4ResultsandAnalysis/3_CounterfactualsTwoaxis.png}
+    \includegraphics[width=\linewidth]{3_CounterfactualsTwoaxis.png}
     
     Prototypes:
     
-    \includegraphics[width=\linewidth]{main/Graphics/4ResultsandAnalysis/4_Prototypes.png}
+    \includegraphics[width=\linewidth]{4_Prototypes.png}
     
     Saliency map (Global):
     
-    \includegraphics[width=\linewidth]{main/Graphics/4ResultsandAnalysis/5_SaliencyMapGlobal.png}
+    \includegraphics[width=\linewidth]{5_SaliencyMapGlobal.png}
     
     Saliency map (Local):
     
-    \includegraphics[width=\linewidth]{main/Graphics/4ResultsandAnalysis/6_SaliencyMapLocal.png}
+    \includegraphics[width=\linewidth]{6_SaliencyMapLocal.png}
     \caption{Distribution of responses from 25 admitted online questionnaire submissions.}
 \label{fig:results}
 \end{minipage}
 \end{figure*}
 
-The results of the online questionnaire are shown in Figure~\ref{fig:results}. Each bar shows the proportion of responses to the four Likert items shown relating to each of the explanation examples shown in Figure~\ref{fig:classes_overview}. Explanation examples are presented in descending order of positive responses (from \textit{Slightly agree} to \textit{strongly agree}) to the fourth Likert statement: ``The explanation provides me with valuable information for my work''. Trust scores were the most widely accepted explanation by this metric, while the explanation receiving the most positive median response was the one-axis presentation of counterfactuals.
+The results of the online questionnaire are shown in Figure~\ref{fig:results}. Each bar shows the proportion of responses to the four Likert items shown relating to each of the explanation examples shown in Figure~\ref{fig:classes_overview}. Explanation examples are presented in descending order of total positive responses (\textit{slightly agree} to \textit{strongly agree}) to the fourth Likert statement: ``The explanation provides me with valuable information for my work''. Trust scores were the most widely accepted explanation by this metric, while the explanation receiving the most positive median response was the one-axis presentation of counterfactuals.
 
 \subsection{Interview participants}
 
@@ -349,17 +343,17 @@ Six board-certified pathologists (denoted P1--6) participated in video interview
 
 All participants of the interviews were familiar with the field of digital pathology and had some contact with AI applications, both in the research context (P1,\,2,\,5,\,6) and the applied and regulatory context (P3,\,5,\,6). Three participants reported being familiar with AI, but only having limited knowledge of the internal workings of it (P1,\,2,\,5). Furthermore, two participants (P5,\,6) reported having applied AI solutions to routine diagnostic tasks, albeit with unsatisfactory results. P3 and P4 had not seen or completed the questionnaire beforehand; all other participants had.
 
-To protect the anonymity of participants, the video recordings and transcriptions are not made publicly available. Anonymized excerpts from the original transcripts may be made available by special request.
+To protect the anonymity of participants, the video recordings and transcriptions are not made publicly available. Anonymized excerpts from the original transcripts may be made available by request to the corresponding author.
 
 \subsection{Interview findings}
 
-Approximately 360 minutes of interviews were recorded, transcribed and analysed. The resulting findings are presented here, grouped according to topic and explanation class. Comments and observations not directly related to any of the explanation classes described were grouped according to topic and are presented at the end of this section.
+Approximately 360 minutes of interviews were recorded, transcribed and analysed. The resulting findings are presented here, grouped according to topic and explanation class. Comments and observations not directly related to any of the explanation classes described were grouped according to topic and are presented as follows.
 
 \subsubsection{Use of AI in pathology}
 
-It was observed that the term `AI' is vague,  particularly in light of the EU's developing regulatory terminology~\cite{ISO_IEC_22989}; ``Nobody knows what is artificial intelligence. Nobody knows what ... intelligence [is]" (P3). It was noted that, according to such definitions, AI has been applied to pathology for decades in the form of numerical modelling, regression, etc. Similarly, computer-assisted diagnosis has existed in some form or another for many decades, with image processing methods, counters, microscope-mounted cameras, etc., and the modern trend of deep learning applications to digitized slides was regarded as the logical next step in an ongoing process of innovation (P1,\,3).
+It was observed that the term `AI' is vague,  particularly in light of the EU's developing regulatory terminology~\cite{ISO_IEC_22989}; ``Nobody knows what \dots artificial intelligence [is]. Nobody knows what \dots intelligence [is]" (P3). It was noted that, according to such definitions, AI has been applied to pathology for decades in the form of numerical modelling, regression, etc. Similarly, computer-assisted diagnosis has existed in some form or another for many decades, with image processing methods, counters, microscope-mounted cameras, etc. In light of this, the modern trend of deep learning applications to digitized slides was regarded as the logical next step in an ongoing process of innovation (P1,\,3).
 
-AI solutions were often regarded as an extension of technology applied by pathologists for decades, numerical modelling, counters, microscope-mounted cameras, etc., assisting with simple but time-consuming tasks (P1,\,3,\,6); e.g. counting cells or estimating percentages. Speed was often named the highest priority for AI solutions, with the rationale that if the AI did not save the pathologist time, they would simply perform the task themselves (P4--6). The slide digitisation process itself was also named as a limiting factor; i.e., by the time a slide had been scanned and was ready to be viewed digitally and/or processed by an AI solution, the pathologist could have already completed the task under a microscope (P4). It was suggested that slide digitisation needs to reach a critical level of adoption ``over 90\%'' in order for such applications to make sense (P6).
+AI solutions were often regarded as an extension of technology applied by pathologists for decades, numerical modelling, counters, microscope-mounted cameras, etc., assisting with simple but time-consuming tasks (P1,\,3,\,6); e.g. counting cells or estimating percentages. Speed was often named the highest priority for AI solutions, with the rationale that if the AI did not save the pathologist time, they would simply perform the task themselves (P4--6). The slide digitisation process itself was also named as a limiting factor; i.e., by the time a slide had been scanned and was ready to be viewed digitally and/or processed by an AI solution, the pathologist could have already completed the task under a microscope (P4). It was suggested that slide digitisation needs to reach a critical level of adoption ``over 90\%'' (P6) in order for such applications to make sense.
 
 Two participants expressed the opinion that the pathologist's liability for their decisions, and therefore the obligation to check every result and slide anyway, was limiting the usefulness of AI solutions (P4,\,6). It was suggested that AI solutions could be helpful as a backup, giving a second opinion or flagging features worth reviewing, even after the pathologist has made their own diagnosis. To this effect, the impartiality of AI solutions (for instance, to the seniority of the pathologist) was cited as a strength (P4).
 
@@ -395,13 +389,13 @@ Several participants described variations on the theme of structured annotations
 
 Automated anomaly detection was also mentioned, wherein an AI solution might -- either as or supplementary to, some other diagnostic output -- flag up features that are statistically rare and/or out of distribution for their training data for manual review (P4,\,5).
 
-An approach was suggested, wherein an AI solution could `explain' its decision by showing the images from training data that were most important for a given outcome, comparing this process to that of a pathologist referring to previous cases and reference material to justify their decisions (P1).
+An approach was suggested, wherein an AI solution could ``explain'' its decision by showing the images from training data that were most important for a given outcome, comparing this process to that of a pathologist referring to previous cases and reference material to justify their decisions (P1).
 
 In addition to explanations of AI outputs, it was suggested that a ``brochure" containing important information about a given solution would be desirable for building trust it in. Suggested content included: the size of the training dataset, sources of annotations (in particular -- affliations, qualifications and number of expert annotators), corresponding molecular data, and accessible explanations of the methods (e.g. machine learning architectures) employed (P5). 
 
 \subsubsection{Saliency maps}
 
-The reaction of interview participants to these two explanation examples ranged from explicitly stated as being difficult to understand, distracting or confusing (P1,\,2,\,5) to being trivial to understand but not at all useful (P6). Some participants found the explanation interesting but did not know exactly what to interpret from it (P4,\,5). One participant pointed out that it was unclear what was meant by 'the most relevant pixels' (P6).
+The reaction of interview participants to the two saliency map examples ranged from difficult to understand, distracting and/or confusing (P1,\,2,\,5) to trivially understandable but not at all useful (P6). Some participants found the explanation interesting but did not know exactly what to interpret from it (P4,\,5). One participant pointed out that it was unclear what was meant by 'the most relevant pixels' (P6).
 
 Many participants identified factors important to the AI solution based on the pixels highlighted as most relevant, including presence, staining, size, and position of the nucleolus, or the staining pattern within the nucleus (P2,\,3,\,5,\,6). It was also pointed out that the explanation was ambiguous: it was not possible to infer which of these different factors were actually important or implied by the explanation (P2,\,5,\,6).
 
@@ -411,7 +405,7 @@ The majority of participants did not find this type of explanation valuable to t
 
 It was suggested that this form of explanation may be more suitable for classification tasks, where spatial features are more important than for the Ki-67 quantification case (P1,\,2,\,4,\,5). For instance, in the case where the output of an AI solution is the classification of a tumor over a large region. It was suggested that a pathologist could be more likely to trust a solution if the salient regions indicated match their expectations (P1,\,3).
 
-The risk for positive confirmation bias with such explanations was also pointed out. ``[It] is hiding a lot of information. But it's very tempting, because it's very simple" (P1), particularly for pathologists not familiar with techniques with which they are generated or at least aware that there are many different ways to do so (P1). It was suggested that this type of explanation should only be used as one element within an array of explanations or as a final check (P1,\,3).
+The risk for positive confirmation bias with such explanations was also pointed out. ``[It] is hiding a lot of information. But it's very tempting, because it's very simple", in particular for pathologists not familiar with techniques with which they are generated or at least aware of the many different ways available for doing so (P1). It was suggested that this type of explanation should only be used as one element within an array of explanations or as a final check (P1,\,3).
 
 \subsubsection{Concept attribution}
 
@@ -421,7 +415,7 @@ This example was widely considered intuitively understandable and informative ab
 
 It was suggested that this explanation has some value as a sanity check, making clear whether a critical factor is being `missed' by the AI solution. However, in both cases, it was also pointed out that such sanity checks should hopefully be redundant once a pathologist was working with a well-validated, clinically approved solution (P1,\,4).
 
-Criticisms of the explanation were the lack of precision and/or descriptiveness (P1--3) that having to read text is generally undesirable in the pathologist workflow (P3,\,4) -- i.e., that ``a picture is worth more than a thousand words" P3 -- or that it is simply unsuitable with the task of Ki-67 quantification (P2,\,4--6). 
+Criticisms of the explanation were the lack of precision and/or descriptiveness (P1--3) that having to read text is generally undesirable in the pathologist workflow (P3,\,4) -- i.e., that ``a picture is worth more than a thousand words" (P3) -- or that it is simply unsuitable with the task of Ki-67 quantification (P2,\,4--6). 
 
 It was pointed out that the explanation does not describe \textit{how} these factors affect the results, where the thresholds are, or how you would have to change them in order to get a different result (P1,\,6). A comparison was drawn between how a pathologist would explain what was important to them using descriptive language and that this falls short of that level of precision (P1).
 
@@ -491,27 +485,28 @@ This paper set out to answer the following research questions:
 
 \researchquestions
 
-To address these questions, we invited pathologists from research and clinical practice to take part in an online questionnaire, along with six semi-structured video interviews. These pathologists were presented with examples from five prominent categories of xAI approach, each having the goal of explaining the result of a sample AI solution, and asked to rate and/or discuss their interpretations and the usability of each. 
+To address these questions, we invited pathologists from research and clinical practice to take part in an online questionnaire, along with six semi-structured video interviews. These pathologists were presented with examples from five prominent categories of xAI approach, each having the goal of explaining the result of a sample AI solution. They were then asked to discuss their interpretations and/or rate the perceived usability of each. 
 
 \subsection{Interpretation of findings}
 
-The study context was chosen to be narrow enough to allow for a meaningful application-grounded study, whilst provide insights as broadly applicable. It is these overarching findings, relating to guiding principles for xAI development, upon which we focus the discussion.
+The study context was chosen to be narrow enough to enable a meaningful application-grounded study, whilst provide insights as broadly applicable as possible. It is these overarching findings, relating to general guiding principles for xAI development, upon which the discussion primarily focuses.
 
-The participants in the study placed a high value on the simplicity of explanation methods. While this could be understood in terms of a general user preferences, it is important to view this in the context of the pathologists' fast-paced routine workflow. In this setting, saving time was considered to be the most valuable benefit of AI assistance. Explanations involving complex interface elements, and therefore requiring additional scrutiny, may serve to undermine this purpose. The preference for visual explanations can also be seen in this light, with the introduction of different modalities into the primarily visual workflow imposing unwanted additional cognitive load.
+Overall, the participants in the study placed a high value on the simplicity of explanation methods. While this could be understood in terms of a general user preferences, it is important to also view this within the context of the pathologists' fast-paced routine work. In this setting, saving time was considered to be the most valuable benefit of AI assistance. Explanations involving complex interface elements, accordingly requiring additional scrutiny and/or training to interpret, may serve to undermine this purpose. The preference for visual explanations can also be seen in this light, with the introduction of different modalities into the primarily visual workflow imposing undesirable additional cognitive load.
 
 With respect to the usability of explanation methods, a broad range of modalities were identified as useful \textit{sanity checks} -- i.e. those flagging instances of the AI doing something ``clearly wrong''. Many situations were identified where it would be straightforward for an explanation to discredit the AI system, for example: 
 
 \begin{itemize}
+    \setlength{\itemsep}{1pt}
     \item A saliency map highlighting an irrelevant part of the image
     \item Concept attribution omitting critical diagnostic features
-    \item Prototypes significantly deviating from ``textbook examples''
+    \item Prototypes strongly deviating from ``textbook'' examples
 \end{itemize}
 
-In comparison, explanations providing users with a more nuanced understanding of the decision-making factors of the AI system occupied a smaller subset of potential implementations. Above all else, the acceptability and perceived value of such explanations was determined by the degree to which they allowed the user to infer causal factors in the AI system's decision-making. In particular, there was a greater readiness to place trust in AI systems whose explanations seemed to imply causal decision-making processes that were similar to the users' own.
+By comparison, explanations providing users with a more nuanced understanding of the decision-making factors of the AI system occupied a small subset of potential implementations. Above all, the acceptability and perceived value of such explanations was determined by the degree to which they allowed the user to infer causal factors in the AI system's decision-making. In particular, there was a greater readiness to place trust in AI systems whose explanations seemed to imply causal decision-making processes that were similar to the users' own.
 
-Moreover, participants showed a clear propensity to ascribe relatable (both human- and pathologist-like) causal reasoning to the AI system in order to try and understand the explanations presented. This was particularly noteworthy in examples that were not intended to convey such information. For example, the inference of causal factors determining high and low trust scores was readily used as a basis for perceived trustworthiness of results -- in the vein of ``the AI seemed to have the same difficulties that I would''.
+Moreover, participants showed a clear propensity to ascribe relatable (both human- and pathologist-like) causal reasoning to the AI system in order to try and understand the explanations presented. This was particularly noteworthy in examples that designed with the intent of conveying such casual information. For example, the inference of causal factors determining high and low trust scores was readily used as a basis for perceived trustworthiness of results -- in the vein of ``the AI seemed to have the same difficulties that I would''.
 
-This tendency was recognised as introducing significant risk of bias, particularly as a function of the omission or ambiguity of information presented by explanations. This was evident in cases where participants themselves made questionable inferences about the reasoning capabilities of the AI system based on the ambiguous explanation presented. Often, it was only during discussion of these results (and in some cases, not at all) that these errors were identified -- errors that that may have passed unnoticed in a real-world situation. 
+This tendency was recognised by participants as introducing significant risk of bias, particularly as a function of ambiguity or omission of information presented by explanations. This was evident in cases where participants themselves made questionable inferences about the reasoning capabilities of the AI system based on the ambiguous explanation presented. Often, it was only during discussion of these results (if at all) that these errors were identified -- errors that that may have passed unnoticed in a real-world scenario. 
 
 For example:
 \begin{itemize}
@@ -519,25 +514,25 @@ For example:
     \item Counterfactuals in which multiple features simultaneously change, leaving it ambiguous as to which were truly relevant
 \end{itemize}
 
-The tendency for positive confirmation bias was particularly notable when explanations presented information that closely matched pathologist expectations. An example of such thinking: that a prototype representing features correctly associated with a Ki-67 positive nucleus implied that the AI system was using the correct features to make this class assessment. In reality, the prototypical case gives no information about how varied or inclusive this class may be within the decision space of the AI system, or where and based on what features the AI system draws this class boundary.
+The tendency for positive confirmation bias was particularly notable when explanations presented information that closely matched -- or at least, did not significantly challenge -- the pathologist's expectations. For example: interpreting a prototype representing features correctly associated with a positive classification to imply that the AI system must be using the correct features to make this assessment. In reality, the prototypical case gives no information about how varied or inclusive this class may be within the decision space of the AI system, or where and based on what features the AI system draws this class boundary.
 
-Another trust-building element in interaction between pathologist and xAI system was the ability to ``get to know'' an AI system: To explore its limitations and quirks, with explanation-generating mechanisms providing an interface surface for this interaction. This \textit{trial period} was identified as an essential component in the building of pathologists' trust in AI systems. 
+Another trust-building element in interaction between pathologist and xAI system was the ability to ``get to know'' an AI system: To explore its limitations and quirks, with the expectation that explanation-generating mechanisms should provide an interface for this interaction. This \textit{trial period} was many times identified as an essential component in the building of pathologists' trust in AI systems. 
 
-The flavour of this interaction varied with attitude toward the role of AI in diagnostic decision-making. Pathologists more open to the collaborative role of AI systems expected explanations enabling them to probe the AI's capabilities like they would a trainee or colleague. On the other hand, those considering AI assistance more in the way of a `dumb machine' tended to treat explainability elements as an interface for manual adjustment of AI results. For example, the counterfactual explanation suggested as an interface for adjustment of the AI decision boundary, rather than just a visualisation of it.
+The flavour of this expected interaction varied with attitude toward the role of AI in diagnostic decision-making. Pathologists displaying an openness to AI systems playing a collaborate, even collegial role, in diagnosis expected explanations that enable them to probe AI capabilities like they would a trainee or colleague. On the other hand, those considering AI assistance more in the way of a ``dumb machine'' tended to treat explainability elements as an interface for manual adjustment and filtering of AI results -- with the pathologist firmly in control. For example, the counterfactual example as a control for setting the positive/negative decision boundary, rather than just a visualisation of it.
 
-This split also reflected attitudes in human versus machine fallibility. The more AI-skeptical considered deviations between human and AI assessments to be cause for rejecting the system. Pathologists with a more AI-optimistic outlook considered conflicting, even incorrect, AI results to be valuable for keeping them ``on their toes''. In these cases, the AI's indifference toward the experience or seniority of the pathologist was deemed an attractive attribute; one often missing from second opinions provided by human colleagues.
+This split also reflected attitudes in human versus machine fallibility. The more AI-skeptical considered deviations between human and AI assessments to be cause for rejecting the system. Pathologists with a more AI-optimistic outlook considered conflicting, or even incorrect, AI results to be valuable, if nothing else, to keep them ``on their toes''. In these cases, the AI's indifference toward the experience or seniority of the pathologist was deemed an attractive attribute; one often missing from second opinions provided by human colleagues.
 
 Alongside explainability, the traceability and credibility of data and quality assurance methods used for training and validation was identified as a critical factor for building pathologist trust in AI systems.
 
 \subsection{Implications for xAI research}
 
-Our findings strongly support observations that social and cognitive biases strongly affect human interactions with xAI systems~\cite{miller2019explanation, jussupow2021augmenting}, and that an important aspect of this is the tendency to ascribe human-like traits to explainable AI systems~\citet{de2017people, miller2019explanation}. This emphasises the importance of designing xAI systems that identify, mitigate, and even take advantage of, such biases and predispositions.
+Our findings strongly support observations that social and cognitive biases strongly affect human interactions with xAI systems~\cite{miller2019explanation, jussupow2021augmenting}, and that an important aspect of this is the tendency to ascribe human-like traits to xAI systems~\cite{de2017people, miller2019explanation}. This emphasises the importance of designing xAI systems that identify, mitigate, and even take advantage of, such biases and predispositions.
 
 The sources and effects of bias evident in our study support many of the observations and strategies for user-centric xAI systems proposed by \citet{wang_designing_2019}. It should be noted that, while these guidelines are theory-driven, we have reached many of the same conclusions based on purely empirical findings, lending valuable credibility to this prior work.
 
 In addition to the role of explainability in building pathologist trust in AI systems, the need to complement such implementations with model and data transparency was reinforced. The implementation of this suggested by users is reminiscent of the ``model facts" label proposed by \citet{sendak2020presenting}, containing a summary of the model, training and inference methods, validation and performance metrics, as well as purposes and warnings, all presented in standardised and user-accessible language. Beyond these desiderata, pathologists in our study emphasised the importance of understanding sources of model training data, in particular, with regards to the credibility and variety of expert annotators.
 
-Our study was motivated in large part by the predominance of algorithmic (rather than user-centric) approaches to xAI in the state of the art~\cite{tjoa_survey_2020, poceviciute_survey_2020, antoniadi2021current}. We agree with the observation of \citet{miller2019explanation} that most of this work ``uses only the researchers' intuition of what constitutes a ``good explanation''. While studies to identify user requirements for explainability represent a marked improvement on this, our findings underline the importance of the extra step taken here: evaluating user interactions with potential xAI approaches directly.
+Our study was motivated in large part by the predominance of algorithmic (rather than user-centric) approaches to xAI represented in the state of the art~\cite{tjoa_survey_2020, poceviciute_survey_2020, antoniadi2021current}. We agree with the observation of \citet{miller2019explanation} that most of this work ``uses only the researchers' intuition of what constitutes a `good' explanation''.  While studies to identify user requirements for explainability represent a marked improvement on this approach, our findings underline the importance of the extra step taken here: evaluating user interactions with potential xAI approaches directly.
 
 Specifically, our study implies some difficult-to-avoid conflicts that may arise between explainability requirements perceived by user and the potential biases that these are liable to introduce.
 
@@ -545,27 +540,27 @@ Specifically, our study implies some difficult-to-avoid conflicts that may arise
 
 The time pressure on pathologists during routine examination places a high burden on AI systems and their explainable counterparts to provide UI elements that introduce minimal cognitive load. Preferences expressed by users in this study were for simple, visual elements, with the simplest explanation candidates (prototypes) being considered the most intuitively understandable, and in many cases, the most readily accepted.
 
-However, our findings demonstrate that every detail omitted from an explanation, whether for the sake of simplicity or due to inherent limitation, is an opportunity for user speculation. That is to say, that any gaps or ambiguities in the information presented to the user are liable to be ``filled in'' according to their own expectations and understanding. This introduces a risk of confirmation bias in explanations that underdetermine the factors important for a model output, which in turn runs the risk of lulling users into a false sense of confidence in the AI system to which they pertain.
+However, our findings demonstrate that every detail omitted from an explanation, whether for the sake of simplicity or due to inherent limitation, is an opportunity for user speculation. That is to say, that any gaps or ambiguities in the information presented to the user are liable to be ``filled in'' according to their own expectations and understanding. This introduces a risk of confirmation bias in explanations that underdetermine the factors important for a model output, and in turn, risks lulling users into a false sense of confidence in the AI system to which they pertain.
 
-This is particularly challenging with respect to the user preference for ``intuitively understandable'' explanations and explainability elements, as these inherently draw upon the prior understanding and associations of the user. As these priors vary user-to-user and case-to-case, there is a degree of uncertainty in exactly what information will be perceived by the user through such explanations. To note here, is that even elements that are not designed as explanations \textit{per se} may be subject to this caveat.
+This is particularly challenging with respect to the user preference for ``intuitively understandable'' explanations and explainability elements, as these inherently draw upon the prior understanding and associations of the user. As these priors vary user-to-user and case-to-case, there is a degree of uncertainty in exactly what information will be perceived by the user through such explanations. To note here, is that even elements that are not designed as explanations per se may be subject to this caveat.
 
-A case in point: the simple \textit{high confidence / low confidence} trust scores featured in this study were based on pathologist feedback that these classes were accessible due to the inherent analogy to their confidence in their own annotations and assessments. The intuitive understandability of such a trust score, based upon an implicit correspondence between these indicators, has the potential to be dangerously misleading. While more nuanced approaches exist for generating trust scores that are not based solely on the model's own (biased) assessment of confidence, when presented through a simple and intuitive interface, it is difficult to ensure that the factors that it truly represents align with the hidden priors of the user.
+A case in point: the simple \textit{high / low confidence} trust scores featured in this study were based on pathologist feedback that these classes were accessible due to the inherent analogy to confidence in their own annotations and assessments. The intuitive understandability of such a trust score, based upon an implicit correspondence between these indicators, has the potential to be misleading. While more nuanced approaches exist for generating trust scores that are not based solely on the model's own (biased) assessment of confidence, when presented through a simple and intuitive interface, it is difficult to ensure that the factors that it truly represents align with the hidden priors of the user.
 
-This strongly implies the importance of xAI approaches that are explicit in the information they convey to the user. A trust score better following this principle might be a aggregation of many different factors, available on demand, where each factor has a clear and interpretable meaning: E.g. the data is out of distribution for the model, the image quality is too low, conflicting features were detected, etc.
+This implies a necessity for xAI approaches that are explicit in the information they convey to the user. A trust score better following this principle might be a aggregation of many different factors, available on demand, where each factor has a clear and interpretable meaning: E.g. the data is out of distribution for the model, the image quality is too low, conflicting features were detected, etc.
 
 \subsubsection{Relatability vs. Anthropomorphism}
 
-The expectation of relatable explanations, that is to say, explanations that represent relatable AI reasoning, presents a similar challenge. By making explanations relatable -- i.e. by ``speaking the language of the user'' -- xAI developers risk implying human-like reasoning of AI systems, an effect observed throughout this study. There is much research that demonstrates the fundamental differences between the way in which human beings and modern machine learning systems process visual information~\cite{geirhos2020shortcut}, leading such implications to dangerously misrepresent AI capabilities and limitations.
+The expectation of relatable explanations, that is to say, explanations that represent relatable AI reasoning, presents a similar challenge. By making explanations relatable -- i.e. by ``speaking the language of the user'' -- xAI developers risk implying human-like reasoning of AI systems: An effect observed repeatedly throughout this study. There is a body of research demonstrating the fundamental differences between the way in which human beings and modern machine learning systems process visual information~\cite{geirhos2020shortcut}, meaning that such implications may dangerously misrepresent AI capabilities and limitations.
 
-This implies a need for further research into user-friendly xAI approaches that provide useful information about the internal workings of black-box systems, whilst remaining true to their abstract and (currently) statistical nature. The development of such xAI tools goes hand-in-hand with the education of users on the capabilities and limitations of AI systems. While this should be primarily accomplished through good (x)AI design, there is also a strong case for active outreach and training of, for instance, pathologists in the fundamental theories and current state of AI/ML applications in their domain.
+This emphasises the need for further research into user-friendly xAI approaches that provide useful information about the internal workings of black-box systems, whilst remaining true to their abstract and (currently) statistical nature. The development of such xAI tools goes hand-in-hand with the education of users on the capabilities and limitations of AI systems. While this should be primarily accomplished through good (x)AI design, there is also a strong case for active outreach and training of users (in this case, pathologists) in the fundamental theories and current state of AI/ML applications in their domain.
 
 \subsubsection{Human-computer interaction as first-class citizen}
 
-To date, the state of the art in xAI for image analysis is represented by a large number of algorithmic methods, with saliency map generation by one means or another making up the majority, with many more likely awaiting discovery. As demonstrated in our findings, a broad range of these be useful for raising ``red flags'', i.e. sanity checks for AI output. Indeed, this is the rationale used to motivate much of this research landscape~\cite{ribeiro2016trust}. 
+To date, the state of the art in xAI for image analysis is represented by a large number of algorithmic methods, with saliency map generation by one means or another making up the majority, with many more likely awaiting discovery. As demonstrated in our findings, a broad range of these may be useful for sanity checks for AI results. Indeed, this principle is used as a motivating example for much of the current research landscape~\cite{ribeiro2016trust}. 
 
-At the same time, there is a mounting pressure to ``add explainability'' to AI systems, particularly in sensitive domains like medicine. This generates a risk of explanation-generating methods being integrated into AI systems without fully taking into consideration the potential second-order effects described here. In light of this, it is important for AI developers to carefully weigh the benefits against risks of inclusion of explainability elements, To this effect, the development of xAI systems should take place in a tight feedback loop with potential user groups, and that this feedback should be viewed through the critical lens of social and cognitive theories of HCI.
+At the same time, there is a mounting pressure to ``add'' explainability to AI systems, particularly in sensitive domains like medicine. This generates a risk of explanation-generating methods being applied to AI systems without fully taking into consideration the potential second-order effects described here. In light of this, it is important for AI developers to carefully weigh the benefits against risks of inclusion of explainability elements, To this effect, the development of xAI systems should take place in a tight feedback loop with potential user groups, and that this feedback should be viewed through the critical lens of social and cognitive theories of HCI.
 
-If, through this process, the usefulness and usability of explainability elements cannot be reconciled with the sources of bias they might introduce, it may be an indication that their inclusion is simply inappropriate for the use case at hand. In such cases, our findings suggest that it may be safer to either a) rethink the AI system on a more fundamental level, or b) to exclude explainability altogether and live with the black-box model, rather than running the risk of misleading users.
+If, through this process, the usefulness and usability of explainability elements cannot be reconciled with the sources of bias they might introduce, it may be an indication that their inclusion is simply inappropriate for the use case at hand. In such cases, our findings suggest that it may be safer to either a) rethink the AI system on a more fundamental level, or b) to exclude explainability altogether and live with the limited transparency of a black-box model, rather than running the risk of misleading users.
 
 \subsection{Limitations}
 
@@ -573,30 +568,30 @@ Due to the limited availability of qualified pathologists to take part in resear
 
 This limited participant availability also made it necessary to design the research apparatus with brevity in mind. The sample workflow, AI outputs and xAI elements, were therefore simplified and predominantly static. This deviates significantly from the expected user experience~\cite{Kargl-et-al:2020:PathoWorkflows}; specifically, with respect to the inability to view the non-annotated IHC image, adjacent H\&E layers, and to generally pan and zoom through the slide data. It is likely that this limited participants' ability to effectively evaluate the content and usability of the explainability approaches presented. A future study more closely replicating the pathologist user experience would provide valuable insights, although with an increased cost to the technical implementation and time demands on participants.
 
-Some sources of bias may also be exaggerated within the context chosen for this study. There are relatively few diagnostic factors that play an important role in routine Ki-67 quantification, in particular, if identification of the relevant tumor regions has already taken place. By asking participants what information they can infer from the explanations provided, we may have introduced an incentive to read too much into these elements, amplifying the effect of the biases observed. Similarly, if explanations provide the user with an inappropriate level of detail for the task at hand, there may be a tendency for users to over-represent their preference for simplicity in UI elements.
+Some sources of bias may also be exaggerated within the context chosen for this study. There are relatively few diagnostic factors that play an important role in routine Ki-67 quantification, particularly if identification of the relevant tumor regions has already taken place. By asking participants what information they can infer from the explanations provided, we may have introduced an incentive to read too much into these elements, amplifying the effects observed. Similarly, if explanations provide the user with an inappropriate level of detail for the task at hand, there may be a tendency for users to over-represent their preference for simplicity in UI elements.
 
-With respect to these limitations, we emphasise that selection and implementation of xAI methods presented are a reflection of the technical state of the art, as well as the thinking of the machine learning researchers, AI developers and pathologists upon whose feedback they were based. They therefore constitute a representative sample of xAI approaches that may realistically be `added on' to AI solutions in order to meet the requirement, whether real or perceived, for explainability. Moreover, their support by prior theoretical work, coupled with the risk of harm if not given their due consideration, make these findings critical points of consideration in xAI development, even if they only represent the worst-case scenario.
+With respect to these limitations, we emphasise that the selection and implementation of those xAI methods presented are a reflection of the technical state of the art, as well as the thinking of the machine learning researchers, AI developers and pathologists upon whose feedback they were based. They therefore constitute a representative sample of xAI approaches that may realistically be ``added on'' to AI solutions in order to meet a requirement, whether real or perceived, for explainability. Moreover, their support by prior theoretical work, coupled with the risk of harm if not given their due consideration, make these findings critical points of consideration in xAI development, even if they only represent the worst-case scenario.
 
 \section{Conclusion and Future work}
 \label{sec:FutureWork}
 
-In this work, a representative set of xAI approaches to AI-assistance in digital pathology were prepared and evaluated by a cohort of clinical pathologists. These findings are represented in the aggregated responses of 25 online questionnaire responses combined with the analysis of six hours of expert video interviews. 
+In this work, a representative set of xAI approaches to AI-assistance in digital pathology were prepared and then evaluated by a cohort of clinical pathologists. The results of this evaluation are represented in the aggregated responses of 25 online questionnaire responses, combined with the analysis of six hours of expert video interviews. 
 
 To date, there have been no end-user oriented studies of xAI applications in the domain of digital pathology. Aside from extensive reviews of the technical landscape~\cite{yang2021unbox, poceviciute_survey_2020}, first steps have been made in the direction of exploring the explainability needs of medical practitioners~\cite{liao2020questioning,cai2019hello,wang_designing_2019}. The novelty of our approach is in the qualitative evaluation of candidate xAI approaches with real expert end-users. Only through such user- and application-grounded studies can such second-order effects as those demonstrated in our findings be revealed and substantiated with empirical findings.
 
 Namely, the results of this study imply challenging balances to strike between the perceived explainability requirements of AI users and the sources of bias that these may be liable to introduce. On the one hand, our findings demonstrate the preference of pathologists for simple visual explanations that mirror their way of thinking and integrate cleanly with their diagnostic workflow. On the other, they suggest dangers associated with explanations that are overly appealing in their simplicity, or allow for too much ambiguity in their interpretation. 
 
-This is important with regard to the current landscape of xAI research, wherein a large number of algorithmic approaches to ``adding explainability'' have been developed, based predominantly on researchers' intuition of what users might need. While these technical contributions are valuable, it is important to carefully consider the implications and second-order effects of integrating such approaches into AI systems as afterthoughts. We rather urge developers that the content, modality and purpose of information communicated to the user through xAI elements, as with with any other component of the user interface, be considered in the AI development process from day one.
+This is important with regard to the current landscape of xAI research, wherein a large number of algorithmic approaches to adding (post-hoc) explainability to black-box models have been developed, based predominantly on researchers' intuition of what users might need. While these technical contributions are valuable, it is important to carefully consider the implications and second-order effects of integrating such approaches into AI systems as afterthoughts. We rather urge developers that the content, modality and purpose of information communicated through xAI elements be guided by the analysis of use cases and requirements from day one.
 
-Where elements of explainability are determined to be a necessary component of AI systems, these should rather be explicit than implicit, even if this conflicts with the preferences of users. Where this conflict cannot be easily resolved, it may be an indicator that a more fundamental review of the AI system, and its interaction with the user, is necessary. Alternatively, or in addition, it may be that additional training and support for the user may be required for its safe use. 
+Where explainability elements are determined to be a necessary component of AI systems, these should rather be explicit than implicit, even if this conflicts with the preferences of users. Where this conflict cannot be easily resolved, it may be an indicator that a more fundamental review of the AI system, and its interaction with the user, is necessary. Alternatively, or additionally, it may indicate that supplementary training and support for users is required for its safe use.
 
-There is fertile ground for further cross-disciplinary studies of this sort. In particular, empirical studies of user interaction with explainability elements embedded into more true-to-life workflow would provide further valuable insights. Elements of such studies in digital pathology might include real AI results, displayed within a fully interactive slide viewer, featuring interactive xAI components. This immersive research environment would also be augmented with gaze tracking and bio-monitoring technology in order to collect rich quantitative data on user attention and response. There are also many opportunities to conduct similar studies in pathology, within the context of representative AI-assisted diagnostic tasks whose level of complexity entails a greater need for explainability than that of Ki-67, e.g. grading of prostate tissue.
+There is fertile ground for further cross-disciplinary studies of this type. In particular, empirical studies of user interaction with explainability elements embedded into more true-to-life workflow would provide further valuable insights. Elements of such studies in digital pathology might include real AI results, displayed within a fully interactive slide viewer, featuring interactive xAI components. This immersive research environment could be augmented with gaze tracking and bio-monitoring technology in order to collect rich quantitative data on user attention and responses. There are also many opportunities to conduct similar studies in pathology, within the context of representative AI-assisted diagnostic tasks whose level of complexity entails a greater need for explainability than that of Ki-67, e.g. grading of prostate tissue.
 
-Our findings also imply important future work in their application to xAI research and development. Safe and effective forms of xAI will balance usability against the fidelity with which they represent the decision-making processes and capabilities of an AI system. This this end, we suggest two avenues for investigation:
+Our findings also imply important future work in their application to xAI research and development. Safe and effective forms of xAI will balance usability against the fidelity with which they represent the decision-making processes and capabilities of an AI system. This this end, we suggest two immediate avenues for investigation:
 
-The parallel approach: Explainability elements based on components of the AI decision-making process that are identified as most closely matching the user's decision-making processes. For example, an neural network-based xAI system in digital pathology might display samples from the training data that are most influential, or at least most similar, to a given model outcome. This is an accessible process for the pathologist, who is accustomed to referring to textbook cases in her work, whilst remaining true to the statistical nature of the machine learning model.
+The \textit{parallel} path: Explainability elements based on components of the AI decision-making process that are identified as most closely matching the user's decision-making processes. For example, an neural network-based xAI system in digital pathology might display samples from the training data that are most influential, or at least most similar, to a given model outcome. This is an accessible process for the pathologist, who is accustomed to referring to textbook cases in her work, whilst remaining true to the statistical nature of the machine learning model.
 
-The orthogonal approach: Develop explainability approaches based upon the components of AI decision-making process identified to have as little in common with human reasoning as possible. Deliberate selection of human-\textit{un}relatable aspects of AI inner workings may help to mitigate the effects described by this study, whilst setting up more realistic (and therefore robust) expectations of AI systems by their users. 
+The \textit{orthogonal} path: Explainability elements based upon the components of AI decision-making process identified to have as little in common with human reasoning as possible. Deliberate selection of human-\textit{un}relatable aspects of AI inner workings may help to mitigate the effects described by this study, whilst setting up more realistic (and therefore safer and moresustainable) expectations of AI systems by their users.
 
 This second approach runs the risk of alienating users by emphasising the \textit{otherness} of the AI system, and will likely additional training, support and acclimation for users. However, this be a bitter pill to swallow for a more sustainable long-term xAI strategy. After all, it is precisely these aspects of machine intelligence, the ones that diverge most strongly from human reasoning, that underpin the potential for synergy in human-AI cooperation.
 
